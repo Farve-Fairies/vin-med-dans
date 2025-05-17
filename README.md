@@ -16,7 +16,7 @@
 
 Når du skal til at arbejde, så start altid med at pull i main, så alt indhold er up-to-date. Herefter opretter du din branch og navngiver den efter følgende guide:
 
-**Git branches & navngivning**
+- **Git branches & navngivning**
 
 Når en branch oprettes, navngives den således:
 
@@ -37,7 +37,7 @@ Når man skal arbejde videre, opretter man en ny branch og følger samme procedu
 OBS! Man kan **IKKE** merge fra samme branch flere gange! Opret derfor altid en ny branch, før du arbejder videre.
 Her er det en god idé først at skifte fra din gamle branch til main, så du igen kan pulle fra main før du arbejder videre i en ny branch.
 
-**Opsummering**
+- **Opsummering**
 
 Flowet er altså såldes:
 
@@ -64,7 +64,7 @@ For at importere følgende, skriver du det ind i fences i toppen af dokumentet.
 
 "Fences" er 6 bindestreger fordelt på 2 linjer à 3 bindestreger på hver linje. Inden for dem kan man importere Astro-komponenter og oprette konstanter/Astro-props.
 
-Eksempel:
+- Eksempel:
 
 '
 
