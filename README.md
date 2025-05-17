@@ -94,11 +94,15 @@ Ved at alle HTML-sider bygges i dette samme layout sikrer vi at de er ensartede.
 
 CSS-styling foregår primært inline i hvert Astro-komponent. Dvs. i en komponent-fil indsættes der styling nederst i dokumentet såldes:
 
+'
+
 <style>
     /* din CSS */
 </style>
 
-Generelt styling som fonte, farver og størrelser er defineret i base.css.
+'
+
+Generel styling som fonte, farver og størrelser er defineret i base.css.
 Hvis der opstår problemer pga. base.css eller du opdager en mangel/rettelse til base.css, aftal da med gruppen, hvordan vi gør, så der ikke opstår konflikter i forbindelse med branch-merging.
 
 ### 7. Billedfiler
