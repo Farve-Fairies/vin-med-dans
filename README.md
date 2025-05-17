@@ -66,7 +66,9 @@ For at importere følgende, skriver du det ind i fences i toppen af dokumentet.
 
 Eksempel:
 
-## '
+'
+
+---
 
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
@@ -74,11 +76,11 @@ const {title} = Astro.props;
 
 ---
 
-<Layout>
-<Hero />
-<h1>Velkommen</h1>
-<CTA1 text="Læs mere" />
-</Layout>
+< Layout >
+< Hero />
+< h1 >Velkommen< /h1 >
+< CTA1 text="Læs mere" />
+< /Layout>
 '
 
 ### 5. Astro layout
