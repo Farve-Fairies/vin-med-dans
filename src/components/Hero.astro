@@ -65,4 +65,28 @@
     padding: 0.5rem;
     align-self: flex-end;
   }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    .scroll-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 1.3rem;
+      color: #fafcf7;
+      opacity: 0.8;
+      align-self: flex-start;
+      margin-top: 23%;
+    }
+
+    .age-badge {
+      font-size: 1rem;
+      padding: 0.6rem;
+    }
+  }
 </style>
