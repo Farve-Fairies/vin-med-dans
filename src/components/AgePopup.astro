@@ -1,0 +1,170 @@
+<div id="age-modal" class="age-modal hidden">
+  <div class="modal-content">
+    <img src="../logo/logo-text-dark.svg" alt="logo" class="logo" />
+    <img
+      id="age-illustration"
+      src="../illustrationer/strandstol.svg"
+      alt="Figur i liggestol"
+    />
+    <p>For at forsætte, bekræft året du er født:</p>
+    <form id="age-form">
+      <div class="input-row">
+        <input type="text" maxlength="1" pattern="[0-9]" required />
+        <input type="text" maxlength="1" pattern="[0-9]" required />
+        <input type="text" maxlength="1" pattern="[0-9]" required />
+        <input type="text" maxlength="1" pattern="[0-9]" required />
+      </div>
+      <button type="submit">
+        <img src="../icons/hoejre.svg" alt="" />
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .age-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .modal-content {
+    border: 1px solid #425245;
+    background-color: #fafaf2;
+    padding: 2rem;
+    max-width: 90%;
+    text-align: center;
+    font-family: "Avenir Next", sans-serif;
+  }
+
+  .modal-content #age-illustration {
+    width: 100px;
+    margin: 1rem auto;
+  }
+  .modal-content .logo {
+    position: relative;
+    width: 170px;
+    margin: 1rem auto;
+    justify-content: center;
+  }
+  .modal-content p {
+    margin: 1rem 0 0.5rem;
+    color: #425245;
+  }
+
+  .modal-content form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .modal-content input {
+    width: 2rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    border: 1px solid #425245;
+    background-color: #fff;
+    transition: border-color 0.2s;
+  }
+
+  button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  button img {
+    position: absolute;
+
+    height: 15px;
+    width: 15px;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("age-modal");
+    const form = document.getElementById("age-form");
+    const inputs = form.querySelectorAll("input[type='text']");
+    const illustration = document.getElementById("age-illustration");
+
+    // Vis modal med det samme
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const year = Array.from(inputs)
+        .map((input) => input.value)
+        .join("");
+      // Hvis ikke alle felter er udfyldt, gør felter røde og stop
+      if (year.length < 4 || isNaN(parseInt(year, 10))) {
+        inputs.forEach((input) => (input.style.borderColor = "#c00"));
+        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.alt = "Figur i liggestol";
+        return;
+      }
+      if (parseInt(year, 10) > 2007) {
+        inputs.forEach((input) => (input.style.borderColor = "#c00"));
+        illustration.src = "../illustrationer/stikkel.svg";
+        illustration.alt = "Stikkel";
+      } else {
+        inputs.forEach((input) => (input.style.borderColor = "#425245"));
+        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.alt = "Figur i liggestol";
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Fjern rød kant når man retter i felterne
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        input.style.borderColor = "#425245";
+        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.alt = "Figur i liggestol";
+      });
+    });
+  });
+</script>
+
+<!-- 1. Modalens HTML-struktur
+Modalen (<div id="age-modal" class="age-modal hidden">) dækker hele skærmen og vises som et pop-up vindue.
+Logo og illustration vises øverst. Illustrationen har id="age-illustration", så den kan skiftes dynamisk.
+Tekst fortæller brugeren, at de skal bekræfte deres fødselsår.
+Formularen består af fire inputfelter (ét for hvert ciffer i årstallet) og en knap med en pil. -->
+
+<!-- 2. CSS-styling
+Modalen er centreret på skærmen med flexbox og har en høj z-index, så den ligger øverst.
+.hidden-klassen skjuler modal-vinduet, når brugeren er godkendt.
+Inputfelter er små, centrerede og har en overgang på border-farven, så det ser pænt ud, når de bliver røde ved fejl.
+Knap og pil er små og centrerede ved siden af inputfelterne. -->
+
+<!--3. JavaScript-funktionalitet
+Visning af modal
+Når siden loader, fjernes .hidden fra modal-vinduet, så det vises, og body får overflow: hidden for at forhindre scroll.
+Validering ved submit
+Når brugeren trykker på knappen:
+Samles input til et årstal (fx "2005").
+Hvis ikke alle felter er udfyldt eller der ikke er indtastet tal, bliver alle inputfelter røde, og illustrationen sættes til strandstol.
+Hvis årstallet er over 2007 (altså brugeren er under 18 år), bliver alle inputfelter røde, og illustrationen skifter til "stikkel.svg".
+Hvis årstallet er 2007 eller lavere (altså brugeren er gammel nok), bliver inputfelterne grønne, illustrationen skifter tilbage til strandstol, modal-vinduet skjules, og siden kan scrolles igen  -->
