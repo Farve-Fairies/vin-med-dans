@@ -24,12 +24,12 @@ pnpm-debug.log*
 .idea/
 
 
-logo/
+# logo/
 
-fonts/
+# fonts/
 
-billeder/
+# billeder/
 
-icons/
+# icons/
 
-illustrationer/
+# illustrationer/

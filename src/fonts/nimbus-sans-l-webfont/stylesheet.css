@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Nimbus Sans L';
+    src: url('NimbusSanL-ReguCond.woff2') format('woff2'),
+        url('NimbusSanL-ReguCond.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nimbus Sans L';
+    src: url('NimbusSanL-BoldCond.woff2') format('woff2'),
+        url('NimbusSanL-BoldCond.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
