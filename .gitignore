@@ -22,3 +22,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+
+logo/
+
+fonts/
+
+billeder/
+
+icons/
+
+illustrationer/

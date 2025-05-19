@@ -1,0 +1,65 @@
+/*  FARVE VARIABLER */
+
+root {
+  --main: #fafcf7;
+  --accent: #32473a;
+  --bubblegum: #ffcdd8;
+}
+
+/*  FONTS */
+
+@font-face {
+  font-family: "Nimbus Sans D OT Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/nimbus-sans-d-ot-webfont/Nimbus-Sans-D-OT-Bold_32747.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: "Nimbus Sans D OT Bold";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("Nimbus Sans D OT Bold"),
+    url("fonts/nimbus-sans-d-ot-webfont/Nimbus-Sans-D-OT-Bold_32747.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Nimbus Sans L Condensed";
+  src:
+    url("fonts/nimbus-sans-l-webfont/NimbusSanL-ReguCond.woff2") format("woff2"),
+    url("fonts/nimbus-sans-l-webfont/NimbusSanL-ReguCond.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Sans L Condensed Bold";
+  src:
+    url("fonts/nimbus-sans-l-webfont/NimbusSanL-BoldCond.woff2") format("woff2"),
+    url("fonts/nimbus-sans-l-webfont/NimbusSanL-BoldCond.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* FONT STYLING */
+
+h1,
+h2,
+li {
+  font-family: "Nimbus Sans D OT Bold";
+}
+
+p,
+a {
+  font-family: "Nimbus Sand D OT Light";
+}
+
+/* Dato font til eventside */
+h3 {
+  font-family: "Nimbus Sans L Condensed Bold";
+}

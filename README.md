@@ -109,3 +109,5 @@ Hvis der opstår problemer pga. base.css eller du opdager en mangel/rettelse til
 
 Alle billedfiler undtagen svg'er skal være konverteret til webp.
 Billeder placeres i kategoriserede mapper og hver enkel billedfil navngives så simpelt som muligt.
+Mapperne er kategoriseret som hhv. 'billeder', 'icons' og 'illustrationer'.
+I mappen 'billeder' findes der undermapper med billeder tilhørende hver side.
