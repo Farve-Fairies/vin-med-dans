@@ -6,7 +6,7 @@
 
 - Prettier plugin: 'npm i --save-dev prettier prettier-plugin-astro'
 
-- Run live server: 'npm run build'
+- Run live server: 'npm run dev'
 
 ## Workflow
 

@@ -6,13 +6,34 @@ root {
   --bubblegum: #ffcdd8;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fafcf7;
+  margin: 0 auto;
+  max-width: 100vw;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 /*  FONTS */
 
 @font-face {
   font-family: "Nimbus Sans D OT Light";
   font-style: normal;
   font-weight: normal;
-  src: url("fonts/nimbus-sans-d-ot-webfont/Nimbus-Sans-D-OT-Bold_32747.woff")
+  src: url("fonts/nimbus-sans-d-ot-webfont/Nimbus-Sans-D-OT-Light_32752.woff")
     format("woff");
 }
 
@@ -41,7 +62,7 @@ root {
   src:
     url("fonts/nimbus-sans-l-webfont/NimbusSanL-BoldCond.woff2") format("woff2"),
     url("fonts/nimbus-sans-l-webfont/NimbusSanL-BoldCond.woff") format("woff");
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -50,16 +71,74 @@ root {
 
 h1,
 h2,
+h3,
 li {
   font-family: "Nimbus Sans D OT Bold";
+  color: #32473a;
+  font-weight: 100;
+}
+
+h3,
+li {
+  text-transform: uppercase;
 }
 
 p,
 a {
-  font-family: "Nimbus Sand D OT Light";
+  font-family: "Nimbus Sans D OT Light";
+  color: #32473a;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+}
+
+a:hover {
+  color: #ffcdd8;
 }
 
 /* Dato font til eventside */
-h3 {
+h4 {
   font-family: "Nimbus Sans L Condensed Bold";
+  color: #32473a;
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+}
+
+p,
+a {
+  font-size: 0.8rem;
+}
+
+/* DESKTOP FONT SIZES */
+
+@media (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  p,
+  a {
+    font-size: 0.9rem;
+  }
 }
