@@ -7,4 +7,277 @@ import AgePopup from "../components/AgePopup.astro";
 <Layout>
   <Hero />
   <AgePopup />
+  <section class="et">
+    <h4 class="venstre">
+      Vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
+    </h4>
+    <img
+      src="../billeder/produktbilleder/hoenefuld-1.webp"
+      alt=""
+      class="vin-hero"
+    />
+    <div class="linje"></div>
+    <h4 class="hoejre">GOD VIN PÅ GODE OG DÅRLIGE DAGE</h4>
+    <div class="linje"></div>
+    <div class="kolonne-wrapper">
+      <h4 class="venstre-nede">100% bæredygtigt.</h4>
+      <div class="linje-midt"></div>
+      <h4 class="hoejre-nede">
+        Frugt & bær er plukket rundt omkring i Danmark.
+      </h4>
+    </div>
+  </section>
+  <section class="to">
+    <div class="billede-tekst">
+      <div class="billede-wrapper">
+        <img src="../billeder/forside/skaal.webp" alt="" />
+        <h4 class="billede-titel1">
+          Frugtvin er vin med minimal indgriben – levende, ufiltreret og fuld af
+          karakter.
+        </h4>
+      </div>
+    </div>
+    <div class="billede-tekst">
+      <div class="billede-wrapper">
+        <img src="../billeder/forside/drenge.webp" alt="" />
+        <h4 class="billede-titel2">
+          Vi blander frugtvin, nysgerrighed og nærvær – og serverer det med
+          dans.
+        </h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="tre">
+    <div class="billede-tekst">
+      <div class="billede-wrapper">
+        <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
+      </div>
+      <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
+    </div>
+    <div class="billede-tekst">
+      <div class="billede-wrapper">
+        <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="link-kasser">
+    <div class="kasse-linje"></div>
+    <p class="titel5">Drik vin med dans. Dans med vinen.</p>
+    <div class="kasse-linje"></div>
+    <p class="p">KØB ONLINE</p>
+    <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
+    <div class="kasse-linje"></div>
+    <p class="p">DRIK PÅ BAR</p>
+
+    <a href="/side3" class="kasse-link">SE PLACERINGER</a>
+    <div class="kasse-linje"></div>
+    <p class="p">SE PRODUKTIONEN</p>
+
+    <a href="/side4" class="kasse-link">INSTAGRAM</a>
+    <div class="kasse-linje"></div>
+  </section>
 </Layout>
+
+<style>
+  body {
+    margin: 0;
+  }
+  section.et {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .venstre {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 4rem;
+    padding-top: 3rem;
+  }
+  .vin-hero {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hoejre {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 1rem;
+  }
+
+  .linje {
+    border: 1px solid #425245;
+    width: 100%;
+  }
+  .kolonne-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .linje-midt {
+    border-left: 1px solid #425245;
+    height: 100px;
+    width: 0;
+  }
+  .venstre-nede,
+  .hoejre-nede {
+    flex: 1;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .venstre-nede {
+    text-align: center;
+  }
+  .hoejre-nede {
+    text-align: center;
+  }
+
+  h4 {
+    font-family: "Nimbus Sans D OT Light";
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .billede-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  .billede-wrapper img {
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+  }
+
+  .billede-titel1 {
+    position: absolute;
+    color: #fafcf7;
+    text-align: start;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 2rem;
+    padding-top: 18rem;
+    padding-right: 7rem;
+  }
+  .billede-titel2 {
+    position: absolute;
+    color: #fafcf7;
+    text-align: end;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 2rem;
+    padding-top: 18rem;
+    padding-left: 7rem;
+  }
+
+  section.tre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .billede-titel3 {
+    position:;
+    text-align: start;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-right: 7rem;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+  .billede-titel4 {
+    position:;
+    text-align: end;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 3rem;
+    padding-top: 4rem;
+    padding-left: 7rem;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+
+  .aebler {
+    width: 100%;
+    height: 100%;
+    place-self: center;
+  }
+
+  .titel5 {
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.1rem;
+  }
+
+  .link-kasser {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 2rem 0;
+  }
+
+  .kasse-link {
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+    height: 70px;
+    color: #425245;
+    font-family: "Nimbus Sans D OT light";
+    transition: 0.2s;
+    padding-left: 2rem;
+    overflow: hidden;
+  }
+
+  .kasse-link::after {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    bottom: 50px;
+    height: 2px;
+    width: 0;
+    background: #ffcdd8;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .kasse-link:hover::after,
+  .kasse-link:active::after {
+    width: calc(20% - 1px);
+  }
+
+  .kasse-link:active,
+  .kasse-link:hover {
+    font-weight: bold;
+  }
+
+  .p {
+    font-family: "Nimbus Sans D OT bold";
+    padding-left: 2rem;
+    padding-top: 2rem;
+  }
+
+  .kasse-linje {
+    height: 1px;
+    width: 100%;
+    background: #425245;
+  }
+</style>

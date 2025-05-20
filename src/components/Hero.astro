@@ -8,7 +8,9 @@
     <div class="hero-content">
       <p class="scroll-text">← SCROLL NED</p>
       <img src="../logo/logo-text-pink.svg" alt="Vin med Dans" class="title" />
-      <div class="age-badge">+18</div>
+      <div class="age-badge">
+        <img src="../icons/plus-18-pink.svg" alt="+18" />
+      </div>
     </div>
   </section>
 </body>
@@ -30,15 +32,18 @@
   }
 
   .hero-content {
-    position: relative;
     z-index: 1;
     height: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden;
   }
 
   .scroll-text {
+    position: absolute;
+
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     font-size: 1rem;
@@ -52,18 +57,17 @@
     position: absolute;
     width: 120%;
     height: 100%;
-    left: 5%;
+    left: 8.5%;
     top: -15%;
     align-self: center;
   }
 
   .age-badge {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    color: white;
-    font-size: 0.8rem;
+    position: absolute;
     padding: 0.5rem;
-    align-self: flex-end;
+    bottom: 1rem;
+    right: 0px;
+    width: 13%;
   }
 
   @media (min-width: 768px) {
@@ -82,6 +86,7 @@
       opacity: 0.8;
       align-self: flex-start;
       margin-top: 23%;
+      left: 0%;
     }
 
     .age-badge {
