@@ -36,6 +36,13 @@ const wine = {
       </h4>
     </div>
   </section>
+  <section class="et1">
+    <img
+      src="../billeder/produktbilleder/hoenefuld-1.webp"
+      alt=""
+      class="vin-hero1"
+    />
+  </section>
   <section class="to">
     <div class="billede-tekst">
       <div class="billede-wrapper">
@@ -97,50 +104,6 @@ const wine = {
   <FrontProductCard wine={wine} />
   <p class="scroll-text">← <span class="arrow">SCROLL OP</span></p>
 </div>
-
-<script is:inline>
-  if (window.matchMedia("(min-width: 700px)").matches) {
-    const vinHero = document.querySelector(".vin-hero");
-    const linje = document.querySelector(".linje");
-    const venstre = document.querySelector(".venstre");
-    const kolonneWrapper = document.querySelector(".kolonne-wrapper");
-    const sectionEt = document.querySelector("section.et");
-
-    function handleScroll() {
-      const rect = sectionEt.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const scrollStart = windowHeight * 0.4;
-      const scrollEnd = windowHeight * 1.1;
-      const scrollRange = scrollEnd - scrollStart;
-
-      let progress = (windowHeight - rect.top - scrollStart) / scrollRange;
-      progress = Math.min(1, Math.max(0, progress));
-
-      const move = progress * 35; // max 35vw
-
-      vinHero.style.transform = `translate(-50%, -50%) scale(${1 + progress * 0.5}) translateX(-${move}vw)`;
-      vinHero.style.transition = "none";
-
-      venstre.style.transform = `translateX(-${move * 2}vw)`;
-      venstre.style.transition = "none";
-
-      linje.style.transform = `translateX(-${move}vw)`;
-      linje.style.transition = "none";
-
-      // Fade/vis .kolonne-wrapper til sidst
-      if (progress > 0.95) {
-        kolonneWrapper.classList.add("visible");
-      } else {
-        kolonneWrapper.classList.remove("visible");
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
-  }
-</script>
 
 <style>
   .scroll-text {
@@ -405,6 +368,24 @@ const wine = {
   }
 
   @media (min-width: 700px) {
+    section.et1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f6f8f1;
+      min-height: 60vh; /* eller hvad du ønsker */
+      width: 100vw;
+      overflow: hidden;
+    }
+    .vin-hero1 {
+      width: 15vw;
+      max-width: 340px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      position: static;
+      z-index: 10;
+    }
     section.et {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
@@ -414,7 +395,7 @@ const wine = {
       min-height: 500px;
       padding-bottom: 100vh;
       min-height: 100vh;
-      height: 200vh;
+      height: 110vh;
       overflow: hidden;
       position: relative;
     }
@@ -440,23 +421,10 @@ const wine = {
       margin: 0;
       display: block;
       place-self: center;
-      top: 75%;
+      top: 25%;
       margin-top: 100px;
-      transition:
-        transform 1s cubic-bezier(0.77, 0, 0.18, 1),
-        left 1s cubic-bezier(0.77, 0, 0.18, 1),
-        top 1s cubic-bezier(0.77, 0, 0.18, 1);
+
       z-index: 10;
-    }
-
-    .vin-hero.zoomed {
-      position: fixed;
-
-      left: 30vw;
-      top: 30vh;
-      transform: translate(-50%, -50%) scale(2.2);
-      box-shadow: 0 8px 40px 0 rgba(50, 70, 61, 0.18);
-      z-index: 1000;
     }
 
     .linje {
