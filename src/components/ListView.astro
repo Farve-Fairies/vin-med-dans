@@ -1,0 +1,57 @@
+---
+//@ts-nocheck
+---
+
+<section>
+  <slot />
+  <div class="wrapper">
+    <img class="illustration" src="../illustrationer/brombaer.svg" alt="" />
+  </div>
+  <div class="wrapper">
+    <img class="illustration" src="../illustrationer/aeble.svg" alt="" />
+  </div>
+</section>
+
+<style>
+  .wrapper {
+    border-right: solid 1px #32473a;
+    border-bottom: solid 1px #32473a;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .illustration {
+    width: 10rem;
+  }
+
+  section {
+    width: 100vw;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #32473a;
+  }
+  @media (min-width: 700px) {
+    section {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wrapper {
+      width: 50vw;
+      height: 50vw;
+    }
+  }
+  @media (min-width: 1079px) {
+    section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wrapper {
+      width: 33.33vw;
+      height: 33.33vw;
+    }
+  }
+</style>

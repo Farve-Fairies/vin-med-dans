@@ -1,9 +1,61 @@
 ---
+//@ts-nocheck
 import Layout from "../layouts/Layout.astro";
+import ListView from "../components/ListView.astro";
 import ProductCard from "../components/ProductCard.astro";
+const { wine } = Astro.props;
+const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
+const options = {
+  headers: { apikey: key },
+};
+const data = await fetch(url, options).then((res) => res.json());
+console.log(data);
 ---
 
 <Layout>
-  <h1></h1>
-  <ProductCard />
+  <div class="teaser">
+    <h3>Køb vin med dans</h3>
+    <p>
+      Vin med Dans’ frugtvin er for dig som holder af smagene fra den danske
+      sommers natur og vin med bobler.
+    </p>
+  </div>
+  <ListView>{data.map((wine) => <ProductCard {wine} />)}</ListView>
+
+  <img
+    class="himmelvin"
+    src="../billeder/produktbilleder/flaskehimmel.webp"
+    alt=""
+  />
 </Layout>
+
+<style>
+  .himmelvin {
+    width: 100vw;
+  }
+
+  .teaser {
+    padding: 2rem 4rem 3rem 4rem;
+    width: 30rem;
+  }
+
+  .teaser h3 {
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: 700px) {
+    .teaser {
+      width: 35rem;
+      padding: 3rem 5rem 4rem 5rem;
+    }
+  }
+
+  @media (min-width: 1079px) {
+    .teaser {
+      width: 50rem;
+      padding: 4rem 13rem 5rem 13rem;
+    }
+  }
+</style>

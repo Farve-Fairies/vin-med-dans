@@ -124,7 +124,7 @@ a {
 
 /* DESKTOP FONT SIZES */
 
-@media (min-width: 800px) {
+@media (min-width: 1079px) {
   h1 {
     font-size: 3rem;
   }
