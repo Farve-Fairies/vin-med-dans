@@ -98,6 +98,50 @@ const wine = {
   <p class="scroll-text">← <span class="arrow">SCROLL OP</span></p>
 </div>
 
+<script is:inline>
+  if (window.matchMedia("(min-width: 700px)").matches) {
+    const vinHero = document.querySelector(".vin-hero");
+    const linje = document.querySelector(".linje");
+    const venstre = document.querySelector(".venstre");
+    const kolonneWrapper = document.querySelector(".kolonne-wrapper");
+    const sectionEt = document.querySelector("section.et");
+
+    function handleScroll() {
+      const rect = sectionEt.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const scrollStart = windowHeight * 0.4;
+      const scrollEnd = windowHeight * 1.1;
+      const scrollRange = scrollEnd - scrollStart;
+
+      let progress = (windowHeight - rect.top - scrollStart) / scrollRange;
+      progress = Math.min(1, Math.max(0, progress));
+
+      const move = progress * 35; // max 35vw
+
+      vinHero.style.transform = `translate(-50%, -50%) scale(${1 + progress * 0.5}) translateX(-${move}vw)`;
+      vinHero.style.transition = "none";
+
+      venstre.style.transform = `translateX(-${move * 2}vw)`;
+      venstre.style.transition = "none";
+
+      linje.style.transform = `translateX(-${move}vw)`;
+      linje.style.transition = "none";
+
+      // Fade/vis .kolonne-wrapper til sidst
+      if (progress > 0.95) {
+        kolonneWrapper.classList.add("visible");
+      } else {
+        kolonneWrapper.classList.remove("visible");
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
+  }
+</script>
+
 <style>
   .scroll-text {
     position: absolute;
@@ -358,5 +402,147 @@ const wine = {
     height: 1px;
     width: 100%;
     background: #425245;
+  }
+
+  @media (min-width: 700px) {
+    section.et {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      align-items: center;
+      gap: 0;
+      background-color: #f6f8f1;
+      min-height: 500px;
+      padding-bottom: 100vh;
+      min-height: 100vh;
+      height: 200vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .venstre {
+      position: relative;
+
+      grid-column: 1;
+      max-width: 70%;
+      padding-right: 2rem;
+      font-size: 2.5rem;
+      place-self: center;
+      top: 35%;
+    }
+
+    .vin-hero {
+      position: relative;
+      grid-column: 3;
+      grid-row: 1;
+      width: 15%;
+      height: 100%;
+      border-radius: 12px;
+      margin: 0;
+      display: block;
+      place-self: center;
+      top: 75%;
+      margin-top: 100px;
+      transition:
+        transform 1s cubic-bezier(0.77, 0, 0.18, 1),
+        left 1s cubic-bezier(0.77, 0, 0.18, 1),
+        top 1s cubic-bezier(0.77, 0, 0.18, 1);
+      z-index: 10;
+    }
+
+    .vin-hero.zoomed {
+      position: fixed;
+
+      left: 30vw;
+      top: 30vh;
+      transform: translate(-50%, -50%) scale(2.2);
+      box-shadow: 0 8px 40px 0 rgba(50, 70, 61, 0.18);
+      z-index: 1000;
+    }
+
+    .linje {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      width: 1px;
+      height: 70%;
+      background-color: #2e463d;
+      justify-self: center;
+      border: none;
+      top: -50%;
+      z-index: 333;
+    }
+    .linje-midt {
+      display: none;
+    }
+    .hoejre {
+      position: relative;
+      right: 20%;
+      bottom: 70%;
+      grid-column: 3;
+      grid-row: 2;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 1.6rem;
+      font-family: "Nimbus Sans D OT Bold";
+      justify-self: end;
+    }
+
+    .kolonne-wrapper {
+      transition: opacity 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+      opacity: 0;
+      pointer-events: none;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .kolonne-wrapper.visible {
+      opacity: 1;
+      pointer-events: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      top: 50vh;
+      width: 100vw;
+      transform: translateY(-50%);
+      gap: 0;
+    }
+    .kolonne-wrapper {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .kolonne-wrapper.visible {
+      opacity: 1;
+    }
+
+    .venstre-nede,
+    .hoejre-nede {
+      font-size: 2rem;
+      color: #2e463d;
+      background: #f6f8f1e6;
+      padding: 2rem 3vw;
+      border-radius: 1.5rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 0.7s cubic-bezier(0.77, 0, 0.18, 1) 0.2s,
+        transform 0.7s cubic-bezier(0.77, 0, 0.18, 1) 0.2s;
+    }
+
+    .kolonne-wrapper.visible .venstre-nede,
+    .kolonne-wrapper.visible .hoejre-nede {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .venstre-nede {
+      text-align: right;
+      margin-left: 2vw;
+    }
+
+    .hoejre-nede {
+      text-align: left;
+      margin-right: 2vw;
+    }
   }
 </style>
