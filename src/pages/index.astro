@@ -293,17 +293,16 @@ const wine = {
     width: 90vw;
     max-width: 600px;
     font-size: 3rem;
-    padding-top: 1rem;
     padding-right: 7rem;
     font-family: "Nimbus Sans D OT Bold";
   }
   .billede-titel4 {
     position:;
+    margin: 0;
     text-align: end;
     width: 90vw;
     max-width: 600px;
     font-size: 3rem;
-    padding-top: 4rem;
     padding-left: 7rem;
     font-family: "Nimbus Sans D OT Bold";
   }
@@ -423,22 +422,23 @@ const wine = {
       grid-column: 2;
       grid-row: 1 / span 2;
       width: 1px;
-      height: 70%;
+      height: 120%;
       background-color: #2e463d;
       justify-self: center;
       border: none;
-      top: -50%;
+      padding-top: 5rem;
       z-index: 333;
+      margin-top: 200px; /* Prøv dig frem med værdien */
     }
     .linje-midt {
       display: none;
     }
     .hoejre {
       position: relative;
-      right: 20%;
-      bottom: 70%;
+      right: 25%;
+      top: 25%;
       grid-column: 3;
-      grid-row: 2;
+      grid-row: 1;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       font-size: 1.6rem;
@@ -467,6 +467,7 @@ const wine = {
       width: 100vw;
       gap: 2vw;
       background-color: #fafcf7;
+      margin-bottom: 150px;
     }
 
     .product-image {
@@ -481,24 +482,23 @@ const wine = {
     }
 
     section.to {
+      position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       width: 100vw;
-      height: 100vh;
       gap: 0;
       position: relative;
       overflow: hidden;
     }
 
-    /* Linje øverst og nederst */
     section.to::before,
     section.to::after {
       content: "";
       position: absolute;
       left: 0;
       width: 100vw;
-      height: 2px;
+      height: 1px;
       background: #222;
       z-index: 10;
     }
@@ -509,7 +509,6 @@ const wine = {
       bottom: 0;
     }
 
-    /* Gør .billede-tekst til grid-områder */
     section.to .billede-tekst {
       display: contents;
     }
@@ -534,42 +533,47 @@ const wine = {
       margin: 0;
       padding: 0;
     }
+
     /* Første tekst øverst til højre */
     section.to .billede-tekst:first-child .billede-titel1 {
       grid-column: 2;
       grid-row: 1;
-      align-self: center;
-      justify-self: center;
-      font-size: 2rem;
-      color: #222;
-      background: none;
-      padding: 2rem;
+      aspect-ratio: 1/1;
       width: 100%;
-      max-width: 90%;
-      text-align: left;
-      position: relative;
+      height: 100%;
       display: flex;
       align-items: center;
-      height: 100%;
+      justify-content: flex-start;
+      font-size: 2rem;
+      color: #222;
+      padding: 2rem;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+      background: none;
+      margin: 0;
+      box-sizing: border-box;
     }
 
     /* Andet tekst nederst til venstre */
     section.to .billede-tekst:last-child .billede-titel2 {
       grid-column: 1;
       grid-row: 2;
-      align-self: center;
-      justify-self: center;
-      font-size: 2rem;
-      color: #222;
-      background: none;
-      padding: 2rem;
+      aspect-ratio: 1/1;
       width: 100%;
-      max-width: 90%;
-      text-align: right;
-      position: relative;
+      height: 100%;
       display: flex;
       align-items: center;
-      height: 100%;
+      justify-content: flex-end;
+      font-size: 2rem;
+      color: #222;
+      padding: 2rem;
+      text-align: right;
+      position: relative;
+      z-index: 2;
+      background: none;
+      margin: 0;
+      box-sizing: border-box;
     }
 
     /* Andet billede nederst til højre */
@@ -591,6 +595,135 @@ const wine = {
       display: block;
       margin: 0;
       padding: 0;
+    }
+    .billede-titel3 {
+      text-align: left;
+      margin-right: auto;
+      margin-left: 0;
+      width: 90vw;
+      max-width: 600px;
+      font-size: 3rem;
+      padding-top: 4rem;
+      padding-right: 0;
+      padding-left: 7rem;
+      font-family: "Nimbus Sans D OT Bold";
+      display: block;
+    }
+    .billede-titel4 {
+      text-align: right;
+      margin-left: auto;
+      margin-right: 0;
+      width: 90vw;
+      max-width: 600px;
+      font-size: 3rem;
+      padding-top: 4rem;
+      padding-left: 0;
+      padding-right: 7rem;
+      font-family: "Nimbus Sans D OT Bold";
+      display: block;
+    }
+
+    .aebler {
+      position: relative;
+      width: 50%;
+      place-self: center;
+    }
+
+    .billede-wrapper {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    .aebler {
+      width: 30%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      place-self: center;
+    }
+
+    section.link-kasser {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      width: 100vw;
+      min-height: 60vh;
+      align-items: stretch;
+      background: #fafcf7;
+    }
+
+    .titel5 {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-family: "Nimbus Sans D OT Bold";
+      width: 100%;
+      margin: 0;
+      padding: 0 2rem;
+      box-sizing: border-box;
+      border-right: 1px solid #425245;
+    }
+
+    /* Gør .p og .kasse-link til "indhold" i grid, så de deler samme celle */
+    .link-kasser .p,
+    .link-kasser .kasse-link {
+      display: contents;
+      grid-column: 2;
+    }
+
+    /* Style selve linket som kassen */
+    .link-kasser .kasse-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #fff;
+      border-bottom: 1px solid #425245;
+      font-size: 1.3rem;
+      color: #425245;
+      font-family: "Nimbus Sans D OT light";
+      text-decoration: none;
+      padding: 2rem;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      transition: 0.2s;
+    }
+
+    /* Style .p som overskrift i kassen */
+    .link-kasser .p {
+      font-family: "Nimbus Sans D OT bold";
+      font-size: 1.1rem;
+      color: #425245;
+      padding: 0 0 0.5rem 0;
+      margin: 0;
+      border: none;
+    }
+
+    /* Grid-placering for hver boks */
+    .link-kasser .p:nth-of-type(1),
+    .link-kasser .kasse-link:nth-of-type(1) {
+      grid-row: 1;
+    }
+    .link-kasser .p:nth-of-type(2),
+    .link-kasser .kasse-link:nth-of-type(2) {
+      grid-row: 2;
+    }
+    .link-kasser .p:nth-of-type(3),
+    .link-kasser .kasse-link:nth-of-type(3) {
+      grid-row: 3;
+    }
+
+    /* Skjul kun .kasse-linje på desktop */
+    .link-kasser .kasse-linje {
+      display: none;
     }
   }
 </style>
