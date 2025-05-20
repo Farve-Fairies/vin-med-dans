@@ -36,12 +36,15 @@ const wine = {
       </h4>
     </div>
   </section>
-  <section class="et1">
+
+  <section class="product">
+    <h4 class="venstre-nede">100% bæredygtigt.</h4>
     <img
       src="../billeder/produktbilleder/hoenefuld-1.webp"
       alt=""
-      class="vin-hero1"
+      class="product-image"
     />
+    <h4 class="hoejre-nede">Frugt & bær er plukket rundt omkring i Danmark.</h4>
   </section>
   <section class="to">
     <div class="billede-tekst">
@@ -169,6 +172,10 @@ const wine = {
 
   body {
     margin: 0;
+  }
+
+  .product {
+    display: none;
   }
   section.et {
     display: flex;
@@ -368,34 +375,19 @@ const wine = {
   }
 
   @media (min-width: 700px) {
-    section.et1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #f6f8f1;
-      min-height: 60vh; /* eller hvad du ønsker */
-      width: 100vw;
-      overflow: hidden;
-    }
-    .vin-hero1 {
-      width: 15vw;
-      max-width: 340px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      position: static;
-      z-index: 10;
+    .kolonne-wrapper {
+      display: none;
     }
     section.et {
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
       align-items: center;
       gap: 0;
-      background-color: #f6f8f1;
+      background-color: #fafcf7;
       min-height: 500px;
       padding-bottom: 100vh;
       min-height: 100vh;
-      height: 110vh;
+      height: 100vh;
       overflow: hidden;
       position: relative;
     }
@@ -421,7 +413,7 @@ const wine = {
       margin: 0;
       display: block;
       place-self: center;
-      top: 25%;
+      top: 15%;
       margin-top: 100px;
 
       z-index: 10;
@@ -454,63 +446,151 @@ const wine = {
       justify-self: end;
     }
 
-    .kolonne-wrapper {
-      transition: opacity 0.7s cubic-bezier(0.77, 0, 0.18, 1);
-      opacity: 0;
-      pointer-events: none;
-      position: relative;
-      z-index: 1001;
-    }
-
-    .kolonne-wrapper.visible {
-      opacity: 1;
-      pointer-events: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      left: 0;
-      top: 50vh;
-      width: 100vw;
-      transform: translateY(-50%);
-      gap: 0;
-    }
-    .kolonne-wrapper {
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-    .kolonne-wrapper.visible {
-      opacity: 1;
-    }
-
-    .venstre-nede,
-    .hoejre-nede {
-      font-size: 2rem;
-      color: #2e463d;
-      background: #f6f8f1e6;
-      padding: 2rem 3vw;
-      border-radius: 1.5rem;
-      opacity: 0;
-      transform: translateY(40px);
-      transition:
-        opacity 0.7s cubic-bezier(0.77, 0, 0.18, 1) 0.2s,
-        transform 0.7s cubic-bezier(0.77, 0, 0.18, 1) 0.2s;
-    }
-
-    .kolonne-wrapper.visible .venstre-nede,
-    .kolonne-wrapper.visible .hoejre-nede {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     .venstre-nede {
-      text-align: right;
+      text-align: center;
       margin-left: 2vw;
+      font-size: 3rem;
     }
 
     .hoejre-nede {
-      text-align: left;
+      text-align: center;
       margin-right: 2vw;
+      font-size: 3rem;
+    }
+
+    section.product {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      justify-items: center;
+      min-height: 60vh;
+      width: 100vw;
+      gap: 2vw;
+      background-color: #fafcf7;
+    }
+
+    .product-image {
+      grid-column: 2;
+      width: 15vw;
+      max-width: 340px;
+      min-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0;
+      justify-self: center;
+    }
+
+    section.to {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      width: 100vw;
+      height: 100vh;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Linje øverst og nederst */
+    section.to::before,
+    section.to::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100vw;
+      height: 2px;
+      background: #222;
+      z-index: 10;
+    }
+    section.to::before {
+      top: 0;
+    }
+    section.to::after {
+      bottom: 0;
+    }
+
+    /* Gør .billede-tekst til grid-områder */
+    section.to .billede-tekst {
+      display: contents;
+    }
+
+    /* Første billede øverst til venstre */
+    section.to .billede-tekst:first-child .billede-wrapper {
+      grid-column: 1;
+      grid-row: 1;
+      aspect-ratio: 1/1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    section.to .billede-tekst:first-child img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    /* Første tekst øverst til højre */
+    section.to .billede-tekst:first-child .billede-titel1 {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: center;
+      justify-self: center;
+      font-size: 2rem;
+      color: #222;
+      background: none;
+      padding: 2rem;
+      width: 100%;
+      max-width: 90%;
+      text-align: left;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    /* Andet tekst nederst til venstre */
+    section.to .billede-tekst:last-child .billede-titel2 {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: center;
+      justify-self: center;
+      font-size: 2rem;
+      color: #222;
+      background: none;
+      padding: 2rem;
+      width: 100%;
+      max-width: 90%;
+      text-align: right;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    /* Andet billede nederst til højre */
+    section.to .billede-tekst:last-child .billede-wrapper {
+      grid-column: 2;
+      grid-row: 2;
+      aspect-ratio: 1/1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    section.to .billede-tekst:last-child img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      display: block;
+      margin: 0;
+      padding: 0;
     }
   }
 </style>
