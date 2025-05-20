@@ -15,22 +15,52 @@ console.log(data);
 ---
 
 <Layout>
-  <div class="teaser">
-    <h3>Køb vin med dans</h3>
-    <p>
-      Vin med Dans’ frugtvin er for dig som holder af smagene fra den danske
-      sommers natur og vin med bobler.
-    </p>
-  </div>
-  <ListView>{data.map((wine) => <ProductCard {wine} />)}</ListView>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <div class="teaser">
+        <h3>Køb vin med dans</h3>
+        <p>
+          Vin med Dans’ frugtvin er for dig som holder af smagene fra den danske
+          sommers natur og vin med bobler.
+        </p>
+      </div>
 
-  <img
-    class="himmelvin"
-    src="../billeder/produktbilleder/flaskehimmel.webp"
-    alt=""
-  />
+      <ListView>{data.map((wine) => <ProductCard {wine} />)}</ListView>
+
+      <img
+        class="himmelvin"
+        src="../billeder/produktbilleder/flaskehimmel.webp"
+        alt=""
+      />
+    </div>
+  </div>
 </Layout>
 
+<script>
+  import { gsap } from "gsap";
+
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  // ScrollSmoother requires ScrollTrigger
+  import { ScrollSmoother } from "gsap/ScrollSmoother";
+
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  // create the scrollSmoother before your scrollTriggers
+  ScrollSmoother.create({
+    smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
+    effects: true, // looks for data-speed and data-lag attributes on elements
+    smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+  });
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+  // create the smooth scroller FIRST!
+  let smoother = ScrollSmoother.create({
+    smooth: 2,
+    effects: true,
+    normalizeScroll: true,
+    wrapper: "#smooth-container",
+    content: "#smooth-content",
+  });
+</script>
 <style>
   .himmelvin {
     width: 100vw;
