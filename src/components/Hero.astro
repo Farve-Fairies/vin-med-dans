@@ -6,7 +6,7 @@
       class="hero-image"
     />
     <div class="hero-content">
-      <p class="scroll-text">← SCROLL NED</p>
+      <p class="scroll-text">SCROLL NED <span class="arrow">→</span></p>
       <img src="../logo/logo-text-pink.svg" alt="Vin med Dans" class="title" />
       <div class="age-badge">
         <img src="../icons/plus-18-pink.svg" alt="+18" />
@@ -43,21 +43,61 @@
 
   .scroll-text {
     position: absolute;
-
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
     font-size: 1rem;
-    color: #fafcf7;
-    opacity: 0.8;
-    align-self: flex-start;
-    margin-top: 80%;
+    color: #f5fff7;
+    padding: 0.2rem 0.1rem;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+    background: none;
+    border-radius: 0;
+  }
+
+  .scroll-text .arrow {
+    display: inline-block;
+    font-size: 1.1em;
+    animation: bounceArrow 2.5s infinite;
+    transition: color 0.2s;
+  }
+
+  /* Fade animation for hele indikatoren */
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    10%,
+    90% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Pil-animation: meget lille bevægelse */
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.15em);
+    }
   }
 
   .title {
     position: absolute;
     width: 120%;
     height: 100%;
-    left: 8.5%;
+    left: 4.5%;
     top: -15%;
     align-self: center;
   }
@@ -70,28 +110,44 @@
     width: 13%;
   }
 
-  @media (min-width: 768px) {
-    .hero-content {
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 2rem;
+  @media (min-width: 700px) {
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .title {
+      width: 80%;
+      height: 100%;
+      left: 4.5%;
+      top: 30%;
+    }
+    .age-badge {
+      position: absolute;
+      padding: 0.5rem;
+      bottom: 1rem;
+      right: 10px;
+      width: 5%;
     }
 
     .scroll-text {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
       writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 1.3rem;
-      color: #fafcf7;
-      opacity: 0.8;
-      align-self: flex-start;
-      margin-top: 23%;
-      left: 0%;
-    }
-
-    .age-badge {
-      font-size: 1rem;
-      padding: 0.6rem;
+      font-size: 1.5rem;
+      color: #f5fff7;
+      padding: 0.2rem 0.1rem;
+      z-index: 2;
+      text-align: center;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.1em;
+      background: none;
+      border-radius: 0;
     }
   }
 </style>

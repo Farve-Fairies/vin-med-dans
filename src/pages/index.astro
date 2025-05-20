@@ -2,6 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import AgePopup from "../components/AgePopup.astro";
+import FrontProductCard from "../components/FrontProductCard.astro";
+
+const wine = {
+  title: "Hønefuld",
+  description: "En frisk og frugtig vin.",
+  price: 120,
+  img2: "hoenefuld-1.webp",
+  img3: "hoenefuld-2.webp",
+};
 ---
 
 <Layout>
@@ -78,9 +87,79 @@ import AgePopup from "../components/AgePopup.astro";
     <a href="/side4" class="kasse-link">INSTAGRAM</a>
     <div class="kasse-linje"></div>
   </section>
+
+  <FrontProductCard wine={wine} />
+
+  <FrontProductCard wine={wine} />
 </Layout>
 
+<div class="scroll-card-wrapper">
+  <FrontProductCard wine={wine} />
+  <p class="scroll-text">← <span class="arrow">SCROLL OP</span></p>
+</div>
+
 <style>
+  .scroll-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 1rem;
+    color: #425245;
+    padding: 0.2rem 0.1rem;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+    background: none;
+    border-radius: 0;
+  }
+
+  .scroll-text .arrow {
+    display: inline-block;
+    font-size: 1.1em;
+    animation: bounceArrow 2.5s infinite;
+    transition: color 0.2s;
+  }
+
+  /* Fade animation for hele indikatoren */
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    10%,
+    90% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Pil-animation: meget lille bevægelse */
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.15em);
+    }
+  }
+
+  .scroll-card-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vw; /* samme højde som kortet */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   body {
     margin: 0;
   }
