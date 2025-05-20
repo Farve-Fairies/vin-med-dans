@@ -1,13 +1,194 @@
 ---
 //@ts-nocheck
-const { ProductName } = Astro.props;
-const { ProductImgUrl } = Astro.props;
+const { wine } = Astro.props;
+const url =
+  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
+const options = {
+  headers: { apikey: key },
+};
+const data = await fetch(url, options).then((res) => res.json());
+console.log(data);
 ---
 
-<div>
-  <div>
-    <h3>{ProductName}</h3>
+<div class="wrapper" id="wrapper">
+  <div class="heading">
+    <h3>{wine.title}</h3>
     <h3>10,5% alc.</h3>
   </div>
-  <img src={ProductImgUrl} alt=" " />
+  <div class="img-container">
+    <img
+      class="img1"
+      id="img1"
+      src={`../billeder/produktbilleder/${wine.img2}`}
+      alt=" "
+    />
+    <img
+      width="600px"
+      height="800px"
+      class="img2"
+      id="img2"
+      src={`../billeder/produktbilleder/${wine.img3}`}
+      alt=" "
+    />
+  </div>
+  <div class="product-tag" id="tag">
+    <div>
+      <p>{wine.description} <br /> 0.75 L.</p>
+    </div>
+    <div class="buy">
+      <h3>{wine.price} kr</h3>
+      <a href="">Læg i kurv</a>
+    </div>
+  </div>
 </div>
+
+<style>
+  .img-container {
+    position: absolute;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100vw;
+    height: 4vw;
+  }
+
+  .img2 {
+    width: 100vw;
+    height: 100vw;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0;
+    border-right: 1px solid #32473a;
+    border-bottom: 1px solid #32473a;
+  }
+
+  .img-container img {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .wrapper {
+    position: relative;
+    justify-content: center;
+    border-right: 1px solid #32473a;
+    border-bottom: 1px solid #32473a;
+    width: 100vw;
+    height: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .wrapper:hover .heading,
+  .wrapper:hover .heading h3 {
+    color: #ffcdd8;
+    transition: color 0.5s ease-in-out;
+  }
+
+  .wrapper:hover {
+    cursor: pointer;
+  }
+
+  .heading,
+  .heading h3 {
+    transition: color 0.4s ease;
+  }
+  .img1 {
+    width: 35%;
+    margin: 0 auto;
+    padding-top: 3rem;
+  }
+
+  .heading {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .product-tag {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    border-top: 1px solid #32473a;
+    width: 100%;
+    height: 5.5rem;
+    background-color: #fff8fa;
+    z-index: 9;
+  }
+
+  .product-tag p {
+    width: 125%;
+  }
+
+  .buy h3,
+  a {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .buy {
+    width: 20rem;
+  }
+
+  h3,
+  p {
+    padding: 1rem 1.5rem;
+  }
+  .buy a {
+    padding: 0rem 1.5rem;
+  }
+
+  .wrapper:hover {
+    background-image: url(`../billeder/produktbilleder/${wine.img3}`);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @media (min-width: 700px) {
+    .wrapper,
+    .img-container,
+    .img2 {
+      height: 50vw;
+      width: 50vw;
+    }
+  }
+  @media (min-width: 1079px) {
+    .wrapper,
+    .img-container,
+    .img2 {
+      height: 33.33vw;
+      width: 33.33vw;
+    }
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+  .visible {
+    visibility: visible;
+  }
+</style>
+
+<script>
+  //@ts-nocheck
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".wrapper").forEach((wrapper) => {
+      const img2 = wrapper.querySelector(".img2");
+      wrapper.addEventListener("mouseover", () => {
+        img2.style.opacity = "1";
+        img2.style.transition = "opacity 0.5s ease-in-out";
+      });
+      wrapper.addEventListener("mouseout", () => {
+        img2.style.opacity = "0";
+        img2.style.transition = "opacity 0.5s ease-in-out";
+      });
+    });
+  });
+</script>
