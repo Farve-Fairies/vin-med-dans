@@ -78,12 +78,6 @@ console.log(data);
     background-position: center;
   }
 
-  .wrapper:hover .heading,
-  .wrapper:hover .heading h3 {
-    color: #ffcdd8;
-    transition: color 0.5s ease-in-out;
-  }
-
   .wrapper:hover {
     cursor: pointer;
   }
@@ -142,19 +136,17 @@ console.log(data);
     padding: 0rem 1.5rem;
   }
 
-  .wrapper:hover {
-    background-image: url(`../billeder/produktbilleder/${wine.img3}`);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
   @media (min-width: 700px) {
     .wrapper,
     .img-container,
     .img2 {
       height: 50vw;
       width: 50vw;
+    }
+    .wrapper:hover .heading,
+    .wrapper:hover .heading h3 {
+      color: #ffcdd8;
+      transition: color 0.5s ease-in-out;
     }
   }
   @media (min-width: 1079px) {
@@ -177,16 +169,38 @@ console.log(data);
 <script>
   //@ts-nocheck
   document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".wrapper").forEach((wrapper) => {
-      const img2 = wrapper.querySelector(".img2");
-      wrapper.addEventListener("mouseover", () => {
-        img2.style.opacity = "1";
-        img2.style.transition = "opacity 0.5s ease-in-out";
+    const mq = window.matchMedia("(min-width: 700px)");
+
+    function setAnimation(active) {
+      document.querySelectorAll(".wrapper").forEach((wrapper) => {
+        const img2 = wrapper.querySelector(".img2");
+        if (!img2) return;
+
+        // Remove previous listeners to avoid duplicates
+        wrapper.onmouseover = null;
+        wrapper.onmouseout = null;
+
+        if (active) {
+          wrapper.onmouseover = () => {
+            img2.style.opacity = "1";
+            img2.style.transition = "opacity 0.5s ease-in-out";
+          };
+          wrapper.onmouseout = () => {
+            img2.style.opacity = "0";
+            img2.style.transition = "opacity 0.5s ease-in-out";
+          };
+        } else {
+          img2.style.opacity = "0";
+        }
       });
-      wrapper.addEventListener("mouseout", () => {
-        img2.style.opacity = "0";
-        img2.style.transition = "opacity 0.5s ease-in-out";
-      });
+    }
+
+    // Initial setup
+    setAnimation(mq.matches);
+
+    // Listen for changes in screen size
+    mq.addEventListener("change", (e) => {
+      setAnimation(e.matches);
     });
   });
 </script>
