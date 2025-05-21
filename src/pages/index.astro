@@ -68,40 +68,36 @@ const wine = {
   </section>
 
   <section class="tre">
-    <div class="billede-tekst">
-      <div class="billede-wrapper">
-        <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
-      </div>
-      <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
+    <div class="billede-wrapper">
+      <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
     </div>
-    <div class="billede-tekst">
-      <div class="billede-wrapper">
-        <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
-      </div>
-    </div>
+    <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
   </section>
-
-  <section class="link-kasser">
-    <div class="kasse-linje"></div>
-    <p class="titel5">Drik vin med dans. Dans med vinen.</p>
-    <div class="kasse-linje"></div>
-    <p class="p">KØB ONLINE</p>
-    <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
-    <div class="kasse-linje"></div>
-    <p class="p">DRIK PÅ BAR</p>
-
-    <a href="/side3" class="kasse-link">SE PLACERINGER</a>
-    <div class="kasse-linje"></div>
-    <p class="p">SE PRODUKTIONEN</p>
-
-    <a href="/side4" class="kasse-link">INSTAGRAM</a>
-    <div class="kasse-linje"></div>
-  </section>
-
-  <FrontProductCard wine={wine} />
-
-  <FrontProductCard wine={wine} />
+  <div class="billede-wrapper">
+    <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
+  </div>
 </Layout>
+
+<section class="link-kasser">
+  <div class="kasse-linje"></div>
+  <p class="titel5">Drik vin med dans. Dans med vinen.</p>
+  <div class="kasse-linje"></div>
+  <p class="p">KØB ONLINE</p>
+  <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
+  <div class="kasse-linje"></div>
+  <p class="p">DRIK PÅ BAR</p>
+
+  <a href="/side3" class="kasse-link">SE PLACERINGER</a>
+  <div class="kasse-linje"></div>
+  <p class="p">SE PRODUKTIONEN</p>
+
+  <a href="/side4" class="kasse-link">INSTAGRAM</a>
+  <div class="kasse-linje"></div>
+</section>
+
+<FrontProductCard wine={wine} />
+
+<FrontProductCard wine={wine} />
 
 <div class="scroll-card-wrapper">
   <FrontProductCard wine={wine} />
@@ -346,7 +342,7 @@ const wine = {
     position: absolute;
     left: 2rem;
     bottom: 50px;
-    height: 2px;
+    height: 1px;
     width: 0;
     background: #ffcdd8;
     transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -590,6 +586,43 @@ const wine = {
       object-fit: cover;
       aspect-ratio: 1/1;
       display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    section.tre {
+      width: 100vw;
+    }
+    .billede-titel3 {
+      position:;
+      text-align: start;
+
+      font-size: 3rem;
+      padding-top: 1rem;
+      font-family: "Nimbus Sans D OT Bold";
+    }
+    .billede-titel4 {
+      position:;
+      text-align: end;
+      font-size: 3rem;
+      padding-top: 1rem;
+      right: 1rem;
+      font-family: "Nimbus Sans D OT Bold";
+      text-align: end;
+    }
+
+    .aebler {
+      position: relative;
+      padding: rem;
+      width: 50%;
+      height: 100%;
+      place-self: center;
+    }
+    .billede-wrapper {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      width: 100vw;
       margin: 0;
       padding: 0;
     }
