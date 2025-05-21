@@ -46,6 +46,7 @@ const wine = {
     />
     <h4 class="hoejre-nede">Frugt & bær er plukket rundt omkring i Danmark.</h4>
   </section>
+
   <section class="to">
     <div class="billede-tekst">
       <div class="billede-wrapper">
@@ -66,17 +67,20 @@ const wine = {
       </div>
     </div>
   </section>
-
-  <section class="tre">
-    <div class="billede-wrapper">
-      <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
-    </div>
-    <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
-  </section>
-  <div class="billede-wrapper">
-    <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
+  <div class="desktre">
+    <h4 class="desktre-tekst">
+      Forfriskende lokal frugtvin. <br />Respekt for miljøet og minimalt aftryk.
+    </h4>
+    <section class="tre"></section>
   </div>
+  <div class="billede-wrapper">
+    <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
+  </div>
+  <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
 </Layout>
+<div class="billede-wrapper">
+  <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
+</div>
 
 <section class="link-kasser">
   <div class="kasse-linje"></div>
@@ -105,6 +109,9 @@ const wine = {
 </div>
 
 <style>
+  .desktre-tekst {
+    display: none;
+  }
   .scroll-text {
     position: absolute;
     top: 50%;
@@ -371,6 +378,15 @@ const wine = {
   }
 
   @media (min-width: 1000px) {
+    .desktre-tekst {
+      display: block;
+      font-size: 3rem;
+      padding-top: 1rem;
+      padding-left: 1rem;
+
+      text-align: start;
+      font-family: "Nimbus Sans D OT Bold";
+    }
     .kolonne-wrapper {
       display: none;
     }
@@ -495,7 +511,7 @@ const wine = {
       position: absolute;
       left: 0;
       width: 100vw;
-      height: 2px;
+      height: 1px;
       background: #222;
       z-index: 10;
     }
@@ -613,14 +629,14 @@ const wine = {
 
     .aebler {
       position: relative;
-      padding: rem;
       width: 50%;
       height: 100%;
       place-self: center;
+      padding: 10rem;
     }
     .billede-wrapper {
       position: relative;
-      display: block;
+      display: none;
       overflow: hidden;
       width: 100vw;
       margin: 0;
