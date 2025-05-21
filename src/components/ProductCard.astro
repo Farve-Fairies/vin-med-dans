@@ -17,29 +17,27 @@ console.log(data);
     <h3>{wine.title}</h3>
     <h3>10,5% alc.</h3>
   </div>
-  <a href={`/products/${wine.wine_slug}`}>
-    <div class="img-container">
-      <img
-        class="img1"
-        id="img1"
-        src={`../billeder/produktbilleder/${wine.img2}`}
-        alt=" "
-      />
-      <img
-        width="600px"
-        class="img2"
-        src={`../billeder/produktbilleder/${wine.img3}`}
-        alt=" "
-      />
-    </div>
-  </a>
+  <div class="img-container">
+    <img
+      class="img1"
+      id="img1"
+      src={`../billeder/produktbilleder/${wine.img2}`}
+      alt=" "
+    />
+    <img
+      width="600px"
+      class="img2"
+      src={`../billeder/produktbilleder/${wine.img3}`}
+      alt=" "
+    />
+  </div>
   <div class="product-tag">
     <div>
       <p>{wine.description} <br /> 0.75 L.</p>
     </div>
     <div class="buy">
       <h3>{wine.price} kr</h3>
-      <a href={`/products/${wine.wine_slug}`}>Læg i kurv</a>
+      <a href="">Læg i kurv</a>
     </div>
   </div>
 </div>
@@ -78,6 +76,10 @@ console.log(data);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  .wrapper:hover {
+    cursor: pointer;
   }
 
   .heading,
