@@ -46,6 +46,7 @@ const wine = {
     />
     <h4 class="hoejre-nede">Frugt & bær er plukket rundt omkring i Danmark.</h4>
   </section>
+
   <section class="to">
     <div class="billede-tekst">
       <div class="billede-wrapper">
@@ -66,8 +67,7 @@ const wine = {
       </div>
     </div>
   </section>
-  <!--  -->
-  <!--  -->
+
   <section class="grid_1-1">
     <div class="row-1">
       <img src="../billeder/forside/skaal.webp" alt="" />
@@ -88,41 +88,41 @@ const wine = {
       <img src="../billeder/forside/drenge.webp" alt="" />
     </div>
   </section>
-  <!--  -->
-  <!--  -->
 
-  <section class="tre">
-    <div class="billede-tekst">
-      <div class="billede-wrapper">
-        <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
-      </div>
-      <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
-    </div>
-    <div class="billede-tekst">
-      <div class="billede-wrapper">
-        <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
-      </div>
-    </div>
-  </section>
 
-  <section class="link-kasser">
-    <div class="kasse-linje"></div>
-    <p class="titel5">Drik vin med dans. Dans med vinen.</p>
-    <div class="kasse-linje"></div>
-    <p class="p">KØB ONLINE</p>
-    <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
-    <div class="kasse-linje"></div>
-    <p class="p">DRIK PÅ BAR</p>
+  <div class="desktre">
+    <h4 class="desktre-tekst">
+      Forfriskende lokal frugtvin. <br />Respekt for miljøet og minimalt aftryk.
+    </h4>
+    <section class="tre"></section>
+  </div>
+  <div class="billede-wrapper">
+    <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
+  </div>
+  <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
+</Layout>
+<div class="billede-wrapper">
+  <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
+</div>
 
-    <a href="/side3" class="kasse-link">SE PLACERINGER</a>
-    <div class="kasse-linje"></div>
-    <p class="p">SE PRODUKTIONEN</p>
 
-    <a href="/side4" class="kasse-link">INSTAGRAM</a>
-    <div class="kasse-linje"></div>
-  </section>
+<section class="link-kasser">
+  <div class="kasse-linje"></div>
+  <p class="titel5">Drik vin med dans. Dans med vinen.</p>
+  <div class="kasse-linje"></div>
+  <p class="p">KØB ONLINE</p>
+  <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
+  <div class="kasse-linje"></div>
+  <p class="p">DRIK PÅ BAR</p>
 
-  <FrontProductCard wine={wine} />
+  <a href="/side3" class="kasse-link">SE PLACERINGER</a>
+  <div class="kasse-linje"></div>
+  <p class="p">SE PRODUKTIONEN</p>
+
+  <a href="/side4" class="kasse-link">INSTAGRAM</a>
+  <div class="kasse-linje"></div>
+</section>
+
 
   <FrontProductCard wine={wine} />
 
@@ -198,6 +198,297 @@ const wine = {
     }
 
     .product {
+
+<FrontProductCard wine={wine} />
+
+<FrontProductCard wine={wine} />
+
+<div class="scroll-card-wrapper">
+  <FrontProductCard wine={wine} />
+  <p class="scroll-text">← <span class="arrow">SCROLL OP</span></p>
+</div>
+
+<style>
+  .desktre-tekst {
+    display: none;
+  }
+  .scroll-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 1rem;
+    color: #425245;
+    padding: 0.2rem 0.1rem;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+    background: none;
+    border-radius: 0;
+  }
+
+  .scroll-text .arrow {
+    display: inline-block;
+    font-size: 1.1em;
+    animation: bounceArrow 2.5s infinite;
+    transition: color 0.2s;
+  }
+
+  /* Fade animation for hele indikatoren */
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    10%,
+    90% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Pil-animation: meget lille bevægelse */
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.15em);
+    }
+  }
+
+  .scroll-card-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vw; /* samme højde som kortet */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .product {
+    display: none;
+  }
+  section.et {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .venstre {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 4rem;
+    padding-top: 3rem;
+  }
+  .vin-hero {
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    z-index: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hoejre {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+    padding-top: 1rem;
+  }
+
+  .linje {
+    border: 1px solid #425245;
+    width: 100%;
+  }
+  .kolonne-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .linje-midt {
+    border-left: 1px solid #425245;
+    height: 100px;
+    width: 0;
+  }
+  .venstre-nede,
+  .hoejre-nede {
+    flex: 1;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .venstre-nede {
+    text-align: center;
+  }
+  .hoejre-nede {
+    text-align: center;
+  }
+
+  h4 {
+    font-family: "Nimbus Sans D OT Light";
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  .billede-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  .billede-wrapper img {
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+  }
+
+  .billede-titel1 {
+    position: absolute;
+    color: #fafcf7;
+    text-align: start;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 2rem;
+    padding-top: 18rem;
+    padding-right: 7rem;
+  }
+  .billede-titel2 {
+    position: absolute;
+    color: #fafcf7;
+    text-align: end;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 2rem;
+    padding-top: 18rem;
+    padding-left: 7rem;
+  }
+
+  section.tre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+  .billede-titel3 {
+    position:;
+    text-align: start;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 3rem;
+    padding-top: 1rem;
+    padding-right: 7rem;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+  .billede-titel4 {
+    position:;
+    text-align: end;
+    width: 90vw;
+    max-width: 600px;
+    font-size: 3rem;
+    padding-top: 4rem;
+    padding-left: 7rem;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+
+  .aebler {
+    width: 100%;
+    height: 100%;
+    place-self: center;
+  }
+
+  .titel5 {
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.1rem;
+  }
+
+  .link-kasser {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 2rem 0;
+  }
+
+  .kasse-link {
+    position: relative;
+    align-items: center;
+    text-decoration: none;
+    height: 70px;
+    color: #425245;
+    font-family: "Nimbus Sans D OT light";
+    transition: 0.2s;
+    padding-left: 2rem;
+    overflow: hidden;
+  }
+
+  .kasse-link::after {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    bottom: 50px;
+    height: 1px;
+    width: 0;
+    background: #ffcdd8;
+    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .kasse-link:hover::after,
+  .kasse-link:active::after {
+    width: calc(20% - 1px);
+  }
+
+  .kasse-link:active,
+  .kasse-link:hover {
+    font-weight: bold;
+  }
+
+  .p {
+    font-family: "Nimbus Sans D OT bold";
+    padding-left: 2rem;
+    padding-top: 2rem;
+  }
+
+  .kasse-linje {
+    height: 1px;
+    width: 100%;
+    background: #425245;
+  }
+
+  @media (min-width: 1000px) {
+    .desktre-tekst {
+      display: block;
+      font-size: 3rem;
+      padding-top: 1rem;
+      padding-left: 1rem;
+
+      text-align: start;
+      font-family: "Nimbus Sans D OT Bold";
+    }
+    .kolonne-wrapper {
+
       display: none;
     }
     section.et {
@@ -298,6 +589,7 @@ const wine = {
     }
     .billede-titel2 {
       position: absolute;
+
       bottom: 10%;
       height: 100%;
       color: #fafcf7;
@@ -307,6 +599,13 @@ const wine = {
       font-size: 2rem;
       padding-top: 30vh;
       padding-left: 7rem;
+
+      left: 0;
+      width: 100vw;
+      height: 1px;
+      background: #222;
+      z-index: 10;
+
     }
 
     section.tre {
@@ -410,6 +709,7 @@ const wine = {
     section.to {
       display: block;
     }
+
     @media (min-width: 1000px) {
       /*  */
       .grid_1-1 {
@@ -594,3 +894,44 @@ const wine = {
     }
   </style>
 </Layout>
+
+
+    section.tre {
+      width: 100vw;
+    }
+    .billede-titel3 {
+      position:;
+      text-align: start;
+
+      font-size: 3rem;
+      padding-top: 1rem;
+      font-family: "Nimbus Sans D OT Bold";
+    }
+    .billede-titel4 {
+      position:;
+      text-align: end;
+      font-size: 3rem;
+      padding-top: 1rem;
+      right: 1rem;
+      font-family: "Nimbus Sans D OT Bold";
+      text-align: end;
+    }
+
+    .aebler {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      place-self: center;
+      padding: 10rem;
+    }
+    .billede-wrapper {
+      position: relative;
+      display: none;
+      overflow: hidden;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+    }
+  }
+</style>
+
