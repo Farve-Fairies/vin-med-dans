@@ -319,7 +319,7 @@ const wine = {
 
   .titel5 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     padding: 1.1rem;
   }
 
@@ -378,12 +378,60 @@ const wine = {
   }
 
   @media (min-width: 1000px) {
+    .kasse-link:active,
+    .kasse-link:hover {
+      font-family: "Nimbus Sans D OT bold";
+      transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .kasse-link:hover::after,
+    .kasse-link:active::after {
+      width: calc(70% - 1px);
+    }
+    .kasse-link::after {
+      content: "";
+      position: absolute;
+      left: 15rem;
+      bottom: 50px;
+      height: 1px;
+      width: 0;
+      background: #ffcdd8;
+      transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .kasse-link {
+      position: relative;
+      align-items: center;
+      text-decoration: none;
+      height: 70px;
+      color: #425245;
+      font-family: "Nimbus Sans D OT light";
+      transition: 0.2s;
+      padding-left: 15rem;
+      overflow: hidden;
+    }
+    .p {
+      font-family: "Nimbus Sans D OT bold";
+      padding-left: 15rem;
+      padding-top: 3rem;
+    }
+    .titel5 {
+      text-align: start;
+      font-size: 1.4rem;
+      padding: 1.1rem;
+      font-family: "Nimbus Sans D OT Bold";
+      padding-left: 15rem;
+    }
+    .link-kasser {
+      width: 100vw;
+      max-width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
     .desktre-tekst {
       display: block;
       font-size: 3rem;
       padding-top: 1rem;
       padding-left: 1rem;
-
       text-align: start;
       font-family: "Nimbus Sans D OT Bold";
     }
