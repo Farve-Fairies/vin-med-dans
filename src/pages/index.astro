@@ -4,19 +4,24 @@ import Hero from "../components/Hero.astro";
 import AgePopup from "../components/AgePopup.astro";
 import FrontProductCard from "../components/FrontProductCard.astro";
 
-const wine = {
+const wine1 = {
   title: "Hønefuld",
-  description: "En frisk og frugtig vin.",
-  price: 120,
-  img2: "hoenefuld-1.webp",
-  img3: "hoenefuld-2.webp",
+  img2: "hoenefuld-2.webp",
+};
+const wine2 = {
+  title: "Havtorben",
+  img2: "havtorben-2.webp",
+};
+const wine3 = {
+  title: "Stikkelsvin",
+  img2: "stikkelsvin-2.webp",
 };
 ---
 
 <Layout>
   <Hero />
   <AgePopup />
-  <section class="et">
+  <section class="et" id="et">
     <h4 class="venstre">
       Vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
     </h4>
@@ -87,48 +92,69 @@ const wine = {
   <p class="titel5">Drik vin med dans. Dans med vinen.</p>
   <div class="kasse-linje"></div>
   <p class="p">KØB ONLINE</p>
-  <a href="/side4" class="kasse-link">BESØG SHOPPEN</a>
+  <a href="/productlist" class="kasse-link" target="_blank" rel="noopener"
+    >BESØG SHOPPEN</a
+  >
   <div class="kasse-linje"></div>
-  <p class="p">DRIK PÅ BAR</p>
-
-  <a href="/side3" class="kasse-link">SE PLACERINGER</a>
+  <p class="p">DRIK DET MED OS</p>
+  <a href="/events" class="kasse-link" target="_blank" rel="noopener"
+    >SE PLACERINGER</a
+  >
   <div class="kasse-linje"></div>
   <p class="p">SE PRODUKTIONEN</p>
-
-  <a href="/side4" class="kasse-link">INSTAGRAM</a>
+  <a
+    href="https://www.instagram.com/vinmeddans.dk/"
+    class="kasse-link"
+    target="_blank"
+    rel="noopener">INSTAGRAM</a
+  >
   <div class="kasse-linje"></div>
 </section>
 
-<FrontProductCard wine={wine} />
-
-<FrontProductCard wine={wine} />
-
-<div class="scroll-card-wrapper">
-  <FrontProductCard wine={wine} />
-  <p class="scroll-text">← <span class="arrow">SCROLL OP</span></p>
+<div class="frontcard-row">
+  <a href="/productlist" style="text-decoration: none;">
+    <FrontProductCard wine={wine1} />
+  </a>
+  <a href="/productlist" style="text-decoration: none;">
+    <FrontProductCard wine={wine2} />
+  </a>
+  <div class="card-scroll-wrapper">
+    <a href="/productlist" style="text-decoration: none;">
+      <FrontProductCard wine={wine3} />
+    </a>
+    <div class="scroll-card-wrapper">
+      <a href="#et" class="scroll-text">
+        <span class="arrow">←</span> SCROLL OP
+      </a>
+    </div>
+  </div>
 </div>
+<a href="#et" class="scroll-text1"><span class="arrow">↑</span> SCROLL OP</a>
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
   .desktre-tekst {
     display: none;
   }
+  .scroll-text1 {
+    display: none;
+  }
+
   .scroll-text {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
     writing-mode: vertical-rl;
     font-size: 1rem;
     color: #425245;
-    padding: 0.2rem 0.1rem;
-    z-index: 2;
+    background: none;
+    border-radius: 0;
     text-align: center;
-    letter-spacing: 0.08em;
     display: flex;
     align-items: center;
     gap: 0.1em;
-    background: none;
-    border-radius: 0;
+    padding-left: 0.5rem;
+    padding-bottom: 0;
+    text-decoration: none;
   }
 
   .scroll-text .arrow {
@@ -136,6 +162,7 @@ const wine = {
     font-size: 1.1em;
     animation: bounceArrow 2.5s infinite;
     transition: color 0.2s;
+    transform: rotate(90deg);
   }
 
   /* Fade animation for hele indikatoren */
@@ -164,13 +191,27 @@ const wine = {
     }
   }
 
+  /* MOBIL: Scroll-tekst lodret i venstre side af sidste kort */
   .scroll-card-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100vw; /* samme højde som kortet */
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    height: 100%;
     display: flex;
     align-items: center;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  /* Sørg for at .card-scroll-wrapper er relativ på mobil */
+  .card-scroll-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   body {
@@ -314,6 +355,7 @@ const wine = {
   .aebler {
     width: 100%;
     height: 100%;
+    padding: 6rem;
     place-self: center;
   }
 
@@ -376,8 +418,79 @@ const wine = {
     width: 100%;
     background: #425245;
   }
+  .frontcard-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
+  /* DESKTOP: Genskab normal flow og skjul scroll-tekst */
   @media (min-width: 1000px) {
+    .scroll-text1 {
+      position: absolute;
+      left: 10px;
+      font-size: 1.5rem;
+      color: #303932;
+      padding: 0.2rem 0.1rem;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 0.1em;
+      background: none;
+      border-radius: 0;
+      text-decoration: none;
+    }
+
+    .scroll-text1 .arrow {
+      display: inline-block;
+      font-size: 1.1em;
+      animation: bounceArrow 2.5s infinite;
+      transition: color 0.2s;
+    }
+
+    /* Fade animation for hele indikatoren */
+    @keyframes fadeInOut {
+      0%,
+      100% {
+        opacity: 0.15;
+      }
+      10%,
+      90% {
+        opacity: 0.25;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Pil-animation: meget lille bevægelse */
+    @keyframes bounceArrow {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(0.15em);
+      }
+    }
+    .scroll-text1 {
+      display: block;
+    }
+    .frontcard-row {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .scroll-card-wrapper {
+      display: none;
+      position: static;
+      height: auto;
+      width: auto;
+    }
+    .card-scroll-wrapper {
+      width: auto;
+    }
     .kasse-link:active,
     .kasse-link:hover {
       font-family: "Nimbus Sans D OT bold";
@@ -426,6 +539,7 @@ const wine = {
       display: flex;
       flex-direction: column;
       align-items: stretch;
+      margin: 0rem 0;
     }
     .desktre-tekst {
       display: block;
