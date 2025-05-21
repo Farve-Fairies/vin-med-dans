@@ -1,0 +1,228 @@
+---
+//@ts-nocheck
+import Layout from "../../layouts/Layout.astro";
+import ProductBannerSection from "../../components/ProductBannerSection.astro";
+export async function getStaticPaths() {
+  const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
+  const key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
+  const options = {
+    headers: { apikey: key },
+  };
+  const data = await fetch(url, options).then((res) => res.json());
+  console.log(data);
+  return data.map((wine) => {
+    return {
+      params: { slug: wine.wine_slug },
+      props: { wine },
+    };
+  });
+}
+const { wine } = Astro.props;
+---
+
+<Layout>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <section class="banner-section">
+        <img
+          class="banner-wine"
+          src={`../../billeder/produktbilleder/${wine.img1}`}
+          alt="wine"
+        />
+        <div class="banner-wrapper">
+          <div class="scrolling-text">
+            <h1>Boblende frugtvin brygget på dansk natur&nbsp;&nbsp;</h1>
+            <h1>Boblende frugtvin brygget på dansk natur&nbsp;&nbsp;</h1>
+          </div>
+        </div>
+        <div>
+          <h3>10.5% ALC.</h3>
+        </div>
+      </section>
+      <section class="product-section">
+        <div class="product-display border-right">
+          <img
+            class="banner-wine"
+            src={`../../billeder/produktbilleder/${wine.img1}`}
+            alt="wine"
+          />
+          <h3>10.5% ALC.</h3>
+        </div>
+        <div class="info-section">
+          <div class="border-bottom pad">
+            <h3 class="pad-bottom">produktionen</h3>
+            <p>
+              Alle vores frugtvine er produceret 100% naturligt i vores eget
+              danske bryggeri. De vilde frugter høstes årligt sæsonbaseret i den
+              danske natur. Dermed er vinen fremstillet med et minimalt
+              CO2-udslip.
+            </p>
+          </div>
+          <div class="border-bottom pad">
+            <h3>'{wine.title}' frugtvin</h3>
+            <p class="pad-bottom">{wine.price} DKK</p>
+            <p>{wine.description2}</p>
+          </div>
+          <div class="border-bottom pad">
+            <h3>fragt og levering</h3>
+          </div>
+          <div class="pad">
+            <h3>indholdsoplysninger</h3>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .product-section img {
+    width: 30%;
+    margin-bottom: 4rem;
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid #32473a;
+  }
+  .border-right {
+    border-right: 1px solid #32473a;
+  }
+
+  .pad {
+    padding: 3rem 4rem;
+  }
+  .pad-bottom {
+    padding-bottom: 0.5rem;
+  }
+  .product-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin: 0 auto;
+    width: 100vw;
+  }
+  .banner-section h3,
+  .product-display h3 {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 4rem;
+  }
+
+  .info-section h3 {
+    padding: 0rem 0rem;
+  }
+  .banner-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 5rem;
+  }
+
+  .banner-wine {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0 auto;
+    width: 15%;
+    z-index: 1;
+  }
+
+  .banner-wrapper {
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  .scrolling-text {
+    display: flex;
+    width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 7rem;
+    align-items: center;
+  }
+
+  .scrolling-text h1 {
+    display: inline-block;
+    font-size: 7rem;
+    white-space: nowrap;
+    margin: 0;
+    padding-right: 2rem;
+    animation: scroll-x 30s linear infinite;
+    font-family: "Nimbus Sans D OT Light";
+    -webkit-text-stroke: 3px;
+  }
+
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @media (max-width: 1000px) {
+    .product-display {
+      display: none;
+    }
+
+    .product-section {
+      display: block;
+      width: 100vw;
+    }
+
+    .scrolling-text h1 {
+      font-size: 2.5rem;
+      -webkit-text-stroke: 2px;
+    }
+    .scrolling-text {
+      height: 3rem;
+    }
+
+    .banner-section {
+      padding-top: 3rem;
+      border-bottom: 1px solid #32473a;
+      padding-bottom: 0.5rem;
+    }
+
+    .banner-section h3,
+    .product-display h3 {
+      padding: 0.8rem 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .banner-wine {
+      width: 25%;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { ScrollSmoother } from "gsap/ScrollSmoother";
+
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+  ScrollSmoother.create({
+    smooth: 2,
+    effects: true,
+    normalizeScroll: true,
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+  });
+
+  // Smooth transition for banner-section
+  gsap.to(".banner-section", {
+    scrollTrigger: {
+      trigger: ".banner-section",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+    opacity: 0,
+    y: -100,
+    ease: "power1.out",
+  });
+</script>
