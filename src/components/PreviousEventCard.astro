@@ -1,0 +1,101 @@
+---
+// Props
+const { date, month, title, description, imageUrl } = Astro.props;
+---
+
+<div class="event-card">
+  <div class="event-date">
+    <p class="day">{date}</p>
+    <p class="month">{month}</p>
+  </div>
+
+  <div class="event-info">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+
+  <div class="event-image">
+    <img src={imageUrl} alt={title} />
+  </div>
+</div>
+
+<style>
+  .event-card {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    border-bottom: 1px solid #32473a;
+    width: 100vw;
+    margin-left: calc(-1 * ((100vw - 100%) / 2));
+  }
+
+  .event-date {
+    border-right: 1px solid #32473a;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .day {
+    font-size: 9rem;
+    font-family: "Nimbus Sans D OT Bold";
+    color: #32473a;
+    margin: 0;
+    padding-left: 7.5rem;
+  }
+
+  .month {
+    font-size: 1.5rem;
+    font-family: "Nimbus Sans D OT Bold";
+    color: #32473a;
+    text-transform: uppercase;
+    margin-top: -2rem;
+    padding-left: 9rem;
+  }
+
+  .event-info {
+    border-right: 1px solid #32473a;
+    padding: 1rem;
+    font-family: "Nimbus Sans D OT Light";
+  }
+
+  .event-info h3 {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+    color: #32473a;
+  }
+
+  .event-info p {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #32473a;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-title {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 1rem;
+    color: #32473a;
+    padding: 1rem 0;
+    border-bottom: 1px solid #32473a;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 799px) {
+    .event-card {
+      grid-template-columns: 1fr;
+    }
+
+    .event-date,
+    .event-info,
+    .event-image {
+      border-right: none;
+      border-bottom: 1px solid #32473a;
+    }
+  }
+</style>

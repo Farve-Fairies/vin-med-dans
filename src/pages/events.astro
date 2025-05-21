@@ -1,7 +1,117 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import UpcomingEventCard from "../components/UpcomingEventCard.astro";
+import PreviousEventCard from "../components/PreviousEventCard.astro";
 ---
 
 <Layout>
-  <h1></h1>
+  <section class="events-intro">
+    <div class="intro-text">
+      <h1>Events og <br /> pop-up´s</h1>
+      <p>
+        Vi dukker op, hvor det sker – med vin i glasset og god stemning. Smag
+        vores frugtvin til pop-ups, fester og markeder rundt omkring i byen.
+        Følg med her, eller på Instagram og kom forbi.
+      </p>
+    </div>
+    <img src="/illustrationer/ko.svg" alt="Lyserød ko" class="intro-image" />
+  </section>
+
+  <section>
+    <h1 class="section-title top">Kommende events:</h1>
+
+    <UpcomingEventCard
+      date="28"
+      month="Juni"
+      title="Moon Club x Vin med dans"
+      description="“Når vinen flyder danser benene af sig selv?” For at skyde sommeren i gang på bedste manér har vi nu aftalt med vores gode venner for enden af søerne om en aften på terrassen og vi tænker da du skal med!"
+      imageUrl="/billeder/events/moonclub.webp"
+    />
+
+    <UpcomingEventCard
+      date="05"
+      month="August"
+      title="Aiayu Market x Vin med dans"
+      description="“Livet er for kort til dårlig vin og kedelige kaffeklubber”. Derfor har vi valgt at gå kontra og igen gå sammen med skønne Aiayu market og kommer og serverer for alle jer der komme til “strikke salon” koncept i nordhavn. Tag en ven, veninde eller fremmed med under armen og kom!"
+      imageUrl="/billeder/events/aiayu.webp"
+    />
+
+    <h2 class="section-title">Tidligere events:</h2>
+
+    <PreviousEventCard
+      date="14"
+      month="Marts"
+      title="Politikken Festival"
+      description="For en måneds tid siden fik vi lov til at præsentere vores Havtorben til Politiken Festival 2025. Det var en kæmpe fornøjelse, og så skønt at møde så mange nysgerrige mennesker, der heldigvis tog godt imod både os og vores frugtvin Tak til Politiken for muligheden, og for alle de søde ord vi fik fra publikum"
+      imageUrl="/billeder/events/politiken.webp"
+    />
+
+    <PreviousEventCard
+      date="24"
+      month="Februar"
+      title="Finders Keepers"
+      description="“Form følger funktion – men i vin følger formen ofte fornøjelsen” så mens du bliver inspireret af nogle af de dygtigste designere københavn har at tilbyde, kan du da lige så godt svinge forbi vores bod i til Finders Keepers i øksenhallen. "
+      imageUrl="/billeder/events/finderskeepers.webp"
+    />
+  </section>
 </Layout>
+
+<style>
+  .section-title {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 1rem;
+    color: #32473a;
+    padding: 1rem;
+    border-top: 1px solid #32473a;
+    border-bottom: 1px solid #32473a;
+    text-transform: uppercase;
+    width: 100vw;
+    margin-left: calc(-1 * ((100vw - 100%) / 2));
+    padding-left: 4rem;
+  }
+
+  .events-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+  }
+
+  .intro-text h1 {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .intro-text p {
+    font-family: "Nimbus Sans D OT Light";
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-top: 0.5rem;
+    max-width: 50ch;
+  }
+
+  .intro-image {
+    max-width: 150px;
+    align-self: flex-end;
+    transform: scaleX(-1);
+  }
+
+  @media (min-width: 800px) {
+    .events-intro {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .intro-text {
+      flex: 1;
+    }
+
+    .intro-image {
+      max-width: 200px;
+    }
+  }
+</style>
