@@ -1,74 +1,58 @@
 ---
-const { number = 0 } = Astro.props;
+
 ---
 
 <div class="wrapper">
   <button type="button" class="minus-btn">-</button>
-  <p class="flaske-count">{number} flasker</p>
+  <p class="count-display"><span id="count">0</span> flasker</p>
   <button type="button" class="plus-btn">+</button>
 </div>
 
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".wrapper").forEach((wrapper) => {
-      // Brug det rigtige starttal fra Astro-props:
-      let count =
-        Number(wrapper.querySelector(".flaske-count").textContent) || 0;
-      // Alternativt, brug bare: let count = Number({number});
+  let count = 0;
+  const countEl = document.getElementById("count");
+  const plusBtn = document.querySelector(".plus-btn");
+  const minusBtn = document.querySelector(".minus-btn");
 
-      const countEl = wrapper.querySelector(".flaske-count");
-      const plusBtn = wrapper.querySelector(".plus-btn");
-      const minusBtn = wrapper.querySelector(".minus-btn");
+  plusBtn.addEventListener("click", () => {
+    count++;
+    countEl.textContent = count;
+  });
 
-      const updateText = () => {
-        countEl.textContent = count + (count === 1 ? " flaske" : " flasker");
-      };
-
-      updateText();
-
-      plusBtn.addEventListener("click", () => {
-        count++;
-        updateText();
-      });
-
-      minusBtn.addEventListener("click", () => {
-        if (count > 0) {
-          count--;
-          updateText();
-        }
-      });
-    });
+  minusBtn.addEventListener("click", () => {
+    if (count > 0) {
+      count--;
+      countEl.textContent = count;
+    }
   });
 </script>
 
 <style>
-  .plus-btn,
-  .minus-btn {
+  .wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    color: #202521;
-    font-size: 1rem;
+    gap: 1rem;
+    margin: 1rem 0;
   }
+
   button {
-    width: 24px;
-    height: 24px;
-    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    border: 1px solid #ffffff00;
-    background: #ffffff00;
+    font-size: 1.2rem;
+    border: 1px solid #cccccc00;
+    background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     transition: opacity 0.2s;
   }
+
   button:hover {
-    opacity: 0.5;
+    opacity: 0.6;
   }
-  .wrapper {
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    align-items: center;
+
+  .count-display {
+    min-width: 80px;
+    text-align: center;
+    font-size: 1.1rem;
   }
 </style>
