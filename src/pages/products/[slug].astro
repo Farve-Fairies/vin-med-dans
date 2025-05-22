@@ -40,11 +40,14 @@ const { wine } = Astro.props;
             <h1>Boblende frugtvin brygget på dansk natur&nbsp;&nbsp;</h1>
           </div>
         </div>
+        <a href="#et1" class="scroll-text" onclick="scrollToEt1(event)"
+          >SCROLL NED <span class="arrow">→</span></a
+        >
         <div>
           <h3>10.5% ALC.</h3>
         </div>
       </section>
-      <section class="product-section">
+      <section id="et1" class="product-section">
         <div class="product-display border-right">
           <img
             class="banner-wine"
@@ -79,6 +82,9 @@ const { wine } = Astro.props;
   </div>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     .ctas {
       display: flex;
       align-items: center;
@@ -163,6 +169,58 @@ const { wine } = Astro.props;
       -webkit-text-stroke: 3px;
     }
 
+    .scroll-text {
+      position: absolute;
+      top: 65%;
+      left: 0;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-size: 1rem;
+      color: #252a26;
+      padding: 0.2rem 0.1rem;
+      z-index: 2;
+      text-align: center;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.1em;
+      background: none;
+      border-radius: 0;
+    }
+
+    .scroll-text .arrow {
+      display: inline-block;
+      font-size: 1.1em;
+      animation: bounceArrow 2.5s infinite;
+      transition: color 0.2s;
+    }
+
+    /* Fade animation for hele indikatoren */
+    @keyframes fadeInOut {
+      0%,
+      100% {
+        opacity: 0.15;
+      }
+      10%,
+      90% {
+        opacity: 0.25;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Pil-animation: meget lille bevægelse */
+    @keyframes bounceArrow {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(0.15em);
+      }
+    }
+
     @keyframes scroll-x {
       0% {
         transform: translateX(0);
@@ -172,6 +230,11 @@ const { wine } = Astro.props;
       }
     }
     @media (max-width: 1000px) {
+      .scroll-text {
+        left: 10px;
+        text-decoration: none;
+        font-size: 1.5rem;
+      }
       .product-display {
         display: none;
       }
@@ -234,5 +297,15 @@ const { wine } = Astro.props;
       y: -100,
       ease: "power1.out",
     });
+
+    function scrollToEt1(e) {
+      e.preventDefault();
+      const target = document.querySelector("#et1");
+      if (window.ScrollSmoother && target) {
+        window.ScrollSmoother.get().scrollTo(target, true, "top top");
+      } else if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   </script>
 </Layout>
