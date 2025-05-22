@@ -4,82 +4,100 @@ import ContactForm from "../components/ContactForm.astro";
 ---
 
 <Layout>
-  <!-- <ContactForm /> -->
+  <section class="om grid-tre">
+    <div class="padding"></div>
+
+    <div class="om-tekst">
+      <h2>Vores historie</h2>
+      <p>
+        Vin med Dans startede med tre venner, en fælles kærlighed til frugtvin –
+        og en drøm om at gøre vinoplevelsen mere levende og mindre højtidelig. <br
+        />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img src="/billeder/om/team.webp" alt="Team" />
+    </div>
+  </section>
+  <div class="kontakt-desk">
+    <ContactForm />
+  </div>
+  <section class="om grid-tre">
+    <div class="om-tekst">
+      <h2>Bryggeri og høst</h2>
+      <p>
+        I en lille kælder i Rødovre har vi indrettet vores eget vinunivers. Her
+        producerer vi al vores vin selv – med egne hænder, lidt improvisation og
+        masser af kærlighed til råvarerne. Vi dyrker ikke noget selv, og det er
+        helt med vilje. I stedet samler vi overskudsfrugt og bær fra hele
+        Danmark – fra folks haver, vilde hegn, kolonihaver og baggårde.<br />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img src="/billeder/om/pluk.webp" alt="Team" />
+    </div>
+  </section>
+
+  <section class="om grid-tre">
+    <div class="om-tekst">
+      <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
+      <p>
+        Selvom vi brygger i en kælder i Rødovre, er der ikke noget hjemmelavet
+        over kvaliteten. Vores produktion er fødevaregodkendt, og vi går op i at
+        holde hele processen både sikker og gennemtænkt – fra de første plukkede
+        bær til den færdige flaske. Du kan finde os på Enghave 9 og Pio Vinbar,
+        hvor de sætter pris på noget, der er lidt anderledes, lokalt og lavet
+        med kærlighed.<br />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img class="bryg" src="/billeder/om/bryggeriflasker.webp" alt="Team" />
+    </div>
+  </section>
+  <div class="kontakt-mobil">
+    <ContactForm />
+  </div>
 </Layout>
 
-<section class="om grid-tre">
-  <div class="padding"></div>
-  <div class="om-tekst">
-    <h2>Vores historie</h2>
-    <p>
-      Vin med Dans startede med tre venner, en fælles kærlighed til frugtvin –
-      og en drøm om at gøre vinoplevelsen mere levende og mindre højtidelig. <br
-      />
-      <a class="desk" href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
-      >
-    </p>
-    <div class="se-mere-container">
-      <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
-        >SE MERE</a
-      >
-      <div class="se-mere-linje"></div>
-    </div>
-  </div>
-  <div class="om-billede">
-    <img src="/billeder/om/team.webp" alt="Team" />
-  </div>
-</section>
-
-<section class="om grid-tre">
-  <div class="om-tekst">
-    <h2>Bryggeri og høst</h2>
-    <p>
-      I en lille kælder i Rødovre har vi indrettet vores eget vinunivers. Her
-      producerer vi al vores vin selv – med egne hænder, lidt improvisation og
-      masser af kærlighed til råvarerne. Vi dyrker ikke noget selv, og det er
-      helt med vilje. I stedet samler vi overskudsfrugt og bær fra hele Danmark
-      – fra folks haver, vilde hegn, kolonihaver og baggårde.<br />
-      <a class="desk" href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
-      >
-    </p>
-    <div class="se-mere-container">
-      <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
-        >SE MERE</a
-      >
-      <div class="se-mere-linje"></div>
-    </div>
-  </div>
-  <div class="om-billede">
-    <img src="/billeder/om/pluk.webp" alt="Team" />
-  </div>
-</section>
-
-<section class="om grid-tre">
-  <div class="om-tekst">
-    <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
-    <p>
-      Selvom vi brygger i en kælder i Rødovre, er der ikke noget hjemmelavet
-      over kvaliteten. Vores produktion er fødevaregodkendt, og vi går op i at
-      holde hele processen både sikker og gennemtænkt – fra de første plukkede
-      bær til den færdige flaske. Du kan finde os på Enghave 9 og Pio Vinbar,
-      hvor de sætter pris på noget, der er lidt anderledes, lokalt og lavet med
-      kærlighed.<br />
-      <a class="desk" href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
-      >
-    </p>
-    <div class="se-mere-container">
-      <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
-        >SE MERE</a
-      >
-      <div class="se-mere-linje"></div>
-    </div>
-  </div>
-  <div class="om-billede">
-    <img class="bryg" src="/billeder/om/bryggeriflasker.webp" alt="Team" />
-  </div>
-</section>
-
 <style>
+  .grid_1-1-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .kontakt-desk {
+    display: none;
+  }
+  .kontakt-mobil {
+    display: block;
+  }
   .desk {
     display: none;
   }
@@ -143,6 +161,11 @@ import ContactForm from "../components/ContactForm.astro";
   }
 
   @media (min-width: 700px) {
+    .grid_1-1-1 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+    }
     .bryg {
       height: 516px;
       object-fit: cover;
@@ -185,12 +208,12 @@ import ContactForm from "../components/ContactForm.astro";
       margin: 0;
     }
     .om.grid-tre .om-tekst {
-      grid-column: 1 / 2;
+      grid-column: 1;
       padding-left: 2rem;
       padding-right: 2rem;
     }
     .om.grid-tre .om-billede {
-      grid-column: 2 / 4;
+      grid-column: 2;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -210,6 +233,15 @@ import ContactForm from "../components/ContactForm.astro";
       font-family: "Nimbus Sans D OT Bold";
       margin-top: 20rem;
       text-decoration: none;
+    }
+    .kontakt-mobil {
+      display: none;
+    }
+    .kontakt-desk {
+      position: absolute;
+      display: flex;
+      left: 50%;
+      top: 40%;
     }
   }
 </style>
