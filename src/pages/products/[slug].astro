@@ -2,6 +2,11 @@
 //@ts-nocheck
 import Layout from "../../layouts/Layout.astro";
 import PlusMinusCTA from "../../components/PlusMinusCTA.astro";
+
+// fx hvis du får dine produktdata herfra
+const product = {
+  startNumber: 0,
+};
 import BoxButton from "../../components/BoxButton.astro";
 import Back from "../../components/Back.astro";
 export async function getStaticPaths() {
@@ -69,7 +74,7 @@ const { wine } = Astro.props;
             <p class="pad-bottom">{wine.price} DKK</p>
             <p>{wine.description2}</p>
             <div class="ctas">
-              <PlusMinusCTA number="0" />
+              <PlusMinusCTA number={product.startNumber} />
               <BoxButton cta="Læg i kurv" />
             </div>
           </div>

@@ -1,26 +1,74 @@
 ---
-const { number } = Astro.props;
+const { number = 0 } = Astro.props;
 ---
 
 <div class="wrapper">
-  <img src="../icons/minus.svg" alt="" />
-  <p>{number} flasker</p>
-  <img src="../icons/plus.svg" alt="" />
+  <button type="button" class="minus-btn">-</button>
+  <p class="flaske-count">{number} flasker</p>
+  <button type="button" class="plus-btn">+</button>
 </div>
 
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".wrapper").forEach((wrapper) => {
+      // Brug det rigtige starttal fra Astro-props:
+      let count =
+        Number(wrapper.querySelector(".flaske-count").textContent) || 0;
+      // Alternativt, brug bare: let count = Number({number});
+
+      const countEl = wrapper.querySelector(".flaske-count");
+      const plusBtn = wrapper.querySelector(".plus-btn");
+      const minusBtn = wrapper.querySelector(".minus-btn");
+
+      const updateText = () => {
+        countEl.textContent = count + (count === 1 ? " flaske" : " flasker");
+      };
+
+      updateText();
+
+      plusBtn.addEventListener("click", () => {
+        count++;
+        updateText();
+      });
+
+      minusBtn.addEventListener("click", () => {
+        if (count > 0) {
+          count--;
+          updateText();
+        }
+      });
+    });
+  });
+</script>
+
 <style>
-  img {
-    width: 10px;
+  .plus-btn,
+  .minus-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    color: #202521;
+    font-size: 1rem;
   }
-
-  img:hover {
-    opacity: 50%;
-    cursor: not-allowed;
+  button {
+    width: 24px;
+    height: 24px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    border: 1px solid #ffffff00;
+    background: #ffffff00;
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
-
+  button:hover {
+    opacity: 0.5;
+  }
   .wrapper {
     display: flex;
     gap: 1rem;
     margin: 0;
+    align-items: center;
   }
 </style>
