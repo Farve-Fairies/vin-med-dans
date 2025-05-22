@@ -3,6 +3,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PlusMinusCTA from "../../components/PlusMinusCTA.astro";
 import BoxButton from "../../components/BoxButton.astro";
+import Back from "../../components/Back.astro";
 export async function getStaticPaths() {
   const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
   const key =
@@ -23,6 +24,8 @@ const { wine } = Astro.props;
 ---
 
 <Layout>
+  <Back />
+
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <section class="banner-section">
@@ -31,6 +34,7 @@ const { wine } = Astro.props;
           src={`../../billeder/produktbilleder/${wine.img1}`}
           alt="wine"
         />
+
         <div class="banner-wrapper">
           <div class="scrolling-text">
             <h1>Boblende frugtvin brygget på dansk natur&nbsp;&nbsp;</h1>
@@ -211,9 +215,9 @@ const { wine } = Astro.props;
 </style>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { ScrollSmoother } from "gsap/ScrollSmoother";
+  // import { gsap } from "gsap";
+  // import { ScrollTrigger } from "gsap/ScrollTrigger";
+  // import { ScrollSmoother } from "gsap/ScrollSmoother";
 
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
