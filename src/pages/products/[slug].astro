@@ -3,6 +3,8 @@
 import Layout from "../../layouts/Layout.astro";
 import PlusMinusCTA from "../../components/PlusMinusCTA.astro";
 import BoxButton from "../../components/BoxButton.astro";
+import Back from "../../components/Back.astro";
+import DropDown from "../../components/DropDown.astro";
 export async function getStaticPaths() {
   const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
   const key =
@@ -23,6 +25,7 @@ const { wine } = Astro.props;
 ---
 
 <Layout>
+  <Back />
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <section class="banner-section">
@@ -69,172 +72,167 @@ const { wine } = Astro.props;
               <BoxButton cta="Læg i kurv" />
             </div>
           </div>
-          <div class="border-bottom pad">
-            <h3>fragt og levering</h3>
-          </div>
-          <div class="pad">
-            <h3>indholdsoplysninger</h3>
-          </div>
+          <DropDown />
         </div>
       </section>
     </div>
   </div>
-</Layout>
 
-<style>
-  .ctas {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding-top: 3rem;
-    gap: 2rem;
-  }
-  .product-section img {
-    width: 40%;
-    padding: 4rem 0rem 2rem 0rem;
-  }
-
-  .border-bottom {
-    border-bottom: 1px solid #32473a;
-  }
-  .border-right {
-    border-right: 1px solid #32473a;
-  }
-
-  .pad {
-    padding: 3rem 4rem;
-  }
-  .pad-bottom {
-    padding-bottom: 0.5rem;
-  }
-  .product-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    margin: 0 auto;
-    width: 100vw;
-  }
-  .banner-section h3,
-  .product-display h3 {
-    display: flex;
-    justify-content: end;
-    padding: 1rem 4rem;
-  }
-
-  .info-section h3 {
-    padding: 0rem 0rem;
-  }
-  .banner-section {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding-top: 5rem;
-  }
-
-  .banner-wine {
-    grid-row: 1;
-    grid-column: 1;
-    margin: 0 auto;
-    width: 22%;
-    z-index: 1;
-  }
-
-  .banner-wrapper {
-    grid-row: 1;
-    grid-column: 1;
-  }
-
-  .scrolling-text {
-    display: flex;
-    width: 100vw;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    height: 7rem;
-    align-items: center;
-  }
-
-  .scrolling-text h1 {
-    display: inline-block;
-    font-size: 7rem;
-    white-space: nowrap;
-    margin: 0;
-    padding-right: 2rem;
-    animation: scroll-x 30s linear infinite;
-    font-family: "Nimbus Sans D OT Light";
-    -webkit-text-stroke: 3px;
-  }
-
-  @keyframes scroll-x {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  @media (max-width: 1000px) {
-    .product-display {
-      display: none;
-    }
-
-    .product-section {
-      display: block;
-      width: 100vw;
-    }
-
-    .scrolling-text h1 {
-      font-size: 2.5rem;
-      -webkit-text-stroke: 2px;
-    }
-    .scrolling-text {
-      height: 3rem;
-    }
-
-    .banner-section {
+  <style>
+    .ctas {
+      display: flex;
+      align-items: center;
+      justify-content: start;
       padding-top: 3rem;
+      gap: 2rem;
+    }
+    .product-section img {
+      width: 40%;
+      padding: 4rem 0rem 2rem 0rem;
+    }
+
+    .border-bottom {
       border-bottom: 1px solid #32473a;
+    }
+    .border-right {
+      border-right: 1px solid #32473a;
+    }
+
+    .pad {
+      padding: 3rem 4rem;
+    }
+    .pad-bottom {
       padding-bottom: 0.5rem;
     }
+    .product-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
 
+      margin: 0 auto;
+      width: 100vw;
+    }
     .banner-section h3,
     .product-display h3 {
-      padding: 0.8rem 1.2rem;
-      margin-top: 3rem;
+      display: flex;
+      justify-content: end;
+      padding: 1rem 4rem;
+    }
+
+    .info-section h3 {
+      padding: 0rem 0rem;
+    }
+    .banner-section {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      padding-top: 5rem;
     }
 
     .banner-wine {
-      width: 45%;
+      grid-row: 1;
+      grid-column: 1;
+      margin: 0 auto;
+      width: 22%;
+      z-index: 1;
     }
-  }
-</style>
 
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { ScrollSmoother } from "gsap/ScrollSmoother";
+    .banner-wrapper {
+      grid-row: 1;
+      grid-column: 1;
+    }
 
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+    .scrolling-text {
+      display: flex;
+      width: 100vw;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      height: 7rem;
+      align-items: center;
+    }
 
-  ScrollSmoother.create({
-    smooth: 2,
-    effects: true,
-    normalizeScroll: true,
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-  });
+    .scrolling-text h1 {
+      display: inline-block;
+      font-size: 7rem;
+      white-space: nowrap;
+      margin: 0;
+      padding-right: 2rem;
+      animation: scroll-x 30s linear infinite;
+      font-family: "Nimbus Sans D OT Light";
+      -webkit-text-stroke: 3px;
+    }
 
-  // Smooth transition for banner-section
-  gsap.to(".banner-section", {
-    scrollTrigger: {
-      trigger: ".banner-section",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-    opacity: 0,
-    y: -100,
-    ease: "power1.out",
-  });
-</script>
+    @keyframes scroll-x {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    @media (max-width: 1000px) {
+      .product-display {
+        display: none;
+      }
+
+      .product-section {
+        display: block;
+        width: 100vw;
+      }
+
+      .scrolling-text h1 {
+        font-size: 2.5rem;
+        -webkit-text-stroke: 2px;
+      }
+      .scrolling-text {
+        height: 3rem;
+      }
+
+      .banner-section {
+        padding-top: 3rem;
+        border-bottom: 1px solid #32473a;
+        padding-bottom: 0.5rem;
+      }
+
+      .banner-section h3,
+      .product-display h3 {
+        padding: 0.8rem 1.2rem;
+        margin-top: 3rem;
+      }
+
+      .banner-wine {
+        width: 45%;
+      }
+    }
+  </style>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { ScrollSmoother } from "gsap/ScrollSmoother";
+
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    ScrollSmoother.create({
+      smooth: 2,
+      effects: true,
+      normalizeScroll: true,
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+    });
+
+    // Smooth transition for banner-section
+    gsap.to(".banner-section", {
+      scrollTrigger: {
+        trigger: ".banner-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+      opacity: 0,
+      y: -100,
+      ease: "power1.out",
+    });
+  </script>
+</Layout>
