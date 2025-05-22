@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
+
+<Layout>
+  <div class="padding"></div>
+  <div class="padding"></div>
+  <section class="grid_1-1-1">
+    <div class="om-tekst">
+      <h2>Vores historie</h2>
+      <p>
+        Vin med Dans startede med tre venner, en fælles kærlighed til frugtvin –
+        og en drøm om at gøre vinoplevelsen mere levende og mindre højtidelig. <br
+        />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a
+          class="se-mere-text"
+          style="grid-column: 2 / span 2;"
+          href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img src="/billeder/om/team.webp" alt="Team" />
+    </div>
+    <div class="om-tekst">
+      <h2>Bryggeri og høst</h2>
+      <p>
+        I en lille kælder i Rødovre har vi indrettet vores eget vinunivers. Her
+        producerer vi al vores vin selv – med egne hænder, lidt improvisation og
+        masser af kærlighed til råvarerne. Vi dyrker ikke noget selv, og det er
+        helt med vilje. I stedet samler vi overskudsfrugt og bær fra hele
+        Danmark – fra folks haver, vilde hegn, kolonihaver og baggårde.<br />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a
+          class="se-mere-text"
+          style="grid-column: 2 / span 2;"
+          href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img src="/billeder/om/pluk.webp" alt="Team" />
+    </div>
+    <div class="om-tekst">
+      <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
+      <p>
+        Selvom vi brygger i en kælder i Rødovre, er der ikke noget hjemmelavet
+        over kvaliteten. Vores produktion er fødevaregodkendt, og vi går op i at
+        holde hele processen både sikker og gennemtænkt – fra de første plukkede
+        bær til den færdige flaske. Du kan finde os på Enghave 9 og Pio Vinbar,
+        hvor de sætter pris på noget, der er lidt anderledes, lokalt og lavet
+        med kærlighed.<br />
+        <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+      </p>
+      <div class="se-mere-container">
+        <a class="se-mere-text" href="https://www.instagram.com/vinmeddans.dk/"
+          >SE MERE</a
+        >
+        <div class="se-mere-linje"></div>
+      </div>
+    </div>
+    <div class="om-billede">
+      <img
+        class="bryg"
+        style="grid-column: 2 / span 2;"
+        src="/billeder/om/bryggeriflasker.webp"
+        alt="Team"
+      />
+    </div>
+  </section>
+</Layout>
+
+<div class="kontakt-desk">
+  <!-- <ContactForm /> -->
+</div>
+
+<div class="kontakt-mobil">
+  <ContactForm />
+</div>
+
+<style>
+  .grid_1-1-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  @media (min-width: 700px) {
+    .grid_1-1-1 {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+    }
+  }
+</style>
