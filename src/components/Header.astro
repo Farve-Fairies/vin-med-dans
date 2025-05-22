@@ -5,9 +5,9 @@
 <header class="header">
   <div class="wrapper">
     <div class="navigation_desktop">
-      <a href="/pages/productlist.astro">VINE</a>
-      <a href="/pages/events.astro">EVENTS</a>
-      <a href="/pages/about.astro">OM OS</a>
+      <a href="/productlist">VINE</a>
+      <a href="/events">EVENTS</a>
+      <a href="/about">OM OS</a>
     </div>
     <div class="header_logo">
       <img src="/logo/logo-text-dark.svg" alt="Logo" class="logo" />
@@ -18,11 +18,11 @@
         <img src="/icons/search.svg" alt="Søg" />
         <span>SØG</span>
       </button>
-      <button class="cart_button">KURV(0)</button>
+      <button class="cart_button">KURV (0)</button>
     </div>
     <div class="mobile_actions">
       <div>
-        <button class="cart_button_mobile" id="kurv">KURV(0)</button>
+        <button class="cart_button_mobile" id="kurv">KURV (0)</button>
       </div>
       <div>
         <button id="burgerBtn" class="burger-menu" aria-label="Åbn menu">
@@ -36,10 +36,10 @@
 
   <nav class="navbar" id="navbar">
     <ul>
-      <a href="#index.astro"><li class="landing">FORSIDE</li></a>
-      <a href="/pages/productlist.astro"><li>VINE</li></a>
-      <a href="/pages/events.astro"><li>EVENTS</li></a>
-      <a href="/pages/about.astro"><li>OM OS</li></a>
+      <a href="/"><li class="landing">FORSIDE</li></a>
+      <a href="/productlist"><li>VINE</li></a>
+      <a href="/events"><li>EVENTS</li></a>
+      <a href="/about"><li>OM OS</li></a>
     </ul>
     <div class="header-actions">
       <div class="navbar-illustration">
@@ -67,14 +67,13 @@
     /* mobile first */
     header {
       position: relative;
-      overflow: visible;
       background-color: #fafcf7;
       padding: 0;
-      margin: 0.7rem 0.7rem;
+      margin: 0.7rem 2vw;
       display: flex;
       position: fixed;
       top: 0;
-      width: 95.2vw;
+      width: 96vw;
       left: 0;
       height: 50px; /* Fast højde */
       z-index: 200;
@@ -387,9 +386,8 @@
 
     .search-button span {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 200;
       color: #32473a;
-      letter-spacing: 0.5px; /* valgfrit, hvis du vil matche spacing */
     }
     .cart {
       grid-column: 3;
@@ -404,7 +402,7 @@
       padding: 0;
       font-size: 1rem;
       color: #32473a;
-      font-weight: bold;
+      font-weight: 200;
       border-left: 1px solid #32473a;
     }
 
@@ -413,7 +411,7 @@
       border-radius: 0;
       background: none;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 200;
       color: #32473a;
       cursor: pointer;
       display: flex;
@@ -428,7 +426,7 @@
       background: none;
       padding: 0px 5px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 200;
       color: #32473a;
       cursor: pointer;
       display: flex;
@@ -455,6 +453,7 @@
       justify-content: center;
       min-height: 36px; /* eller hvad dit logo er */
       position: relative;
+      padding-left: 1rem;
     }
     .menu-text {
       display: none;
@@ -469,7 +468,7 @@
       position: absolute;
       left: 25px;
       top: 0;
-      background: #fafcf7; /* valgfrit, hvis du vil have baggrund */
+      /* valgfrit, hvis du vil have baggrund */
       z-index: 2;
     }
 
@@ -482,7 +481,7 @@
 
     #kurv {
       border-left: 1px solid #32473a;
-      padding-left: 10px;
+      padding-left: 1rem;
       transition: border-color 0.2s;
       display: flex;
       align-items: center;
@@ -495,7 +494,7 @@
     #kurv.open {
       border-left: 1px solid #fafcf7;
       height: 50px;
-      padding-left: 10px;
+      padding-left: 1rem;
       display: flex;
       align-items: center;
       color: #fafcf7;
@@ -526,9 +525,12 @@
     }
 
     /* Medie queries for større skærme */
-    @media (min-width: 768px) {
+    @media (min-width: 930px) {
+      .navbar {
+        display: none;
+      }
       header {
-        width: 100%;
+        width: 100vw;
         left: 0;
         right: 0;
         margin: 0;
@@ -540,21 +542,26 @@
       }
 
       .navigation_desktop {
+        position: absolute;
+        left: 0px;
         display: flex;
+        flex: none;
         justify-content: center;
         align-items: center;
-        gap: 50px;
+        gap: 80px;
         font-size: 1rem;
-        height: 110%;
+        height: 100%;
+        padding-top: 0.2rem;
+        padding-left: 2.5rem;
+        padding-right: 3rem;
         border-right: #32473a 1px solid;
-        padding-right: 20px;
-        padding-left: 20px;
-        font-weight: bold;
+        font-weight: 200;
       }
+
       .navigation_desktop a {
         text-decoration: none;
         color: #32473a;
-        font-weight: bold;
+        font-weight: normal;
       }
 
       .navigation_desktop a:hover,
@@ -575,8 +582,9 @@
       }
 
       .search-button {
-        padding-top: 0.3rem;
+        padding: 0.3rem 2.8rem 0rem 0rem;
       }
+
       .cart_button span {
         font-size: 1rem;
         /* Fjern evt. border-left her, hvis du har det på .cart_button */
@@ -585,11 +593,10 @@
         display: flex;
         align-items: center;
         margin: 0;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0;
-        /* outline: none; */
+        justify-content: center;
+        width: 100vw;
         height: 100%;
+        padding: 0;
       }
 
       .navbar {
@@ -597,14 +604,15 @@
       }
 
       .header_logo {
-        order: 2;
+        position: absolute;
+        left: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex: none;
-        width: auto;
         height: 100%;
-        position: static;
+        padding-top: 4px;
+
+        /* position: static; */
       }
 
       .header-actions {
@@ -614,22 +622,35 @@
         justify-content: flex-end;
         flex: none;
         width: auto;
-        height: 110%;
+        height: 100%;
         position: static;
         border-left: #32473a 1px solid;
+        padding: 0rem 1.3rem 0rem 2.5rem;
       }
       .header-actions,
       .cart_button {
+        font-family: "Nimbus Sans D OT Bold";
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0px 5px;
-        font-weight: bold;
+        font-weight: 200;
         color: #32473a;
         display: flex;
         align-items: center;
         gap: 4px;
         border-left: #32473a 1px solid;
+      }
+
+      a {
+        font-size: 1rem;
+        flex: none;
+      }
+
+      .cart_button {
+        padding-top: 0.5rem;
+        padding-left: 2.5rem;
+        padding-right: 1.2rem;
+        padding-bottom: 0.2rem;
       }
 
       .burger-menu,
@@ -665,6 +686,17 @@
           wrapper.style.outline = "1px solid #fafcf7";
           header.style.outline = "1px solid #fafcf7";
         } else {
+          wrapper.style.outline = "1px solid #32473a";
+          header.style.outline = "1px solid #32473a";
+        }
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 930) {
+          navbar.classList.remove("open");
+          burgerBtn.classList.remove("open");
+          kurv?.classList.remove("open");
+          headerLogo.classList.remove("menu-open");
+          wrapper.classList.remove("menu-open");
           wrapper.style.outline = "1px solid #32473a";
           header.style.outline = "1px solid #32473a";
         }
