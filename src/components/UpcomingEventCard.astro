@@ -7,7 +7,8 @@ const { date, month, title, description, imageUrl } = Astro.props;
   <div class="event-date">
     <p class="day">{date}</p>
     <p class="month">{month}</p>
-    <a class="calendar-link" href="#">
+
+    <a class="calendar-link" href="../events.ics" download>
       Put i kalenderen
       <img src="/icons/calendar.svg" alt="Kalenderikon" class="calendar-icon" />
     </a>
