@@ -1,26 +1,58 @@
 ---
-const { number } = Astro.props;
+
 ---
 
 <div class="wrapper">
-  <img src="../icons/minus.svg" alt="" />
-  <p>{number} flasker</p>
-  <img src="../icons/plus.svg" alt="" />
+  <button type="button" class="minus-btn">-</button>
+  <p class="count-display"><span id="count">0</span> flasker</p>
+  <button type="button" class="plus-btn">+</button>
 </div>
 
+<script is:inline>
+  let count = 0;
+  const countEl = document.getElementById("count");
+  const plusBtn = document.querySelector(".plus-btn");
+  const minusBtn = document.querySelector(".minus-btn");
+
+  plusBtn.addEventListener("click", () => {
+    count++;
+    countEl.textContent = count;
+  });
+
+  minusBtn.addEventListener("click", () => {
+    if (count > 0) {
+      count--;
+      countEl.textContent = count;
+    }
+  });
+</script>
+
 <style>
-  img {
-    width: 10px;
-  }
-
-  img:hover {
-    opacity: 50%;
-    cursor: not-allowed;
-  }
-
   .wrapper {
     display: flex;
+    align-items: center;
     gap: 1rem;
-    margin: 0;
+    margin: 1rem 0;
+  }
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    border: 1px solid #cccccc00;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  button:hover {
+    opacity: 0.6;
+  }
+
+  .count-display {
+    min-width: 80px;
+    text-align: center;
+    font-size: 1.1rem;
   }
 </style>
