@@ -9,6 +9,7 @@ const product = {
 };
 import BoxButton from "../../components/BoxButton.astro";
 import Back from "../../components/Back.astro";
+import DropDown from "../../components/DropDown.astro";
 export async function getStaticPaths() {
   const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
   const key =
@@ -78,12 +79,7 @@ const { wine } = Astro.props;
               <BoxButton cta="Læg i kurv" />
             </div>
           </div>
-          <div class="border-bottom pad">
-            <h3>fragt og levering</h3>
-          </div>
-          <div class="pad">
-            <h3>indholdsoplysninger</h3>
-          </div>
+          <DropDown />
         </div>
       </section>
     </div>
@@ -215,6 +211,9 @@ const { wine } = Astro.props;
 
     .banner-wine {
       width: 45%;
+    }
+    .border-bottom.pad {
+      padding-bottom: 10rem;
     }
   }
 </style>
