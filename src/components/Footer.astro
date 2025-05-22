@@ -1,0 +1,282 @@
+<footer>
+  <div class="footer_content">
+    <div class="intro">
+      <h2>VIN MED DANS</h2>
+      <p>
+        vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag
+      </p>
+    </div>
+    <div class="footer-age">
+      <img src="/public/icons/plus-18.svg" alt="alderstegn" />
+    </div>
+    <div class="footer-row-border"></div>
+    <div class="footer-links">
+      <h4>VIN MED DANS</h4>
+      <ul>
+        <li><a href="#">Produkt</a></li>
+        <li><a href="#">Frugtvin</a></li>
+        <li><a href="#">Tilbud</a></li>
+        <li><a href="#">Galleri</a></li>
+      </ul>
+    </div>
+    <div class="footer-shop">
+      <h4>VINE</h4>
+      <ul>
+        <li><a href="/pages/product.list">Shop</a></li>
+      </ul>
+    </div>
+    <div class="footer-events">
+      <h4>EVENTS</h4>
+      <ul>
+        <li><a href="#">Kommende events</a></li>
+        <li><a href="#">Tidligere events</a></li>
+      </ul>
+    </div>
+    <div class="footer-about">
+      <h4>OM OS</h4>
+      <ul>
+        <li><a href="#">Vores historie</a></li>
+        <li><a href="#">Kontakt os</a></li>
+      </ul>
+    </div>
+    <div class="footer-column-icons">
+      <img src="/public/icons/instagram.svg" alt="insytagram ikon" />
+      <img src="/public/icons/mail.svg" alt="mail ikon" />
+    </div>
+    <img
+      src="/public/illustrationer/danskeflasker.svg"
+      alt="danskeflasker"
+      class="footer-illustration"
+    />
+  </div>
+
+  <div class="marquee">
+    <p>
+      Hvis du får muligheden for at drikke frugtvin, så smag vores. Hvis du får
+      muligheden for at drikke frugtvin, så smag vores.Hvis du får muligheden
+      for at drikke frugtvin, så smag vores.Hvis du får muligheden for at drikke
+      frugtvin, så smag vores.
+    </p>
+  </div>
+</footer>
+
+<style>
+  /* mobile first*/
+  footer {
+    background-color: transparent;
+    padding: 2px;
+    width: 100%;
+    padding-top: 30px;
+    min-height: 80px;
+    margin-top: 50px;
+  }
+  .footer_content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 kolonner */
+    grid-template-rows: auto auto auto; /* 3 rækker */
+    gap: 10px;
+    width: 100%;
+    border: 1px solid;
+    padding: 2px;
+    min-height: 80px;
+  }
+  /* række 1 */
+  .intro {
+    flex-direction: column;
+    grid-row: 1;
+    grid-column: 1 / span 4; /* fylder venstre side */
+  }
+  .intro h2 {
+    font-size: 1rem;
+    margin-top: 5px;
+    padding-left: 5px;
+  }
+  .intro p {
+    font-size: 0.9rem;
+    margin-top: 8px;
+    padding-left: 5px;
+  }
+
+  .footer-age {
+    grid-row: 1;
+    grid-column: 5;
+    width: 50px;
+    padding-top: 7px;
+  }
+  .footer-row-border {
+    grid-row: 2;
+    grid-column: 1 / -1; /* Strækker sig over alle kolonner */
+    border-bottom: 1px solid #32473a;
+    height: 0; /* så det ikke fylder ekstra i højden */
+    width: 100%;
+  }
+
+  /* række 2 */
+
+  .footer-links h4,
+  .footer-shop h4,
+  .footer-events h4,
+  .footer-about h4 {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    padding: 5px;
+    white-space: nowrap;
+  }
+  .footer-links {
+    /* VIN MED DANS */
+    grid-row: 2;
+    grid-column: 1 / 2; /* helt til venstre */
+  }
+  .footer-shop {
+    /* VINE */
+    grid-row: 3;
+    grid-column: 1 / 2;
+  }
+  .footer-shop a {
+    margin: 5px 0;
+    display: inline-block; /* gør margin på a synlig */
+  }
+
+  .footer-events {
+    /* EVENTS */
+    grid-row: 2;
+    grid-column: 3 / 4;
+  }
+
+  .footer-about {
+    /* OM OS */
+    grid-row: 3;
+    grid-column: 3 / 4;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .footer-column-icons {
+    grid-row: 2 / 4; /* evt. over flere rækker */
+    grid-column: 5 / 6; /* eller prøv 4 / 6 hvis du vil have den bredere */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+  }
+
+  .footer-column-icons img {
+    /* Instagram, Mail og illustration */
+    width: 60px;
+    height: auto;
+    padding-top: 10px;
+    gap: 5px;
+    padding-right: 5px;
+    max-height: 60px;
+  }
+
+  .footer-illustration {
+    width: 140px;
+    height: auto;
+    max-height: 140px;
+    padding: 0;
+    grid-row: 2 / 4; /* Starter på række 2, slutter før række 4 (altså dækker 2 og 3) */
+    grid-column: 4 / 5; /* Placeres i kolonne 4 */
+    margin: 0;
+    align-self: center;
+  }
+
+  /* række 3 */
+  .marquee {
+    grid-row: 3;
+    grid-column: 1 / -1; /* Strækker sig over alle kolonner */
+  }
+
+  .footer-links ul,
+  .footer-shop h4,
+  .footer-shop ul,
+  .footer-events h4,
+  .footer-events ul,
+  .footer-about h4,
+  .footer-about ul {
+    font-size: 0.8rem;
+    margin: 2px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer-links a,
+  .footer-shop a,
+  .footer-events a,
+  .footer-about a,
+  .footer-column-icons a {
+    text-decoration: none;
+    white-space: nowrap;
+    text-transform: none;
+    font-size: 0.9rem;
+  }
+  .footer-links a:hover,
+  .footer-shop a:hover,
+  .footer-events a:hover,
+  .footer-about a:hover,
+  .footer-column-icons a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-links ul,
+  .footer-links h4,
+  .footer-events ul,
+  .footer-events h4,
+  .footer-about ul,
+  .footer-about h4,
+  .footer-shop ul,
+  .footer-shop h4 {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .footer-shop,
+  .footer-about,
+  .footer-illustration {
+    margin: 0;
+    padding: 0;
+  }
+  .footer-mid {
+    border-bottom: 1px solid #32473a;
+  }
+
+  .footer-links ul,
+  .footer-links li,
+  .footer-shop ul,
+  .footer-shop li,
+  .footer-events ul,
+  .footer-events li,
+  .footer-about ul,
+  .footer-about li {
+    margin: 5px;
+    padding: 0;
+  }
+
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background: transparent;
+    border-bottom: 1px solid #32473a;
+    padding: 5px 0;
+  }
+
+  .marquee p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+    font-size: 2rem; /* justér efter behov */
+    font-weight: bold;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
