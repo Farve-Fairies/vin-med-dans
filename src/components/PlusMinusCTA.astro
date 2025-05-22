@@ -1,0 +1,26 @@
+---
+const { number } = Astro.props;
+---
+
+<div class="wrapper">
+  <img src="../icons/minus.svg" alt="" />
+  <p>{number} flasker</p>
+  <img src="../icons/plus.svg" alt="" />
+</div>
+
+<style>
+  img {
+    width: 10px;
+  }
+
+  img:hover {
+    opacity: 50%;
+    cursor: not-allowed;
+  }
+
+  .wrapper {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+  }
+</style>
