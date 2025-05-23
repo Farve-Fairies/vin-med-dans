@@ -2,7 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import UpcomingEventCard from "../components/UpcomingEventCard.astro";
 import PreviousEventCard from "../components/PreviousEventCard.astro";
+import BackToFront from "../components/BackToFront.astro";
 ---
+
+<BackToFront />
 
 <Layout>
   <section class="events-intro">
@@ -59,6 +62,9 @@ import PreviousEventCard from "../components/PreviousEventCard.astro";
 </Layout>
 
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
   .section-title {
     font-family: "Nimbus Sans D OT Bold";
     font-size: 1rem;
@@ -71,9 +77,14 @@ import PreviousEventCard from "../components/PreviousEventCard.astro";
   }
 
   .events-intro {
+
     position: relative;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 2rem 0;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   .intro-wrapper {

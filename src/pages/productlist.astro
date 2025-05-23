@@ -3,6 +3,7 @@
 import Layout from "../layouts/Layout.astro";
 import ListView from "../components/ListView.astro";
 import ProductCard from "../components/ProductCard.astro";
+import BackToFront from "../components/BackToFront.astro";
 const { wine } = Astro.props;
 const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
 const key =
@@ -13,6 +14,8 @@ const options = {
 const data = await fetch(url, options).then((res) => res.json());
 console.log(data);
 ---
+
+<BackToFront />
 
 <Layout>
   <div id="smooth-wrapper">
@@ -62,6 +65,9 @@ console.log(data);
   });
 </script>
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
   .himmelvin {
     width: 100vw;
   }
@@ -73,6 +79,7 @@ console.log(data);
 
   .teaser h3 {
     padding-bottom: 1rem;
+    padding-top: 8rem;
   }
 
   @media (min-width: 700px) {

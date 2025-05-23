@@ -5,9 +5,9 @@
 <header class="header">
   <div class="wrapper">
     <div class="navigation_desktop">
-      <a href="/pages/productlist.astro">VINE</a>
-      <a href="/pages/events.astro">EVENTS</a>
-      <a href="/pages/about.astro">OM OS</a>
+      <a href="/productlist">VINE</a>
+      <a href="/events">EVENTS</a>
+      <a href="/about">OM OS</a>
     </div>
     <div class="header_logo">
       <img src="/logo/logo-text-dark.svg" alt="Logo" class="logo" />
@@ -18,545 +18,689 @@
         <img src="/icons/search.svg" alt="Søg" />
         <span>SØG</span>
       </button>
-      <button class="cart_button">KURV(0)</button>
+      <button class="cart_button">KURV (0)</button>
     </div>
-    <button id="burgerBtn" class="burger-menu" aria-label="Åbn menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
+    <div class="mobile_actions">
+      <div>
+        <button class="cart_button_mobile" id="kurv">KURV (0)</button>
+      </div>
+      <div>
+        <button id="burgerBtn" class="burger-menu" aria-label="Åbn menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <nav class="navbar" id="navbar">
     <ul>
-      <a href="/pages/index.astro"><li class="landing">FORSIDE</li></a>
-      <a href="/pages/productlist.astro"><li>VINE</li></a>
-      <a href="/pages/events.astro"><li>EVENTS</li></a>
-      <a href="/pages/about.astro"><li>OM OS</li></a>
+      <a href="/"><li class="landing">FORSIDE</li></a>
+      <a href="/productlist"><li>VINE</li></a>
+      <a href="/events"><li>EVENTS</li></a>
+      <a href="/about"><li>OM OS</li></a>
     </ul>
     <div class="header-actions">
-      <button type="submit" class="search-button">
-        <img src="/icons/search.svg" alt="Søg" />
-        <span>SØG</span>
-      </button>
-      <div class="divider"></div>
-      <button class="cart_button"> KURV(0) </button>
-    </div>
-    <div class="navbar-illustration">
-      <img src="/public/illustrationer/badering.svg" alt="Menu illustration" />
-    </div>
-    <!-- Kontaktbokse nederst -->
-    <div class="navbar-contact">
-      <div class="contact-box">vinmeddans@gmail.com</div>
-      <div class="contact-box">@vinmeddans</div>
+      <div class="navbar-illustration">
+        <img
+          src="/public/illustrationer/badering.svg"
+          alt="Menu illustration"
+        />
+      </div>
+      <!-- Kontaktbokse nederst -->
+      <div class="navbar-contact">
+        <div class="contact-box">vinmeddans@gmail.com</div>
+        <div class="contact-box">@vinmeddans</div>
+      </div>
     </div>
   </nav>
-</header>
 
-<style>
-  /* mobile first */
-  header {
-    background-color: #fafcf7;
-    padding: 0;
-    display: flex;
-    position: fixed;
-    top: 0;
-    outline: 1px solid #32473a;
-    width: 100vw;
-    left: 0;
-    height: 50px; /* Fast højde */
-  }
-
-  .wrapper {
-    z-index: 1000;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    outline: 1px solid #32473a; /* mørk outline som standard */
-    transition: outline-color 0.3s;
-  }
-  .wrapper.menu-open {
-    outline: 1px solid #fafcf7; /* lys outline når menuen er åben */
-  }
-  #kurv {
-    display: none;
-  }
-  #kurv.open {
-    display: flex;
-    color: #fafcf7;
-    border-left: #fafcf7 1px solid;
-    padding-left: 10px; /* ← tilføj denne linje for luft */
-    height: 100%;
-    padding-top: 5px;
-  }
-
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 100vw;
-    padding: 0 8px;
-  }
-
-  .navbar {
-    position: absolute;
-    top: 60px; /* justér efter header-højde */
-    left: 0;
-    width: 100vw;
-    background: #fafcf7;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
-    display: none;
-    border-bottom: 1px solid #32473a;
-    z-index: 1000;
-  }
-  .navbar.open {
-    display: flex;
-    background-color: #32473a;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    color: #fafcf7;
-    height: 100vh;
-    gap: 20px;
-    padding-top: 50px;
-  }
-  a,
-  span {
-    font-family: Nimbus Sans D OT Bold;
-  }
-
-  .navbar.open,
-  .navbar.open a,
-  .navbar.open li {
-    color: #fafcf7;
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  .burger-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    border: none;
-    padding: 15px;
-    background-color: transparent;
-    border-left: #32473a 1px solid;
-    /* position: absolute;
-    right: 16px;
-    top: 5px; */
-  }
-  .burger-menu.open {
-    color: #fafcf7;
-    border-left: #fafcf7 1px solid;
-    gap: 0;
-    padding: 10px;
-    height: 100%;
-    padding-top: 10px;
-  }
-
-  .burger-menu.open .bar {
-    background: #fafcf7;
-  }
-
-  .burger-menu .bar:nth-child(1) {
-    top: 8px;
-  }
-  .burger-menu .bar:nth-child(2) {
-    top: 14.5px;
-  }
-  .burger-menu .bar:nth-child(3) {
-    top: 21px;
-  }
-
-  .burger-menu.open .bar:nth-child(1) {
-    transform: rotate(45deg) translateY(4.5px) translateX(1px);
-  }
-  .burger-menu.open .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .burger-menu.open .bar:nth-child(3) {
-    transform: rotate(-51deg) translateY(-3px) translateX(0px);
-  }
-
-  .burger-menu .bar {
-    width: 24px;
-    height: 3px;
-    background: #32473a;
-    /* margin: 2px 0; */
-    border-radius: 1px;
-    transition: 0.3s;
-  }
-
-  .navbar ul {
-    list-style: normal;
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* mere afstand mellem links */
-    padding: 0;
-    margin: 0px;
-    font-weight: bolder;
-    width: 100%;
-  }
-
-  .navbar li {
-    font-size: 1rem;
-    font-weight: bold;
-    border-bottom: #fafcf7 1px solid;
-    width: 100%;
-    padding-bottom: 30px;
-  }
-
-  .navbar a {
-    text-decoration: none;
-    color: #fafcf7;
-    font-weight: bolder;
-  }
-  .navbar-illustration {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5px;
-    margin-top: 60px;
-  }
-  .navbar-illustration img {
-    max-width: 120px;
-    height: auto;
-  }
-
-  .navbar-contact {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* ← ændret fra center til space-between */
-    gap: 100px;
-    padding: 0px; /* valgfrit: lidt indrykning fra kanterne */
-  }
-  .contact-box {
-    background-color: transparent;
-    color: #fafcf7;
-    border: 1px solid #fafcf7;
-    padding: 8px 10px;
-    font-size: 0.8rem;
-    flex: 1;
-    text-align: center;
-    min-width: 0;
-    font-family: "Nimbus Sans L";
-  }
-
-  .header_logo {
-    grid-column: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .header_logo img {
-    height: 36px; /* Mindre logo */
-    width: auto;
-    margin: 0;
-    padding: 0;
-  }
-
-  .navbar.open ~ .header_logo .menu-text {
-    display: flex;
-  }
-
-  .navbar.open ~ .header_logo img {
-    display: none;
-  }
-
-  .header-actions {
-    grid-column: 3;
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-end;
-    gap: 16px; /* afstand mellem knapperne */
-    height: 100%;
-  }
-  .search {
-    grid-column: 3;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .search-form {
-    display: flex;
-    align-items: center;
-    border: 1px solid #32473a;
-    border-radius: 5px;
-    padding: 4px;
-    background-color: #fff;
-  }
-
-  .search-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    display: flex; /* ← sørger for at ikon og tekst står på linje */
-    align-items: center; /* ← vertikal centrering */
-    gap: 4px;
-  }
-
-  .search-button img {
-    height: auto;
-    width: 10px;
-  }
-
-  .search-button span {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #32473a;
-    letter-spacing: 0.5px; /* valgfrit, hvis du vil matche spacing */
-  }
-  .cart {
-    grid-column: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .cart_button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-size: 1rem;
-    color: #32473a;
-    font-weight: bold;
-    border-left: 1px solid #32473a;
-  }
-
-  .search-button,
-  .cart_button {
-    border: none; /* Ingen border */
-    border-radius: 0;
-    background: none;
-    padding: 0px 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #32473a;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .cart_button,
-  .search-button {
-    height: 100%;
-    align-self: stretch;
-  }
-
-  .divider {
-    width: 1px;
-    height: 100%;
-    background: #32473a;
-    align-self: stretch;
-  }
-
-  .header_logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 36px; /* eller hvad dit logo er */
-    position: relative;
-  }
-  .menu-text {
-    display: none;
-    font-size: 0.7rem;
-    font-family: "Nimbus Sans L";
-    font-weight: normal;
-    color: #fafcf7;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 25px;
-    top: 0;
-    background: #fafcf7; /* valgfrit, hvis du vil have baggrund */
-    z-index: 2;
-  }
-  .header_logo.menu-open .menu-text {
-    display: flex;
-  }
-  .header_logo.menu-open img {
-    display: none;
-  }
-
-  #kurv {
-    border-left: 1px solid #32473a;
-    padding-left: 10px;
-    transition: border-color 0.2s;
-    display: flex;
-    align-items: center;
-    height: 100%; /* Fylder hele headerens højde */
-    color: #32473a;
-  }
-  #kurv.open {
-    border-left: 1px solid #fafcf7;
-    color: #fafcf7;
-  }
-  .wrapper,
-  .header-actions {
-    display: flex;
-    align-items: stretch;
-  }
-
-  .navigation_desktop {
-    display: none;
-  }
-
-  .header-desktop {
-    display: none;
-  }
-
-  .navbar a:hover,
-  .navbar a:active,
-  .navbar .header-actions button:hover,
-  .navbar .header-actions button:active {
-    color: #ffcdd8; /* eller en anden farve du ønsker */
-    transition: color 0.2s;
-  }
-
-  /* Medie queries for større skærme */
-  @media (min-width: 768px) {
-    header {
-      width: 100%;
-      left: 0;
-      right: 0;
-      margin: 0;
-      padding: 1px;
-      border-left: none;
-      border-right: none;
-      box-sizing: border-box;
-      height: 30px;
-    }
-
-    .navigation_desktop {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      font-size: 1rem;
-      height: 100%;
-      border-right: #32473a 1px solid;
-      padding-right: 20px;
-      padding-left: 20px;
-      font-weight: bold;
-    }
-    .navigation_desktop a {
-      text-decoration: none;
-      color: #32473a;
-      font-weight: bold;
-    }
-
-    .navigation_desktop a:hover,
-    .header-actions button:hover,
-    .cart_button:hover,
-    .search-button span:hover {
-      color: #ffcdd8; /* eller en anden farve du ønsker */
-      transition: color 0.2s;
-    }
-    ``` .header-actions button,
-    .cart_button,
-    .search-button {
-      font-size: 0.8rem;
-      padding: 0 10px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-    .cart_button span {
-      font-size: 1rem;
-      /* Fjern evt. border-left her, hvis du har det på .cart_button */
-    }
-    .wrapper {
-      display: flex;
-      align-items: center;
-      margin: 0;
-      justify-content: space-between;
-      width: 100%;
-      padding: 0;
-      outline: none;
-      height: 100%;
-    }
-
-    .navbar {
-      display: none;
-    }
-
-    .header_logo {
-      order: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: none;
-      width: auto;
-      height: 100%;
-      position: static;
-    }
-
-    .header-actions {
-      order: 3;
+  <style>
+    .mobile_actions {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      flex: none;
-      width: auto;
-      height: 100%;
-      position: static;
-      border-left: #32473a 1px solid;
+      gap: 1rem;
+      width: 100%;
     }
-    .header-actions,
+    /* mobile first */
+    header {
+      position: relative;
+      background-color: #fafcf7;
+      padding: 0;
+      margin: 0.7rem 2vw;
+      display: flex;
+      position: fixed;
+      top: 0;
+      width: 96vw;
+      left: 0;
+      height: 50px; /* Fast højde */
+      z-index: 200;
+      outline: 1px solid #32473a;
+      transition: outline-color 0.3s;
+    }
+
+    header.menu-open {
+      outline: 1px solid #fafcf7;
+    }
+
+    .wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 300;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+      outline: 1px solid #32473a;
+      transition: outline-color 0.3s;
+      background: transparent;
+    }
+
+    header,
+    header.menu-open {
+      outline: none;
+    }
+    .wrapper.menu-open {
+      outline: 1px solid #fafcf7;
+    }
+
+    .menu-open.wrapper {
+      outline: 1px solid #fafcf7;
+    }
+
+    #kurv {
+      display: none;
+    }
+    #kurv.open {
+      display: flex;
+      color: #fafcf7;
+      border-left: #fafcf7 1px solid;
+      height: 110%;
+      padding:;
+    }
+
+    #kurv:hover {
+      color: #ffcdd8;
+    }
+
+    #kurv.open:hover {
+      color: #ffcdd8;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100vw;
+      padding: 0 8px;
+    }
+
+    .navbar {
+      position: absolute;
+      top: 60px; /* justér efter header-højde */
+      left: 0;
+      width: 100vw;
+      background: #fafcf7;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+      display: none;
+      border-bottom: 1px solid #32473a;
+      z-index: 1000;
+    }
+    .navbar.open {
+      z-index: 50;
+      display: flex;
+      background-color: #32473a;
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      color: #fafcf7;
+      height: 100vh;
+      width: 100vw;
+      margin: 0 auto;
+      gap: 20px;
+      padding-top: 80px;
+    }
+    a,
+    span {
+      font-family: "Nimbus Sans D OT Bold";
+    }
+
+    .navbar.open,
+    .navbar.open a,
+    .navbar.open li {
+      color: #fafcf7;
+      text-decoration: none;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+    .burger-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      padding: 15px;
+      background-color: transparent;
+      border-left: #32473a 1px solid;
+      height: 50px;
+      /* position: absolute;
+    right: 16px;
+    top: 5px; */
+    }
+
+    .burger-menu:hover {
+      cursor: pointer;
+    }
+    .burger-menu.open {
+      color: #fafcf7;
+      border-left: #fafcf7 1px solid;
+      gap: 0;
+      padding: 15px;
+      padding-top: 10px;
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .burger-menu.open .bar {
+      background: #fafcf7;
+    }
+
+    .burger-menu .bar:nth-child(1) {
+      top: 8px;
+    }
+    .burger-menu .bar:nth-child(2) {
+      top: 14.5px;
+    }
+    .burger-menu .bar:nth-child(3) {
+      top: 21px;
+    }
+
+    .burger-menu.open .bar:nth-child(1) {
+      transform: rotate(45deg) translateY(4.5px) translateX(1px);
+    }
+    .burger-menu.open .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-menu.open .bar:nth-child(3) {
+      transform: rotate(-51deg) translateY(-3px) translateX(0px);
+    }
+
+    .burger-menu .bar {
+      width: 24px;
+      height: 3px;
+      background: #32473a;
+      /* margin: 2px 0; */
+      border-radius: 1px;
+      transition: 0.3s;
+    }
+
+    .navbar ul {
+      list-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* mere afstand mellem links */
+      padding: 2rem 0;
+      margin: 0px;
+      font-weight: bolder;
+      width: 100%;
+    }
+
+    .wrapper.menu-open button:hover {
+      color: #ffcdd8;
+    }
+
+    .navbar li {
+      font-size: 1rem;
+      font-weight: normal;
+      border-bottom: #fafcf7 1px solid;
+      width: 100%;
+      padding-bottom: 30px;
+    }
+
+    .navbar li:hover {
+      color: #ffcdd8;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #fafcf7;
+      font-weight: bolder;
+    }
+
+    .burger-menu:hover span {
+      background: #ffcdd8;
+    }
+
+    .burger-menu.open:hover span {
+      background: #ffcdd8;
+    }
+
+    .navbar-illustration {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+      margin-top: 60px;
+    }
+    .navbar-illustration img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    .navbar-contact {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between; /* ← ændret fra center til space-between */
+      gap: 100px;
+      padding: 0px; /* valgfrit: lidt indrykning fra kanterne */
+    }
+    .contact-box {
+      background-color: transparent;
+      color: #fafcf7;
+      border: 1px solid #fafcf7;
+      padding: 8px 10px;
+      font-size: 0.8rem;
+      flex: 1;
+      text-align: center;
+      min-width: 0;
+      font-family: "Nimbus Sans L";
+    }
+
+    .header_logo {
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header_logo img {
+      height: 36px; /* Mindre logo */
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar.open ~ .header_logo .menu-text {
+      display: flex;
+    }
+
+    .navbar.open ~ .header_logo img {
+      display: none;
+    }
+
+    .header-actions {
+      grid-column: 3;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-end;
+      gap: 16px; /* afstand mellem knapperne */
+      height: 100%;
+    }
+    .search {
+      grid-column: 3;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      border: 1px solid #32473a;
+      border-radius: 5px;
+      padding: 4px;
+      background-color: #fff;
+    }
+
+    .search-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex; /* ← sørger for at ikon og tekst står på linje */
+      align-items: center; /* ← vertikal centrering */
+      gap: 4px;
+    }
+
+    .search-button img {
+      height: auto;
+      width: 16px;
+      margin-bottom: 0.1rem;
+    }
+
+    .search-button span {
+      font-size: 1rem;
+      font-weight: 200;
+      color: #32473a;
+    }
+    .cart {
+      grid-column: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .cart_button {
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0px 5px;
-      font-weight: bold;
+      padding: 0;
+      font-size: 1rem;
       color: #32473a;
+      font-weight: 200;
+      border-left: 1px solid #32473a;
+    }
+
+    .cart_button_mobile {
+      border: none; /* Ingen border */
+      border-radius: 0;
+      background: none;
+      font-size: 1rem;
+      font-weight: 200;
+      color: #32473a;
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 4px;
-      border-left: #32473a 1px solid;
     }
 
-    .burger-menu,
-    .navbar-illustration,
-    .navbar-contact,
+    .search-button,
+    .cart_button {
+      border: none; /* Ingen border */
+      border-radius: 0;
+      background: none;
+      padding: 0px 5px;
+      font-size: 1rem;
+      font-weight: 200;
+      color: #32473a;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cart_button,
+    .search-button {
+      height: 100%;
+      align-self: stretch;
+    }
+
+    .divider {
+      width: 1px;
+      height: 100%;
+      background: #32473a;
+      align-self: stretch;
+    }
+
+    .header_logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px; /* eller hvad dit logo er */
+      position: relative;
+      padding-left: 1rem;
+    }
+    .menu-text {
+      display: none;
+      font-size: 0.7rem;
+      font-family: "Nimbus Sans L";
+      font-weight: normal;
+      color: #fafcf7;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 25px;
+      top: 0;
+      /* valgfrit, hvis du vil have baggrund */
+      z-index: 2;
+    }
+
+    .header_logo.menu-open .menu-text {
+      display: flex;
+    }
+    .header_logo.menu-open img {
+      display: none;
+    }
+
     #kurv {
-      display: none; /* Skjul burger-menuen og illustration på større skærme */
+      border-left: 1px solid #32473a;
+      padding-left: 1rem;
+      transition: border-color 0.2s;
+      display: flex;
+      align-items: center;
+      height: 50px; /* Fylder hele headerens højde */
+      color: #32473a;
+      font-size: 0.7rem;
+      font-family: "Nimbus Sans L";
+      font-weight: normal;
     }
-  }
-</style>
+    #kurv.open {
+      border-left: 1px solid #fafcf7;
+      height: 50px;
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      color: #fafcf7;
+      font-size: 0.7rem;
+      font-family: "Nimbus Sans L";
+      font-weight: normal;
+    }
+    .wrapper,
+    .header-actions {
+      display: flex;
+      align-items: stretch;
+    }
 
-<script>
-  const burgerBtn = document.getElementById("burgerBtn");
-  const navbar = document.getElementById("navbar");
-  const kurv = document.getElementById("kurv");
-  const headerLogo = document.querySelector(".header_logo");
-  const wrapper = document.querySelector(".wrapper");
+    .navigation_desktop {
+      display: none;
+    }
 
-  burgerBtn.addEventListener("click", () => {
-    navbar.classList.toggle("open");
-    burgerBtn.classList.toggle("open");
-    kurv.classList.toggle("open");
-    kurv.classList.toggle("no-border", navbar.classList.contains("open"));
-    headerLogo.classList.toggle("menu-open");
-    wrapper.classList.toggle("menu-open", navbar.classList.contains("open")); // ændret fra header til wrapper
-  });
-</script>
+    .header-desktop {
+      display: none;
+    }
+
+    .navbar a:hover,
+    .navbar a:active,
+    .navbar .header-actions button:hover,
+    .navbar .header-actions button:active {
+      color: #ffcdd8; /* eller en anden farve du ønsker */
+      transition: color 0.2s;
+    }
+
+    /* Medie queries for større skærme */
+    @media (min-width: 930px) {
+      .navbar {
+        display: none;
+      }
+      header {
+        width: 100vw;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 1px;
+        /* border-left: none;
+      border-right: none; */
+        box-sizing: border-box;
+        height: 30px;
+      }
+
+      .navigation_desktop {
+        position: absolute;
+        left: 0px;
+        display: flex;
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        gap: 80px;
+        font-size: 1rem;
+        height: 100%;
+        padding-top: 0.2rem;
+        padding-left: 2.5rem;
+        padding-right: 3rem;
+        border-right: #32473a 1px solid;
+        font-weight: 200;
+      }
+
+      .navigation_desktop a {
+        text-decoration: none;
+        color: #32473a;
+        font-weight: normal;
+      }
+
+      .navigation_desktop a:hover,
+      .header-actions button:hover,
+      .cart_button:hover,
+      .search-button span:hover {
+        color: #ffcdd8; /* eller en anden farve du ønsker */
+        transition: color 0.2s;
+      }
+      ``` .header-actions button,
+      .cart_button,
+      .search-button {
+        font-size: 0.8rem;
+        padding: 0 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-button {
+        padding: 0.3rem 2.8rem 0rem 0rem;
+      }
+
+      .cart_button span {
+        font-size: 1rem;
+        /* Fjern evt. border-left her, hvis du har det på .cart_button */
+      }
+      .wrapper {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        padding: 0;
+      }
+
+      .navbar {
+        display: none;
+      }
+
+      .header_logo {
+        position: absolute;
+        left: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding-top: 4px;
+
+        /* position: static; */
+      }
+
+      .header-actions {
+        order: 3;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: none;
+        width: auto;
+        height: 100%;
+        position: static;
+        border-left: #32473a 1px solid;
+        padding: 0rem 1.3rem 0rem 2.5rem;
+      }
+      .header-actions,
+      .cart_button {
+        font-family: "Nimbus Sans D OT Bold";
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 200;
+        color: #32473a;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border-left: #32473a 1px solid;
+      }
+
+      a {
+        font-size: 1rem;
+        flex: none;
+      }
+
+      .cart_button {
+        padding-top: 0.5rem;
+        padding-left: 2.5rem;
+        padding-right: 1.2rem;
+        padding-bottom: 0.2rem;
+      }
+
+      .burger-menu,
+      .navbar-illustration,
+      .navbar-contact,
+      #kurv {
+        display: none; /* Skjul burger-menuen og illustration på større skærme */
+      }
+    }
+  </style>
+
+  <script>
+    //@ts-nocheck
+    document.addEventListener("DOMContentLoaded", () => {
+      const burgerBtn = document.getElementById("burgerBtn");
+      const navbar = document.getElementById("navbar");
+      const kurv = document.getElementById("kurv");
+      const headerLogo = document.querySelector(".header_logo");
+      const wrapper = document.querySelector(".wrapper");
+      const header = document.querySelector(".header");
+
+      burgerBtn.addEventListener("click", () => {
+        navbar.classList.toggle("open");
+        burgerBtn.classList.toggle("open");
+        kurv?.classList.toggle("open");
+        kurv?.classList.toggle("no-border", navbar.classList.contains("open"));
+        headerLogo.classList.toggle("menu-open");
+        wrapper.classList.toggle(
+          "menu-open",
+          navbar.classList.contains("open"),
+        );
+        if (navbar.classList.contains("open")) {
+          wrapper.style.outline = "1px solid #fafcf7";
+          header.style.outline = "1px solid #fafcf7";
+        } else {
+          wrapper.style.outline = "1px solid #32473a";
+          header.style.outline = "1px solid #32473a";
+        }
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 930) {
+          navbar.classList.remove("open");
+          burgerBtn.classList.remove("open");
+          kurv?.classList.remove("open");
+          headerLogo.classList.remove("menu-open");
+          wrapper.classList.remove("menu-open");
+          wrapper.style.outline = "1px solid #32473a";
+          header.style.outline = "1px solid #32473a";
+        }
+      });
+    });
+  </script>
+</header>
