@@ -1,10 +1,11 @@
 ---
 //@ts-nocheck
-import Layout from "../../layouts/Layout.astro";
+import SingleLayout from "../../layouts/SingleLayout.astro";
 import PlusMinusCTA from "../../components/PlusMinusCTA.astro";
 import BoxButton from "../../components/BoxButton.astro";
 import Back from "../../components/Back.astro";
 import DropDown from "../../components/DropDown.astro";
+import Footer from "../../components/Footer.astro";
 export async function getStaticPaths() {
   const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
   const key =
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 const { wine } = Astro.props;
 ---
 
-<Layout>
+<SingleLayout title={wine.title}>
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <Back />
@@ -79,265 +80,266 @@ const { wine } = Astro.props;
           <DropDown />
         </div>
       </section>
+      <Footer />
     </div>
   </div>
+</SingleLayout>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .ctas {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-top: 3rem;
+    gap: 2rem;
+  }
+
+  .product-section img {
+    width: 40%;
+    padding: 4rem 0rem 2rem 0rem;
+  }
+
+  .border-bottom {
+    border-bottom: 1px solid #32473a;
+  }
+  .border-right {
+    border-right: 1px solid #32473a;
+  }
+
+  .pad {
+    padding: 3rem 4rem;
+  }
+  .pad-bottom {
+    padding-bottom: 0.5rem;
+  }
+  .product-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #32473a;
+    margin: 0 auto;
+    width: 100vw;
+    min-height: 97vh;
+  }
+
+  .banner-section h3,
+  .product-display h3 {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 4rem;
+  }
+
+  .info-section h3 {
+    padding: 0rem 0rem;
+  }
+  .banner-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 5rem;
+    border-bottom: 1px solid #fafcf7;
+    height: 100vh;
+  }
+
+  .banner-wine {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0 auto;
+    width: 22%;
+    z-index: 1;
+  }
+
+  .banner-wrapper {
+    grid-row: 1;
+    grid-column: 1;
+    /* height: 84vh; */
+  }
+
+  .scrolling-text {
+    display: flex;
+    width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 7rem;
+    align-items: center;
+  }
+
+  .scrolling-text h1 {
+    display: inline-block;
+    font-size: 7rem;
+    white-space: nowrap;
+    margin: 0;
+    padding-right: 2rem;
+    animation: scroll-x 30s linear infinite;
+    font-family: "Nimbus Sans D OT Light";
+    -webkit-text-stroke: 3px;
+  }
+
+  .scroll-text {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    font-size: 1rem;
+    color: #252a26;
+    padding: 0.2rem 0.1rem;
+    z-index: 2;
+    text-align: center;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.1em;
+    background: none;
+    border-radius: 0;
+  }
+
+  .scroll-text .arrow {
+    display: inline-block;
+    font-size: 1.1em;
+    animation: bounceArrow 2.5s infinite;
+    transition: color 0.2s;
+  }
+
+  */
+
+    /* Fade animation for hele indikatoren */
+    @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    10%,
+    90% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Pil-animation: meget lille bevægelse */
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.15em);
+    }
+  }
+
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @media (max-width: 1000px) {
+    .scroll-text {
+      left: 10px;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+    .product-display {
+      display: none;
     }
 
-    .ctas {
-      display: flex;
-      align-items: center;
-      justify-content: start;
-      padding-top: 3rem;
-      gap: 2rem;
-    }
-
-    .product-section img {
-      width: 40%;
-      padding: 4rem 0rem 2rem 0rem;
-    }
-
-    .border-bottom {
-      border-bottom: 1px solid #32473a;
-    }
-    .border-right {
-      border-right: 1px solid #32473a;
-    }
-
-    .pad {
-      padding: 3rem 4rem;
-    }
-    .pad-bottom {
-      padding-bottom: 0.5rem;
-    }
     .product-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid #32473a;
-      margin: 0 auto;
+      display: block;
       width: 100vw;
-      min-height: 97vh;
+    }
+
+    .scrolling-text h1 {
+      font-size: 2.5rem;
+      -webkit-text-stroke: 2px;
+    }
+    .scrolling-text {
+      height: 3rem;
+    }
+
+    .banner-section {
+      margin-top: 2rem;
+      padding-top: 3rem;
+      border-bottom: 1px solid #fafcf7;
+      padding-bottom: 0.5rem;
+      height: 60vh;
     }
 
     .banner-section h3,
     .product-display h3 {
-      display: flex;
-      justify-content: end;
-      padding: 1rem 4rem;
-    }
-
-    .info-section h3 {
-      padding: 0rem 0rem;
-    }
-    .banner-section {
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-      padding-top: 5rem;
-      border-bottom: 1px solid #fafcf7;
-      height: 100vh;
+      padding: 0.8rem 1.2rem;
+      margin-top: 3rem;
     }
 
     .banner-wine {
-      grid-row: 1;
-      grid-column: 1;
-      margin: 0 auto;
-      width: 22%;
-      z-index: 1;
+      width: 45%;
     }
+  }
 
-    .banner-wrapper {
-      grid-row: 1;
-      grid-column: 1;
-      /* height: 84vh; */
-    }
+  .scroll-text:hover {
+    color: #ffcdd8;
+  }
+</style>
 
-    .scrolling-text {
-      display: flex;
-      width: 100vw;
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      height: 7rem;
-      align-items: center;
-    }
+<script>
+  //@ts-nocheck
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-    .scrolling-text h1 {
-      display: inline-block;
-      font-size: 7rem;
-      white-space: nowrap;
-      margin: 0;
-      padding-right: 2rem;
-      animation: scroll-x 30s linear infinite;
-      font-family: "Nimbus Sans D OT Light";
-      -webkit-text-stroke: 3px;
-    }
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-    .scroll-text {
-      position: absolute;
-      top: 75%;
-      left: 0;
-      transform: translateY(-50%);
-      writing-mode: vertical-rl;
-      font-size: 1rem;
-      color: #252a26;
-      padding: 0.2rem 0.1rem;
-      z-index: 2;
-      text-align: center;
-      letter-spacing: 0.08em;
-      display: flex;
-      align-items: center;
-      gap: 0.1em;
-      background: none;
-      border-radius: 0;
-    }
+  ScrollSmoother.create({
+    smooth: 2,
+    effects: true,
+    normalizeScroll: true,
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+  });
 
-    .scroll-text .arrow {
-      display: inline-block;
-      font-size: 1.1em;
-      animation: bounceArrow 2.5s infinite;
-      transition: color 0.2s;
-    }
+  // Smooth transition for banner-section
+  gsap.to(".banner-section", {
+    scrollTrigger: {
+      trigger: ".banner-section",
+      start: "top top",
+      endTrigger: ".product-section",
+      end: "bottom top",
+      scrub: true,
+    },
+    opacity: 0,
+    y: -100,
+    ease: "power1.out",
+  });
 
-    */
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollBtn = document.getElementById("scrollToEt1");
+    const target = document.querySelector("#et1");
+    const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
 
-    /* Fade animation for hele indikatoren */
-    @keyframes fadeInOut {
-      0%,
-      100% {
-        opacity: 0.15;
-      }
-      10%,
-      90% {
-        opacity: 0.25;
-      }
-      50% {
-        opacity: 0.5;
-      }
-    }
-
-    /* Pil-animation: meget lille bevægelse */
-    @keyframes bounceArrow {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(0.15em);
-      }
-    }
-
-    @keyframes scroll-x {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-    @media (max-width: 1000px) {
-      .scroll-text {
-        left: 10px;
-        text-decoration: none;
-        font-size: 1.5rem;
-      }
-      .product-display {
-        display: none;
-      }
-
-      .product-section {
-        display: block;
-        width: 100vw;
-      }
-
-      .scrolling-text h1 {
-        font-size: 2.5rem;
-        -webkit-text-stroke: 2px;
-      }
-      .scrolling-text {
-        height: 3rem;
-      }
-
-      .banner-section {
-        margin-top: 2rem;
-        padding-top: 3rem;
-        border-bottom: 1px solid #fafcf7;
-        padding-bottom: 0.5rem;
-        height: 60vh;
-      }
-
-      .banner-section h3,
-      .product-display h3 {
-        padding: 0.8rem 1.2rem;
-        margin-top: 3rem;
-      }
-
-      .banner-wine {
-        width: 45%;
-      }
-    }
-
-    .scroll-text:hover {
-      color: #ffcdd8;
-    }
-  </style>
-
-  <script>
-    //@ts-nocheck
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { ScrollSmoother } from "gsap/ScrollSmoother";
-
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-    ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
-      normalizeScroll: true,
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-    });
-
-    // Smooth transition for banner-section
-    gsap.to(".banner-section", {
-      scrollTrigger: {
-        trigger: ".banner-section",
-        start: "top top",
-        endTrigger: ".product-section",
-        end: "bottom top",
-        scrub: true,
-      },
-      opacity: 0,
-      y: -100,
-      ease: "power1.out",
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const scrollBtn = document.getElementById("scrollToEt1");
-      const target = document.querySelector("#et1");
-      const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
-
-      if (scrollBtn && target && smoother) {
-        scrollBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          smoother.scrollTo(target, true, "top top");
-        });
-      }
-    });
-
-    if (scrollBtn && target) {
+    if (scrollBtn && target && smoother) {
       scrollBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        if (smoother) {
-          smoother.scrollTo(target, true, "top top");
-        } else {
-          target.scrollIntoView({ behavior: "smooth" });
-        }
+        smoother.scrollTo(target, true, "top top");
       });
     }
-  </script>
-</Layout>
+  });
+
+  if (scrollBtn && target) {
+    scrollBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (smoother) {
+        smoother.scrollTo(target, true, "top top");
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+</script>
