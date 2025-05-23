@@ -53,6 +53,13 @@ const { date, month, title, description, imageUrl } = Astro.props;
 
   /* MOBIL VISNING */
   @media (max-width: 799px) {
+    .calendar-link {
+      text-align: start;
+      line-height: 1.5rem;
+    }
+    #text {
+      text-align: center;
+    }
     .event-info h3 {
       padding: 1rem 0rem 0rem 1rem;
     }
@@ -171,6 +178,13 @@ const { date, month, title, description, imageUrl } = Astro.props;
       margin-top: -2rem;
       padding-left: 9rem;
       color: #32473a;
+    }
+
+    .calendar-link {
+      text-align: start;
+    }
+    #text {
+      text-align: start;
     }
 
     .event-card-desktop .calendar-link {

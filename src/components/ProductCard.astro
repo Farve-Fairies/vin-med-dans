@@ -12,7 +12,7 @@ const data = await fetch(url, options).then((res) => res.json());
 console.log(data);
 ---
 
-<div class="wrapper" id="wrapper">
+<div class="wrapper section-fade" id="wrapper">
   <div class="heading">
     <h3>{wine.title}</h3>
     <h3>10,5% alc.</h3>
@@ -165,6 +165,16 @@ console.log(data);
   }
   .visible {
     visibility: visible;
+  }
+
+  .section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+  }
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 

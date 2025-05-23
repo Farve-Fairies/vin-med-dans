@@ -25,7 +25,7 @@ const wine3 = {
   </div>
 </Layout>
 <AgePopup />
-<section class="et" id="et">
+<section class="et section-fade" id="et">
   <h4 class="venstre">
     Vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
   </h4>
@@ -44,7 +44,7 @@ const wine3 = {
   </div>
 </section>
 
-<section class="product">
+<section class="product section-fade">
   <h4 class="venstre-nede">100% bæredygtigt.</h4>
   <img
     src="../billeder/produktbilleder/hoenefuld-1.webp"
@@ -53,7 +53,7 @@ const wine3 = {
   />
   <h4 class="hoejre-nede">Frugt & bær er plukket rundt omkring i Danmark.</h4>
 </section>
-<section class="grid_1-1">
+<section class="grid_1-1 section-fade">
   <div class="row-1">
     <img src="../billeder/forside/skaal.webp" alt="" />
     <div class="text-1">
@@ -73,7 +73,7 @@ const wine3 = {
   </div>
 </section>
 
-<section class="to">
+<section class="to section-fade">
   <div class="billede-tekst">
     <div class="billede-wrapper">
       <img src="../billeder/forside/skaal.webp" alt="" />
@@ -783,4 +783,35 @@ const wine3 = {
       padding: 0;
     }
   }
+
+  .section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    document.querySelectorAll(".section-fade").forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
