@@ -3,7 +3,24 @@
 const { date, month, title, description, imageUrl } = Astro.props;
 ---
 
-<div class="event-card">
+<!-- MOBIL -->
+<div class="event-card-mobile">
+  <div class="event-date">
+    <p class="day">{date}</p>
+    <p class="month">{month}</p>
+  </div>
+
+  <div class="event-info">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="event-image">
+      <img src={imageUrl} alt={title} />
+    </div>
+  </div>
+</div>
+
+<!-- DESKTOP -->
+<div class="event-card-desktop">
   <div class="event-date">
     <p class="day">{date}</p>
     <p class="month">{month}</p>
@@ -20,82 +37,128 @@ const { date, month, title, description, imageUrl } = Astro.props;
 </div>
 
 <style>
-  .event-card {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    border-bottom: 1px solid #32473a;
-    width: 100vw;
-    margin-left: calc(-1 * ((100vw - 100%) / 2));
-  }
-
-  .event-date {
-    border-right: 1px solid #32473a;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .day {
-    font-size: 9rem;
-    font-family: "Nimbus Sans D OT Bold";
-    color: #32473a;
-    margin: 0;
-    padding-left: 7.5rem;
-  }
-
-  .month {
-    font-size: 1.5rem;
-    font-family: "Nimbus Sans D OT Bold";
-    color: #32473a;
-    text-transform: uppercase;
-    margin-top: -2rem;
-    padding-left: 9rem;
-  }
-
-  .event-info {
-    border-right: 1px solid #32473a;
-    padding: 1rem;
-    font-family: "Nimbus Sans D OT Light";
-  }
-
-  .event-info h3 {
-    font-family: "Nimbus Sans D OT Bold";
-    font-size: 1.3rem;
-    margin: 0 0 0.5rem 0;
-    color: #32473a;
-  }
-
-  .event-info p {
-    font-size: 1rem;
-    line-height: 1.4;
-    color: #32473a;
-  }
-
-  .event-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .section-title {
-    font-family: "Nimbus Sans D OT Bold";
-    font-size: 1rem;
-    color: #32473a;
-    padding: 1rem 0;
-    border-bottom: 1px solid #32473a;
-    text-transform: uppercase;
+  .event-card-mobile,
+  .event-card-desktop {
+    display: none;
   }
 
   @media (max-width: 799px) {
-    .event-card {
-      grid-template-columns: 1fr;
+    .event-card-mobile {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      border-bottom: 1px solid #32473a;
+      width: 100vw;
+      margin-left: calc(-1 * ((100vw - 100%) / 2));
     }
 
-    .event-date,
-    .event-info,
-    .event-image {
-      border-right: none;
+    .event-card-mobile .event-date {
+      border-right: 1px solid #32473a;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .event-card-mobile .day {
+      font-size: 4rem;
+      font-family: "Nimbus Sans D OT Bold";
+      margin: 0;
+      color: #32473a;
+    }
+
+    .event-card-mobile .month {
+      font-size: 1.2rem;
+      font-family: "Nimbus Sans D OT Bold";
+      text-transform: uppercase;
+      margin-top: -0.5rem;
+      color: #32473a;
+    }
+
+    .event-card-mobile .event-info {
+      padding: 1rem;
+      font-family: "Nimbus Sans D OT Light";
+    }
+
+    .event-card-mobile .event-info h3 {
+      font-family: "Nimbus Sans D OT Bold";
+      font-size: 1.3rem;
+      margin: 0 0 0.5rem;
+      color: #32473a;
+    }
+
+    .event-card-mobile .event-info p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #32473a;
+    }
+
+    .event-card-mobile .event-image {
+      margin-top: 1rem;
+    }
+
+    .event-card-mobile .event-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      border-top: 1px solid #32473a;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .event-card-desktop {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
       border-bottom: 1px solid #32473a;
+      width: 100vw;
+      margin-left: calc(-1 * ((100vw - 100%) / 2));
+    }
+
+    .event-card-desktop .event-date {
+      border-right: 1px solid #32473a;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .event-card-desktop .day {
+      font-size: 9rem;
+      font-family: "Nimbus Sans D OT Bold";
+      margin: 0;
+      padding-left: 7.5rem;
+      color: #32473a;
+    }
+
+    .event-card-desktop .month {
+      font-size: 1.5rem;
+      font-family: "Nimbus Sans D OT Bold";
+      text-transform: uppercase;
+      margin-top: -2rem;
+      padding-left: 9rem;
+      color: #32473a;
+    }
+
+    .event-card-desktop .event-info {
+      border-right: 1px solid #32473a;
+      padding: 1rem;
+      font-family: "Nimbus Sans D OT Light";
+    }
+
+    .event-card-desktop .event-info h3 {
+      font-family: "Nimbus Sans D OT Bold";
+      font-size: 1.3rem;
+      margin: 0 0 0.5rem;
+      color: #32473a;
+    }
+
+    .event-card-desktop .event-info p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #32473a;
+    }
+
+    .event-card-desktop .event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
   }
 </style>
