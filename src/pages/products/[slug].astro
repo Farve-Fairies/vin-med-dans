@@ -25,13 +25,13 @@ const { wine } = Astro.props;
 ---
 
 <Layout>
-  <Back />
-  <a href="#et1" class="scroll-text" onclick="scrollToEt1(event)"
-    >SCROLL NED <span class="arrow">→</span></a
-  >
   <div id="smooth-wrapper">
     <div id="smooth-content">
+      <Back />
       <section class="banner-section">
+        <!-- <a href="#et1" class="scroll-text" id="scrollToEt1">
+          SCROLL NED <span class="arrow">→</span>
+        </a> -->
         <img
           class="banner-wine"
           src={`../../billeder/produktbilleder/${wine.img1}`}
@@ -51,7 +51,7 @@ const { wine } = Astro.props;
       <section id="et1" class="product-section">
         <div class="product-display border-right">
           <img
-            class="banner-wine"
+            class="banner-wine display"
             src={`../../billeder/produktbilleder/${wine.img1}`}
             alt="wine"
           />
@@ -86,6 +86,7 @@ const { wine } = Astro.props;
     html {
       scroll-behavior: smooth;
     }
+
     .ctas {
       display: flex;
       align-items: center;
@@ -93,6 +94,7 @@ const { wine } = Astro.props;
       padding-top: 3rem;
       gap: 2rem;
     }
+
     .product-section img {
       width: 40%;
       padding: 4rem 0rem 2rem 0rem;
@@ -117,8 +119,9 @@ const { wine } = Astro.props;
       border-top: 1px solid #32473a;
       margin: 0 auto;
       width: 100vw;
-      height: 97vh;
+      min-height: 97vh;
     }
+
     .banner-section h3,
     .product-display h3 {
       display: flex;
@@ -135,6 +138,7 @@ const { wine } = Astro.props;
       align-items: center;
       margin: 0 auto;
       padding-top: 5rem;
+      border-bottom: 1px solid #fafcf7;
       height: 100vh;
     }
 
@@ -199,6 +203,8 @@ const { wine } = Astro.props;
       transition: color 0.2s;
     }
 
+    */
+
     /* Fade animation for hele indikatoren */
     @keyframes fadeInOut {
       0%,
@@ -257,9 +263,11 @@ const { wine } = Astro.props;
       }
 
       .banner-section {
+        margin-top: 2rem;
         padding-top: 3rem;
-        border-bottom: 1px solid #32473a;
+        border-bottom: 1px solid #fafcf7;
         padding-bottom: 0.5rem;
+        height: 60vh;
       }
 
       .banner-section h3,
@@ -272,13 +280,17 @@ const { wine } = Astro.props;
         width: 45%;
       }
     }
+
+    .scroll-text:hover {
+      color: #ffcdd8;
+    }
   </style>
 
   <script>
     //@ts-nocheck
-    // import { gsap } from "gsap";
-    // import { ScrollTrigger } from "gsap/ScrollTrigger";
-    // import { ScrollSmoother } from "gsap/ScrollSmoother";
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { ScrollSmoother } from "gsap/ScrollSmoother";
 
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -295,6 +307,7 @@ const { wine } = Astro.props;
       scrollTrigger: {
         trigger: ".banner-section",
         start: "top top",
+        endTrigger: ".product-section",
         end: "bottom top",
         scrub: true,
       },
@@ -303,14 +316,28 @@ const { wine } = Astro.props;
       ease: "power1.out",
     });
 
-    function scrollToEt1(e) {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      const scrollBtn = document.getElementById("scrollToEt1");
       const target = document.querySelector("#et1");
-      if (window.ScrollSmoother && target) {
-        window.ScrollSmoother.get().scrollTo(target, true, "top top");
-      } else if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
+      const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
+
+      if (scrollBtn && target && smoother) {
+        scrollBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          smoother.scrollTo(target, true, "top top");
+        });
       }
+    });
+
+    if (scrollBtn && target) {
+      scrollBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (smoother) {
+          smoother.scrollTo(target, true, "top top");
+        } else {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
     }
   </script>
 </Layout>
