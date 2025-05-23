@@ -3,29 +3,31 @@ const { cta } = Astro.props;
 ---
 
 <div>
-  <p>{cta}</p>
+  <button class="box-button" id="add-to-cart">{cta}</button>
 </div>
 
 <style>
-  div {
+  button {
     border: 1px solid #32473a;
+    background-color: #32473a00;
     width: 10rem;
     justify-content: center;
     margin: 0;
   }
-  p {
+  button {
     text-transform: uppercase;
     margin: 0 auto;
     text-align: center;
     padding: 0.5rem 0.4rem 0.4rem 0.4rem;
   }
 
-  p:hover {
+  button:hover {
     color: #ffcdd8;
+    border: 1px solid #ffcdd8;
+    cursor: not-allowed;
   }
 
   div:hover {
     border: 1px solid #ffcdd8;
-    cursor: not-allowed;
   }
 </style>
