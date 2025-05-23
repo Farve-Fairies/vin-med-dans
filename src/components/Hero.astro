@@ -9,12 +9,56 @@
       <a href="/#et" class="scroll-text"
         >SCROLL NED <span class="arrow">→</span></a
       >
-      <img src="../logo/logo-text-pink.svg" alt="Vin med Dans" class="title" />
+
+      <img
+        src="../logo/logo-text-pink.svg"
+        alt="Vin med Dans"
+        class="hero-logo"
+      />
+
       <div class="age-badge">
         <img src="../icons/plus-18-pink.svg" alt="+18" />
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const logo = document.querySelector(".hero-logo");
+      if (!logo) return;
+
+      let latestScrollY = 0;
+      let ticking = false;
+
+      function updateLogo() {
+        const maxScroll = 300;
+        const progress = Math.min(latestScrollY / maxScroll, 1);
+
+        const isDesktop = window.innerWidth >= 1000;
+        const startTop = isDesktop ? 80 : 50;
+        const endTop = 0;
+        const currentTop = startTop - (startTop - endTop) * progress;
+
+        const minScale = 0.5;
+        const scale = 0.5 - progress * (1 - minScale);
+
+        logo.style.top = `${currentTop}%`;
+        logo.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        latestScrollY = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(updateLogo);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener("scroll", onScroll);
+    });
+  </script>
 </body>
 
 <style>
@@ -25,6 +69,18 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center center;
+    transition: transform 0.8s ease-out;
+    width: 600px;
+    pointer-events: none;
+    z-index: 2;
   }
 
   .hero-image {
@@ -116,6 +172,18 @@
   }
 
   @media (min-width: 1000px) {
+    .hero-logo {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center center;
+      transition: transform 0.5s ease-out;
+      width: 1700px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
     .hero-image {
       width: 100%;
       height: 100%;

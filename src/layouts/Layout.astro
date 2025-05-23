@@ -35,6 +35,29 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
+    <script>
+      // Brug en variabel i stedet for localStorage
+      let cartCount = 0;
+
+      function setCartCount(count) {
+        document
+          .querySelectorAll("#kurv-count")
+          .forEach((el) => (el.textContent = count));
+        document.querySelectorAll("#kurv, #kurv-desktop").forEach((el) => {
+          if (el) el.innerHTML = `KURV (<span id="kurv-count">${count}</span>)`;
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        setCartCount(cartCount);
+        document.querySelectorAll("#add-to-cart").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            cartCount += 1;
+            setCartCount(cartCount);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
 

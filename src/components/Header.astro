@@ -10,7 +10,9 @@
       <a href="/about">OM OS</a>
     </div>
     <div class="header_logo">
-      <img src="/logo/logo-text-dark.svg" alt="Logo" class="logo" />
+      <a href="/">
+        <img src="/logo/logo-text-dark.svg" alt="Logo" class="logo" />
+      </a>
       <div class="menu-text">MENU</div>
     </div>
     <div class="header-actions header-desktop">
@@ -18,11 +20,13 @@
         <img src="/icons/search.svg" alt="Søg" />
         <span>SØG</span>
       </button>
-      <button class="cart_button">KURV (0)</button>
+      <button class="cart_button" id="kurv-desktop"
+        >KURV (<span id="kurv-count">0</span>)</button
+      >
     </div>
     <div class="mobile_actions">
       <div>
-        <button class="cart_button_mobile" id="kurv">KURV (0)</button>
+        <button class="cart_button_mobile" id="kurv">KURV</button>
       </div>
       <div>
         <button id="burgerBtn" class="burger-menu" aria-label="Åbn menu">
@@ -57,12 +61,19 @@
   </nav>
 
   <style>
+    @font-face {
+      font-family: "Nimbus Sans D OT Light";
+      src: url("/fonts/NimbusSanD-OT-Light.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
     .mobile_actions {
       display: flex;
       align-items: center;
       justify-content: flex-end;
       gap: 1rem;
       width: 100%;
+      font-family: "Nimbus Sans D OT Light";
     }
     /* mobile first */
     header {
@@ -83,6 +94,7 @@
 
     header.menu-open {
       outline: 1px solid #fafcf7;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .wrapper {
@@ -120,6 +132,7 @@
       border-left: #fafcf7 1px solid;
       height: 110%;
       padding:;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     #kurv:hover {
@@ -138,6 +151,7 @@
       width: 100%;
       max-width: 100vw;
       padding: 0 8px;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .navbar {
@@ -152,6 +166,7 @@
       display: none;
       border-bottom: 1px solid #32473a;
       z-index: 1000;
+      font-family: "Nimbus Sans D OT Light";
     }
     .navbar.open {
       z-index: 50;
@@ -169,6 +184,7 @@
       margin: 0 auto;
       gap: 20px;
       padding-top: 80px;
+      font-family: "Nimbus Sans D OT Light";
     }
     a,
     span {
@@ -183,6 +199,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .burger-menu {
@@ -195,6 +212,8 @@
       background-color: transparent;
       border-left: #32473a 1px solid;
       height: 50px;
+      font-family: "Nimbus Sans D OT Light";
+
       /* position: absolute;
     right: 16px;
     top: 5px; */
@@ -212,6 +231,7 @@
       height: 50px;
       justify-content: center;
       align-items: center;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .burger-menu.open .bar {
@@ -245,6 +265,7 @@
       /* margin: 2px 0; */
       border-radius: 1px;
       transition: 0.3s;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .navbar ul {
@@ -256,6 +277,7 @@
       margin: 0px;
       font-weight: bolder;
       width: 100%;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .wrapper.menu-open button:hover {
@@ -268,6 +290,7 @@
       border-bottom: #fafcf7 1px solid;
       width: 100%;
       padding-bottom: 30px;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .navbar li:hover {
@@ -278,6 +301,7 @@
       text-decoration: none;
       color: #fafcf7;
       font-weight: bolder;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .burger-menu:hover span {
@@ -310,6 +334,7 @@
       justify-content: space-between; /* ← ændret fra center til space-between */
       gap: 100px;
       padding: 0px; /* valgfrit: lidt indrykning fra kanterne */
+      font-family: "Nimbus Sans D OT Light";
     }
     .contact-box {
       background-color: transparent;
@@ -320,7 +345,7 @@
       flex: 1;
       text-align: center;
       min-width: 0;
-      font-family: "Nimbus Sans D OT Light";
+   
     }
 
     .header_logo {
@@ -339,6 +364,7 @@
 
     .navbar.open ~ .header_logo .menu-text {
       display: flex;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .navbar.open ~ .header_logo img {
@@ -395,6 +421,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: "Nimbus Sans D OT Light";
     }
     .cart_button {
       background: none;
@@ -405,6 +432,7 @@
       color: #32473a;
       font-weight: 200;
       border-left: 1px solid #32473a;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .cart_button_mobile {
@@ -418,6 +446,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .search-button,
@@ -433,12 +462,14 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .cart_button,
     .search-button {
       height: 100%;
       align-self: stretch;
+      font-family: "Nimbus Sans D OT Light";
     }
 
     .divider {
@@ -475,6 +506,7 @@
 
     .header_logo.menu-open .menu-text {
       display: flex;
+      font-family: "Nimbus Sans D OT Light";
     }
     .header_logo.menu-open img {
       display: none;
@@ -499,9 +531,6 @@
       display: flex;
       align-items: center;
       color: #fafcf7;
-      font-size: 0.8rem;
-      font-family: "Nimbus Sans D OT Light";
-      font-weight: normal;
     }
     .wrapper,
     .header-actions {
@@ -523,6 +552,11 @@
     .navbar .header-actions button:active {
       color: #ffcdd8; /* eller en anden farve du ønsker */
       transition: color 0.2s;
+      font-family: "Nimbus Sans D OT Light";
+    }
+
+    button {
+      font-family: "Nimbus Sans D OT Light";
     }
 
     /* Medie queries for større skærme */
@@ -607,13 +641,13 @@
       .header_logo {
         position: absolute;
         left: 50%;
+        top: 0;
+        transform: translateX(-50%);
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         padding-top: 4px;
-
-        /* position: static; */
       }
 
       .header-actions {
