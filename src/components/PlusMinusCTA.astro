@@ -3,7 +3,7 @@
 ---
 
 <div class="wrapper">
-  <button type="button" class="minus-btn">-</button>
+  <button type="button" class="minus-btn">&#8722</button>
   <p class="count-display"><span id="count">0</span> flasker</p>
   <button type="button" class="plus-btn">+</button>
 </div>
@@ -31,7 +31,6 @@
   .wrapper {
     display: flex;
     align-items: center;
-    gap: 1rem;
     margin: 1rem 0;
   }
 
@@ -39,11 +38,13 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     border: 1px solid #cccccc00;
     background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     transition: opacity 0.2s;
+    font-family: "Nimbus Sans D OT Light";
+    font-weight: lighter;
   }
 
   button:hover {
@@ -53,6 +54,5 @@
   .count-display {
     min-width: 80px;
     text-align: center;
-    font-size: 1.1rem;
   }
 </style>

@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout />
-<ul>
+<ul class="fragt">
   <li>
     <input type="checkbox" checked />
     <i></i>
     <div class="content-box">
       <div class="header">
-        <h2>FRAGT & LEVERING</h2><span class="toggle-icon"></span>
+        <h3>FRAGT & LEVERING</h3><span class="toggle-icon"></span>
       </div>
     </div>
     <div class="wrapper">
@@ -26,28 +26,41 @@ import Layout from "../layouts/Layout.astro";
   </li>
 </ul>
 
-<ul>
+<ul class="indhold">
   <li>
     <input type="checkbox" checked />
     <i></i>
     <div class="content-box">
       <div class="header">
-        <h2>INDHOLDSOPLYSNINGER</h2><span class="toggle-icon"></span>
+        <h3>INDHOLDSOPLYSNINGER</h3><span class="toggle-icon"></span>
       </div>
     </div>
     <div class="wrapper">
       <div class="wrapper_grid">
         <div class="tekst_gemknap">
           <p>
-            Fugtvinen er en frisk og indbydende vin, fremstillet på 100 %
-            håndplukkede bær og frugter. Den balancerer sødme og syre med en let
-            tørhed, som gør den utrolig alsidig: Smagsprofil: Frisk
-            frugtkarakter med et strejf af citrus. Servering: Nyd den køligt
-            (8–10 °C) i store glas som aperitif, til lette forretter eller som
-            alternativ dessertvin. Ingredienser: Håndplukkede bær/frugter, vand,
-            sukker, gær. Alkoholindhold: 10,5 % vol. Volumen: 0,75 L.
-            Opbevaring: Køligt – drik inden for 6–12 måneder. Bæredygtighed:
-            Produceret i små batch, lokal høst og minimal forarbejdning.
+            Frugtvinen er en frisk og indbydende vin, fremstillet på 100 %
+            håndplukkede bær og frugter. <br /> Den balancerer sødme og syre med
+            en let tørhed, som gør den utrolig alsidig.
+          </p>
+          <br />
+          <p>Smagsprofil: Frisk frugtkarakter med et strejf af citrus.</p>
+          <br />
+          <p>
+            Servering: Nyd den køligt (8–10 °C) i store glas som aperitif, til
+            lette forretter eller som alternativ dessertvin.
+          </p>
+          <br />
+          <p>Ingredienser: Håndplukkede bær/frugter, vand, sukker, gær.</p>
+          <br />
+          <p>Alkoholindhold: 10,5 % vol.</p>
+          <br /><p>
+            Volumen: 0,75 L. Opbevaring: Køligt – drik inden for 6–12 måneder.
+          </p>
+          <br />
+          <p>
+            Bæredygtighed: Produceret i små batch, lokal høst og minimal
+            forarbejdning.
           </p>
         </div>
       </div>
@@ -57,7 +70,7 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
   span {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-family: "Nimbus Sans D OT Light";
     margin-right: 1rem;
   }
@@ -68,7 +81,7 @@ import Layout from "../layouts/Layout.astro";
 
   .wrapper_grid {
     position: relative;
-    padding: 1rem;
+    /* padding: 1rem; */
   }
 
   .by {
@@ -101,19 +114,23 @@ import Layout from "../layouts/Layout.astro";
     gap: 40px;
     width: 100%;
     grid-template-columns: auto auto;
+    align-items: center;
   }
 
   .header span {
     place-self: end;
   }
 
+  .tekst_gemknap {
+    padding-bottom: 3rem;
+  }
+
   p {
     font-family: "Nimbus Sans D OT light";
     text-transform: none;
-    padding-left: 2.5rem;
-    margin-right: 2rem;
+    padding-left: 4rem;
+    margin-right: 4rem;
 
-    font-size: 0.8rem;
     position: relative;
     overflow: hidden;
     max-height: 800px;
@@ -133,7 +150,10 @@ import Layout from "../layouts/Layout.astro";
     position: relative;
     padding: 0;
     margin: 0;
-    border: 0.5px solid rgb(38, 43, 40);
+  }
+
+  .fragt {
+    border-bottom: 1px solid #32473a;
   }
 
   ul li:nth-of-type(1) {
@@ -198,11 +218,13 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .content-box {
-    padding: 20px;
+    padding: 2rem 4rem;
+    margin: 0 auto;
+    align-items: center;
   }
 
   .toggle-icon::after {
-    content: "-";
+    content: "–";
   }
 
   ul

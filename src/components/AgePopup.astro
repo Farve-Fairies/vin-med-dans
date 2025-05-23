@@ -57,6 +57,7 @@
     width: 170px;
     margin: 1rem auto;
     justify-content: center;
+    margin-left: 3rem;
   }
   .modal-content p {
     margin: 1rem 0 0.5rem;
@@ -104,6 +105,7 @@
 </style>
 
 <script>
+  //@ts-nocheck
   document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("age-modal");
     const form = document.getElementById("age-form");
@@ -114,18 +116,47 @@
     modal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
 
+    // Nulstil inputfelter ved refresh
+    inputs.forEach((input) => (input.value = ""));
+
+    // Autofokus og Enter-håndtering
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        input.style.borderColor = "#425245";
+        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.alt = "Figur i liggestol";
+
+        const nextInput = inputs[index + 1];
+        if (input.value && nextInput) {
+          nextInput.focus();
+        }
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && input.value === "" && index > 0) {
+          inputs[index - 1].focus();
+        }
+
+        if (e.key === "Enter") {
+          form.requestSubmit();
+        }
+      });
+    });
+
+    // Formularvalidering
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const year = Array.from(inputs)
         .map((input) => input.value)
         .join("");
-      // Hvis ikke alle felter er udfyldt, gør felter røde og stop
+
       if (year.length < 4 || isNaN(parseInt(year, 10))) {
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
         illustration.src = "../illustrationer/strandstol.svg";
         illustration.alt = "Figur i liggestol";
         return;
       }
+
       if (parseInt(year, 10) > 2007) {
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
         illustration.src = "../illustrationer/stikkel.svg";
@@ -137,15 +168,6 @@
         modal.classList.add("hidden");
         document.body.style.overflow = "auto";
       }
-    });
-
-    // Fjern rød kant når man retter i felterne
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        input.style.borderColor = "#425245";
-        illustration.src = "../illustrationer/strandstol.svg";
-        illustration.alt = "Figur i liggestol";
-      });
     });
   });
 </script> --><!-- 1. Modalens HTML-struktur

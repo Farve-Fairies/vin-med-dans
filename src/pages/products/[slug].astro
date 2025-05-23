@@ -26,6 +26,9 @@ const { wine } = Astro.props;
 
 <Layout>
   <Back />
+  <a href="#et1" class="scroll-text" onclick="scrollToEt1(event)"
+    >SCROLL NED <span class="arrow">→</span></a
+  >
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <section class="banner-section">
@@ -40,9 +43,7 @@ const { wine } = Astro.props;
             <h1>Boblende frugtvin brygget på dansk natur&nbsp;&nbsp;</h1>
           </div>
         </div>
-        <a href="#et1" class="scroll-text" onclick="scrollToEt1(event)"
-          >SCROLL NED <span class="arrow">→</span></a
-        >
+
         <div>
           <h3>10.5% ALC.</h3>
         </div>
@@ -113,9 +114,10 @@ const { wine } = Astro.props;
     .product-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
-
+      border-top: 1px solid #32473a;
       margin: 0 auto;
       width: 100vw;
+      height: 97vh;
     }
     .banner-section h3,
     .product-display h3 {
@@ -133,6 +135,7 @@ const { wine } = Astro.props;
       align-items: center;
       margin: 0 auto;
       padding-top: 5rem;
+      height: 100vh;
     }
 
     .banner-wine {
@@ -146,6 +149,7 @@ const { wine } = Astro.props;
     .banner-wrapper {
       grid-row: 1;
       grid-column: 1;
+      /* height: 84vh; */
     }
 
     .scrolling-text {
@@ -171,7 +175,7 @@ const { wine } = Astro.props;
 
     .scroll-text {
       position: absolute;
-      top: 65%;
+      top: 75%;
       left: 0;
       transform: translateY(-50%);
       writing-mode: vertical-rl;
@@ -271,9 +275,10 @@ const { wine } = Astro.props;
   </style>
 
   <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    import { ScrollSmoother } from "gsap/ScrollSmoother";
+    //@ts-nocheck
+    // import { gsap } from "gsap";
+    // import { ScrollTrigger } from "gsap/ScrollTrigger";
+    // import { ScrollSmoother } from "gsap/ScrollSmoother";
 
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
