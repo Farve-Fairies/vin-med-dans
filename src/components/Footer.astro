@@ -58,14 +58,18 @@
     </div>
 
     <div class="footer-column-icons">
+    <div class="instagram">
       <a href="https://instagram.com/vinmeddans" target="_blank" rel="noopener">
         <img src="/public/icons/instagram.svg" alt="instagram ikon" />
         <span>@vinmeddans</span>
       </a>
+    </div>
+    <div class="mail">
       <a href="mailto:vinmeddans@gmail.com">
         <img src="/public/icons/mail.svg" alt="mail ikon" />
         <span>vinmeddans@gmail.com</span>
       </a>
+    </div>
     </div>
   </div>
 </footer>
@@ -279,23 +283,50 @@
   }
 
   @media (min-width: 768px) {
+    footer {
+        height: 200px;
+        padding-top: 0;
+    }
+
     .footer_content {
       grid-template-columns: 1fr 1fr 1fr;
+      height: auto;
+    
     }
 
     .footer-intro-age {
       display: grid;
       grid-template-columns: 1fr auto;
+      height: 200px;
+      border-right: 1px solid #32473a;
+
+    }
+  
+    .intro,
+    .footer-age {
+      border-bottom: 0;
+    }
+
+    .footer-age img {
+     padding-top: 100px;
     }
     .footer-menu {
       grid-column: 3;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+      gap: 0;
+      column-gap: 2px;
+      row-gap: 2px;
+      border-left: 1px solid #32473a;
+s    }
 
     .footer-column-icons {
       grid-column: 2;
       grid-row: 1;
       justify-self: center;
+    }
+
+    .footer-column-icons span {
+      display: flex;
     }
 
     .footer-shop {
@@ -314,7 +345,17 @@
 
     .footer-illustration {
       grid-column: 4;
-      grid-row: 2;
+        grid-row: 1;
+        padding-top: 60px;
+        width: 90px;
+        margin: 0;
+      height: auto;
+    }
+    .instagram, .mail {
+        display: flex;
+         justify-content: center;
+         align-items: center;
+
     }
   }
 </style>
