@@ -3,6 +3,7 @@
 import Layout from "../layouts/Layout.astro";
 import ListView from "../components/ListView.astro";
 import ProductCard from "../components/ProductCard.astro";
+import BackToFront from "../components/BackToFront.astro";
 const { wine } = Astro.props;
 const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
 const key =
@@ -13,6 +14,8 @@ const options = {
 const data = await fetch(url, options).then((res) => res.json());
 console.log(data);
 ---
+
+<BackToFront />
 
 <Layout>
   <div id="smooth-wrapper">
@@ -60,8 +63,28 @@ console.log(data);
     wrapper: "#smooth-container",
     content: "#smooth-content",
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    document.querySelectorAll(".section-fade").forEach((section) => {
+      observer.observe(section);
+    });
+  });
 </script>
 <style>
+  html {
+    scroll-behavior: smooth;
+  }
   .himmelvin {
     width: 100vw;
   }
@@ -73,6 +96,7 @@ console.log(data);
 
   .teaser h3 {
     padding-bottom: 1rem;
+    padding-top: 8rem;
   }
 
   @media (min-width: 700px) {
@@ -87,5 +111,17 @@ console.log(data);
       width: 50rem;
       padding: 4rem 13rem 5rem 13rem;
     }
+  }
+
+  .section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>

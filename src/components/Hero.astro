@@ -9,12 +9,56 @@
       <a href="/#et" class="scroll-text"
         >SCROLL NED <span class="arrow">→</span></a
       >
-      <img src="../logo/logo-text-pink.svg" alt="Vin med Dans" class="title" />
+
+      <img
+        src="../logo/logo-text-pink.svg"
+        alt="Vin med Dans"
+        class="hero-logo"
+      />
+
       <div class="age-badge">
         <img src="../icons/plus-18-pink.svg" alt="+18" />
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const logo = document.querySelector(".hero-logo");
+      if (!logo) return;
+
+      let latestScrollY = 0;
+      let ticking = false;
+
+      function updateLogo() {
+        const maxScroll = 300;
+        const progress = Math.min(latestScrollY / maxScroll, 1);
+
+        const isDesktop = window.innerWidth >= 1000;
+        const startTop = isDesktop ? 80 : 50;
+        const endTop = 0;
+        const currentTop = startTop - (startTop - endTop) * progress;
+
+        const minScale = 0.5;
+        const scale = 0.5 - progress * (1 - minScale);
+
+        logo.style.top = `${currentTop}%`;
+        logo.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        latestScrollY = window.scrollY;
+        if (!ticking) {
+          window.requestAnimationFrame(updateLogo);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener("scroll", onScroll);
+    });
+  </script>
 </body>
 
 <style>
@@ -25,6 +69,18 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center center;
+    transition: transform 0.8s ease-out;
+    width: 600px;
+    pointer-events: none;
+    z-index: 2;
   }
 
   .hero-image {
@@ -116,6 +172,18 @@
   }
 
   @media (min-width: 1000px) {
+    .hero-logo {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transform-origin: center center;
+      transition: transform 0.5s ease-out;
+      width: 1700px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
     .hero-image {
       width: 100%;
       height: 100%;
@@ -143,3 +211,29 @@
     }
   }
 </style>
+
+<!--
+NOTER TIL MIG SELV:
+
+HTML & STRUKTUR:
+- Jeg har lavet en 'hero'-sektion, der fylder hele skærmen (100vh).
+- Der er et baggrundsbillede, mit pink logo, en +18 badge og en scroll-indikator ("SCROLL NED →").
+- Logoet har klassen .hero-logo og ligger ovenpå billedet.
+- Scroll-linket har klassen .scroll-text og står lodret på venstre side.
+
+CSS:
+- Jeg bruger object-fit: cover på billedet, så det altid dækker hele skærmen uden at forvrænges.
+- Logoet har position absolute og er centreret via transform: translate(-50%, -50%).
+- Jeg har tilføjet transition: transform 0.8s ease-out, så logoets bevægelser bliver glatte og ikke hakker.
+- Logoets placering og størrelse justeres afhængig af skærmbredden (se media query).
+- Pil-ikonet i scroll-teksten animeres med @keyframes bounceArrow for at få en lille, konstant "hoppe-effekt".
+- Der er også en fade-animation (@keyframes fadeInOut), som jeg evt. kan bruge til at få elementer til at komme og gå i opacitet.
+
+JAVASCRIPT:
+- Jeg bruger JavaScript til at animere logoet, når man scroller.
+- Ved scroll lytter jeg efter window.scrollY og laver en progress-værdi mellem 0 og 1.
+- Ud fra den værdi regner jeg, hvor meget logoet skal flyttes op (top) og hvor meget det skal skalere (scale).
+- Det hele pakkes i en requestAnimationFrame, så animationen er mere smooth og optimeret.
+- Ticking-variablen sikrer, at jeg kun opdaterer én gang per animation frame, så den ikke lagger.
+
+-->

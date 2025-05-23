@@ -1,0 +1,45 @@
+<div class="Tilbage">
+  <a href="/productlist">
+    <span class="back-text">ALLE VINE</span>
+    <img src="/icons/back.svg" alt="tilbage" />
+  </a>
+</div>
+<style>
+  .Tilbage {
+    position: absolute;
+    left: 1rem;
+    width: 100vw;
+    height: 100vh;
+    top: 5rem;
+    opacity: 0.9;
+    text-decoration: none;
+    z-index: 50;
+  }
+  .back-text {
+    top: -0.6rem;
+    left: 1.2rem;
+    position: absolute;
+    font-size: 0.8rem;
+    margin: 0;
+    color: rgb(36, 45, 36);
+  }
+  .back-text:hover {
+    color: #ffcdd8;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+  img {
+    width: 5rem;
+  }
+  @media (min-width: 1000px) {
+    img {
+      width: 7rem;
+    }
+    .back-text {
+      top: -0.6rem;
+      left: 2.5rem;
+      position: absolute;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+</style>

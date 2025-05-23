@@ -1,0 +1,268 @@
+<!-- ---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout /> -->
+<ul class="fragt">
+  <li>
+    <input type="checkbox" checked />
+    <i></i>
+    <div class="content-box">
+      <div class="header">
+        <h3>FRAGT & LEVERING</h3><span class="toggle-icon"></span>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper_grid">
+        <div class="tekst_gemknap">
+          <p>
+            Vi fragter vinen vha. PostNord, DAO og GLS og afsendes på alle
+            hverdage i tidsrummet 10:00 – 16:00. Vi bestræber os på at levere
+            inden for 3 hverdage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<ul class="indhold">
+  <li>
+    <input type="checkbox" checked />
+    <i></i>
+    <div class="content-box">
+      <div class="header">
+        <h3>INDHOLDSOPLYSNINGER</h3><span class="toggle-icon"></span>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper_grid">
+        <div class="tekst_gemknap">
+          <p>
+            Frugtvinen er en frisk og indbydende vin, fremstillet på 100 %
+            håndplukkede bær og frugter. <br /> Den balancerer sødme og syre med
+            en let tørhed, som gør den utrolig alsidig.
+          </p>
+          <br />
+          <p>Smagsprofil: Frisk frugtkarakter med et strejf af citrus.</p>
+          <br />
+          <p>
+            Servering: Nyd den køligt (8–10 °C) i store glas som aperitif, til
+            lette forretter eller som alternativ dessertvin.
+          </p>
+          <br />
+          <p>Ingredienser: Håndplukkede bær/frugter, vand, sukker, gær.</p>
+          <br />
+          <p>Alkoholindhold: 10,5 % vol.</p>
+          <br /><p>
+            Volumen: 0,75 L. Opbevaring: Køligt – drik inden for 6–12 måneder.
+          </p>
+          <br />
+          <p>
+            Bæredygtighed: Produceret i små batch, lokal høst og minimal
+            forarbejdning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<style>
+  span {
+    font-size: 1.5rem;
+    font-family: "Nimbus Sans D OT Light";
+    margin-right: 1rem;
+  }
+
+  .wrapper {
+    /* border: 0.5px solid #000; */
+  }
+
+  .wrapper_grid {
+    position: relative;
+    /* padding: 1rem; */
+  }
+
+  .by {
+    position: relative;
+    font-size: 18px;
+    border: none;
+  }
+  .transition,
+  ul li i:before,
+  ul li i:after,
+  p {
+    transition: all 0.25s ease-in-out;
+  }
+
+  .flipIn,
+  ul li,
+  h1 {
+    animation: flipdown 0.5s ease both;
+  }
+
+  h2 {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 0.8rem;
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .header {
+    display: grid;
+    gap: 40px;
+    width: 100%;
+    grid-template-columns: auto auto;
+    align-items: center;
+  }
+
+  .header span {
+    place-self: end;
+  }
+
+  .tekst_gemknap {
+    padding-bottom: 3rem;
+  }
+
+  p {
+    font-family: "Nimbus Sans D OT light";
+    text-transform: none;
+    padding-left: 4rem;
+    margin-right: 4rem;
+
+    position: relative;
+    overflow: hidden;
+    max-height: 800px;
+    opacity: 1;
+    transform: translate(0, 0);
+    z-index: 2;
+  }
+
+  ul {
+    list-style: none;
+    perspective: 900;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fragt {
+    border-bottom: 1px solid #32473a;
+  }
+
+  ul li:nth-of-type(1) {
+    animation-delay: 0.5s;
+  }
+
+  ul li:nth-of-type(2) {
+    animation-delay: 0.75s;
+  }
+
+  ul li:nth-of-type(3) {
+    animation-delay: 1s;
+  }
+
+  ul li:last-of-type {
+    padding-bottom: 0;
+  }
+
+  ul li i {
+    position: absolute;
+    transform: translate(-6px, 0);
+    margin-top: 10px;
+    right: 0;
+  }
+
+  ul li i:before {
+    transform: translate(-2px, 0) rotate(45deg);
+  }
+
+  ul li i:after {
+    transform: translate(2px, 0) rotate(-45deg);
+  }
+
+  ul li input[type="checkbox"] {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+  }
+
+  ul li input[type="checkbox"]:checked ~ .wrapper,
+  ul li input[type="checkbox"]:checked ~ p {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translate(0, 50%);
+  }
+  .wrapper {
+    transition: all 0.5s ease-in-out;
+    max-height: 800px;
+    overflow: hidden;
+  }
+
+  ul li input[type="checkbox"]:checked ~ i:before {
+    transform: translate(2px, 0) rotate(45deg);
+  }
+
+  ul li input[type="checkbox"]:checked ~ i:after {
+    transform: translate(-2px, 0) rotate(-45deg);
+  }
+
+  .content-box {
+    padding: 2rem 4rem;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .toggle-icon::after {
+    content: "–";
+  }
+
+  ul
+    li
+    input[type="checkbox"]:checked
+    ~ .content-box
+    .header
+    .toggle-icon::after {
+    content: "+";
+  }
+
+  @keyframes flipdown {
+    0% {
+      opacity: 0;
+      transform-origin: top center;
+      transform: rotateX(-90deg);
+    }
+    5% {
+      opacity: 1;
+    }
+    80% {
+      transform: rotateX(8deg);
+    }
+    83% {
+      transform: rotateX(6deg);
+    }
+    92% {
+      transform: rotateX(-3deg);
+    }
+    100% {
+      transform-origin: top center;
+      transform: rotateX(0deg);
+    }
+  }
+
+  @media (min-width: 700px) {
+    .padding {
+      margin-bottom: 30rem;
+    }
+  }
+</style>

@@ -57,6 +57,7 @@
     width: 170px;
     margin: 1rem auto;
     justify-content: center;
+    margin-left: 3rem;
   }
   .modal-content p {
     margin: 1rem 0 0.5rem;
@@ -104,6 +105,7 @@
 </style>
 
 <script>
+  //@ts-nocheck
   document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("age-modal");
     const form = document.getElementById("age-form");
@@ -114,18 +116,47 @@
     modal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
 
+    // Nulstil inputfelter ved refresh
+    inputs.forEach((input) => (input.value = ""));
+
+    // Autofokus og Enter-håndtering
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        input.style.borderColor = "#425245";
+        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.alt = "Figur i liggestol";
+
+        const nextInput = inputs[index + 1];
+        if (input.value && nextInput) {
+          nextInput.focus();
+        }
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && input.value === "" && index > 0) {
+          inputs[index - 1].focus();
+        }
+
+        if (e.key === "Enter") {
+          form.requestSubmit();
+        }
+      });
+    });
+
+    // Formularvalidering
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const year = Array.from(inputs)
         .map((input) => input.value)
         .join("");
-      // Hvis ikke alle felter er udfyldt, gør felter røde og stop
+
       if (year.length < 4 || isNaN(parseInt(year, 10))) {
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
         illustration.src = "../illustrationer/strandstol.svg";
         illustration.alt = "Figur i liggestol";
         return;
       }
+
       if (parseInt(year, 10) > 2007) {
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
         illustration.src = "../illustrationer/stikkel.svg";
@@ -138,36 +169,45 @@
         document.body.style.overflow = "auto";
       }
     });
-
-    // Fjern rød kant når man retter i felterne
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        input.style.borderColor = "#425245";
-        illustration.src = "../illustrationer/strandstol.svg";
-        illustration.alt = "Figur i liggestol";
-      });
-    });
   });
 </script>
+<!--  
+  1. Autofokus og input-navigation:
+     - Når brugeren skriver et ciffer i et inputfelt, flytter fokus automatisk til næste input.
+     - Det sker ved at lytte på 'input'-eventen, tjekke om feltet har værdi,
+       og så sætte fokus til næste felt med nextInput.focus().
+     - På den måde slipper brugeren for selv at klikke eller tabbe videre.
 
-<!-- 1. Modalens HTML-struktur
-Modalen (<div id="age-modal" class="age-modal hidden">) dækker hele skærmen og vises som et pop-up vindue.
-Logo og illustration vises øverst. Illustrationen har id="age-illustration", så den kan skiftes dynamisk.
-Tekst fortæller brugeren, at de skal bekræfte deres fødselsår.
-Formularen består af fire inputfelter (ét for hvert ciffer i årstallet) og en knap med en pil. -->
+  2. Backspace-håndtering:
+     - Når brugeren trykker på backspace i et tomt input (ikke det første), 
+       flyttes fokus tilbage til forrige input.
+     - Det sker ved at lytte på 'keydown'-eventen og tjekke om tasten er 'Backspace' 
+       samt om inputfeltet er tomt.
+     - Hjælper med nem redigering uden mus.
 
-<!-- 2. CSS-styling
-Modalen er centreret på skærmen med flexbox og har en høj z-index, så den ligger øverst.
-.hidden-klassen skjuler modal-vinduet, når brugeren er godkendt.
-Inputfelter er små, centrerede og har en overgang på border-farven, så det ser pænt ud, når de bliver røde ved fejl.
-Knap og pil er små og centrerede ved siden af inputfelterne. -->
+  3. Enter-tast og formindsendelse:
+     - Hvis brugeren trykker 'Enter', kaldes form.requestSubmit() som sender formen.
+     - Dette gør det muligt at sende formularen uden at klikke på knappen.
 
-<!--3. JavaScript-funktionalitet
-Visning af modal
-Når siden loader, fjernes .hidden fra modal-vinduet, så det vises, og body får overflow: hidden for at forhindre scroll.
-Validering ved submit
-Når brugeren trykker på knappen:
-Samles input til et årstal (fx "2005").
-Hvis ikke alle felter er udfyldt eller der ikke er indtastet tal, bliver alle inputfelter røde, og illustrationen sættes til strandstol.
-Hvis årstallet er over 2007 (altså brugeren er under 18 år), bliver alle inputfelter røde, og illustrationen skifter til "stikkel.svg".
-Hvis årstallet er 2007 eller lavere (altså brugeren er gammel nok), bliver inputfelterne grønne, illustrationen skifter tilbage til strandstol, modal-vinduet skjules, og siden kan scrolles igen  -->
+  4. Validering af fødselsår:
+     - Ved formularens submit samler vi alle 4 inputfelter til en streng (fx "1985").
+     - Tjekker om længden er 4 og om det kan parses til et tal (isNaN).
+     - Hvis input er ugyldigt, markeres alle felter med rød kant (borderColor = "#c00").
+     - Hvis året er nyere end 2007 (under 18 år), vises en "stikkel"-illustration 
+       og felterne markeres også røde.
+     - Hvis året er godkendt (over eller lig 2007), lukkes modal og scroll frigives.
+
+  5. Skift af illustration:
+     - Illustrationens kilde (src) og alt-tekst ændres dynamisk baseret på input.
+     - Hvis bruger ikke er gammel nok, vises "stikkel" (advarsels-ikon).
+     - Ellers vises standardillustrationen med liggestolen.
+
+  6. CSS 'hidden' klasse:
+     - Skjuler modal med display:none !important for at sikre den ikke vises.
+     - Når modal skal vises, fjernes 'hidden' klassen.
+  
+  7. Modal og scroll:
+     - Når modalen vises, sættes body overflow til 'hidden', så brugeren ikke kan scrolle bagved.
+     - Når modalen lukkes, sættes overflow tilbage til 'auto'.
+
+-->

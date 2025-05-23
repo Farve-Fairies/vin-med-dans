@@ -1,13 +1,429 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.astro";
+import BackToFront from "../components/BackToFront.astro";
 ---
 
+<BackToFront />
 <Layout>
-  <h1>About Us</h1>
-  <p>This is the about page.</p>
-  <p>We are a company that specializes in fruit wines.</p>
-  <p>Our mission is to provide the best fruit wines in the market.</p>
+  <section class="mobil">
+    <section class="om grid-tre section-fade">
+      <div class="padding"></div>
+
+      <div class="om-tekst">
+        <h2>Vores historie</h2>
+        <p>
+          Vin med Dans startede med tre venner, en fælles kærlighed til frugtvin
+          – og en drøm om at gøre vinoplevelsen mere levende og mindre
+          højtidelig. <br />
+          <div class="se-mere-linje"></div>
+          <a
+            class="desk"
+            target="_blank"
+            href="https://www.instagram.com/vinmeddans.dk/">SE MERE</a
+          >
+        </p>
+        <div class="se-mere-container">
+          <a
+            class="se-mere-text"
+            href="https://www.instagram.com/vinmeddans.dk/"
+            target="_blank"
+            rel="noopener noreferrer">SE MERE</a
+          >
+        </div>
+      </div>
+      <div class="om-billede">
+        <img src="/billeder/om/team.webp" alt="Team" />
+      </div>
+    </section>
+
+    <section class="om grid-tre section-fade">
+      <div class="om-tekst">
+        <h2>Bryggeri og høst</h2>
+        <p>
+          I en lille kælder i Rødovre har vi indrettet vores eget vinunivers.
+          Her producerer vi al vores vin selv – med egne hænder, lidt
+          improvisation og masser af kærlighed til råvarerne. Vi dyrker ikke
+          noget selv, og det er helt med vilje. I stedet samler vi
+          overskudsfrugt og bær fra hele Danmark – fra folks haver, vilde hegn,
+          kolonihaver og baggårde.<br />
+          <div class="se-mere-linje"></div>
+
+          <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+            >SE MERE</a
+          >
+        </p>
+        <div class="se-mere-container">
+          <a
+            class="se-mere-text"
+            href="https://www.instagram.com/vinmeddans.dk/"
+            target="_blank"
+            rel="noopener noreferrer">SE MERE</a
+          >
+          <div class="se-mere-linje"></div>
+        </div>
+      </div>
+      <div class="om-billede">
+        <img src="/billeder/om/pluk.webp" alt="Team" />
+      </div>
+    </section>
+
+    <section class="om grid-tre section-fade">
+      <div class="om-tekst">
+        <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
+        <p>
+          Selvom vi brygger i en kælder i Rødovre, er der ikke noget hjemmelavet
+          over kvaliteten. Vores produktion er fødevaregodkendt, og vi går op i
+          at holde hele processen både sikker og gennemtænkt – fra de første
+          plukkede bær til den færdige flaske. Du kan finde os på Enghave 9 og
+          Pio Vinbar, hvor de sætter pris på noget, der er lidt anderledes,
+          lokalt og lavet med kærlighed.<br />
+          <div class="se-mere-linje"></div>
+
+          <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+            >SE MERE</a
+          >
+        </p>
+        <div class="se-mere-container">
+          <a
+            class="se-mere-text"
+            href="https://www.instagram.com/vinmeddans.dk/"
+            target="_blank"
+            rel="noopener noreferrer">SE MERE</a
+          >
+          <div class="se-mere-linje"></div>
+        </div>
+      </div>
+      <div class="om-billede">
+        <img class="bryg" src="/billeder/om/bryggeriflasker.webp" alt="Team" />
+      </div>
+    </section>
+    <div class="kontakt-mobil"><ContactForm /></div>
+  </section>
+
+  <section class="desktop">
+    <section class="story-section section-fade">
+      <div class="grid">
+        <div class="text">
+          <h2>Vores historie</h2>
+          <p>
+            Vin med Dans startede med tre venner, en fælles kærlighed til
+            frugtvin <br /> – og en drøm om at gøre vinoplevelsen mere levende og
+            mindre højtidelig. <br /> Det hele begyndte med små pop-up events rundt
+            omkring i København: i baggårde, på altaner og i lukkede butikker efter
+            lukketid. Her blev flaskerne åbnet, samtalerne lange, og dansegulvet
+            opstod spontant mellem plastkasser og lyskæder. Vi savnede et sted, hvor
+            man kan mødes over sæsonens frugtvin, høre lidt musik og være nysgerrig
+            uden at skulle være vinsnob. Hvor man både kan lære noget nyt – og glemme
+            det hele igen senere på dansegulvet. <br /><br /> I dag arbejder vi videre
+            med at kombinere vinen, byen og fællesskabet <br /> – og skabe nye måder
+            at være sammen på. Med plads til både nørderi og nærvær. <br />
+            <br /> Og selvfølgelig dans.
+          </p>
+          <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+            >SE MERE</a
+          >
+        </div>
+        <div class="kontakt-desk"></div>
+        <img class="image" src="/billeder/om/team.webp" alt="Team" />
+      </div>
+    </section>
+    <div class="com-form">
+      <ContactForm />
+    </div>
+
+    <section class="story-section section-fade">
+      <div class="grid">
+        <div class="text">
+          <h2>Bryggeri og høst</h2>
+          <p>
+            I en lille kælder i Rødovre har vi indrettet vores eget vinunivers.
+            <br /> Her producerer vi al vores vin selv <br /> – med egne hænder,
+            lidt improvisation og masser af kærlighed til råvarerne.<br /><br />
+            Vi dyrker ikke noget selv, og det er helt med vilje. <br /> I stedet
+            samler vi overskudsfrugt og bær fra hele Danmark – fra folks haver, vilde
+            hegn, kolonihaver og baggårde. Det gør ikke bare vores produktion ultra
+            lokalt og lavpraktisk <br /> – det gør den også bæredygtig på den helt
+            ægte måde.
+            <br /> Vi bruger det, der allerede findes, og skaber vin, der smager
+            af årstid, af sted og af det uventede. Hos os er der ingen standardopskrifter,
+            og hver vin er en ny fortælling. <br /> Lavet i små mængder, med respekt
+            for det naturlige og for det fællesskab, der opstår, når man plukker,
+            brygger og drikker sammen.
+          </p>
+          <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+            >SE MERE</a
+          >
+        </div>
+        <img class="image" src="/billeder/om/pluk.webp" alt="Team" />
+      </div>
+    </section>
+
+    <section class="story-section section-fade">
+      <div class="grid">
+        <div class="text">
+          <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
+          <p>
+            Selvom vi brygger i en kælder i Rødovre, er der ikke noget
+            hjemmelavet over kvaliteten. <br />
+            <br /> Vores produktion er fødevaregodkendt, og vi går op i at holde
+            hele processen både sikker og gennemtænkt <br /> – fra de første plukkede
+            bær til den færdige flaske. Vi laver vin, der kan nydes med god samvittighed,
+            og som smager af de frugter og den sæson, den kommer fra. <br />
+            <br /> Og det er ikke kun os, der synes det smager godt – vores flasker
+            står nemlig allerede på hylderne hos nogle af Københavns hyggeligste
+            vinbarer.
+            <br />
+            <p class="fed">
+              <strong
+                >Du kan finde os på Enghave 9 og Pio Vinbar, hvor de sætter pris
+                på noget, der er lidt anderledes, lokalt og lavet med kærlighed.</strong
+              >
+            </p>
+          </p>
+          <a class="desk" href="https://www.instagram.com/vinmeddans.dk/"
+            >SE MERE</a
+          >
+        </div>
+        <img
+          class="image flasker"
+          src="/billeder/om/bryggeriflasker.webp"
+          alt="Team"
+        />
+      </div>
+    </section>
+  </section>
+
+  <script>
+    window.closeContactForm = function () {
+      document
+        .querySelectorAll(".com-form, .kontakt-mobil")
+        .forEach((el) => (el.style.display = "none"));
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document.querySelectorAll(".section-fade").forEach((section) => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .desktop {
+      display: none;
+    }
+    .mobil {
+      display: block;
+    }
+    .grid_1-1-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .kontakt-desk {
+      display: none;
+    }
+    .kontakt-mobil {
+      display: block;
+    }
+    .desk {
+      display: none;
+    }
+    .padding {
+      margin-top: 5rem;
+    }
+    .bryg {
+      height: 350px;
+      object-fit: cover;
+      object-position: bottom;
+    }
+    .om {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      text-align: start;
+    }
+
+    img {
+      margin: 0;
+    }
+    h2,
+    p {
+      margin-left: 2rem;
+      margin-right: 6rem;
+      margin-bottom: 1rem;
+    }
+    .se-mere-boks {
+      border: 1px solid #20422a;
+      background: transparent;
+      color: #20422a;
+      width: fit-content;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    .se-mere-container {
+      width: 100vw;
+      margin-left: calc(-1 * (100vw - 100%) / 2);
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+    .se-mere-text {
+      font-family: "Nimbus Sans D OT Bold";
+      margin-bottom: 1rem;
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+    .se-mere-linje {
+      display: block;
+      min-width: 100vw;
+      height: 1px;
+      background: #20422a;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+    .om.grid-tre {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .section-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 1000px) {
+      .mobil {
+        display: none;
+      }
+      .desktop {
+        display: block;
+      }
+      img.flasker {
+        max-height: 815px;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+      }
+      .story-section {
+        border-bottom: 1px solid #2a342c;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        align-items: center; /* centrér indholdet i rækken */
+      }
+
+      .text {
+        align-self: center; /* centrér teksten vertikalt */
+      }
+
+      .image {
+        height: 420px;
+        min-height: 420px;
+        max-height: 790px;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        display: block;
+      }
+
+      .text h2 {
+        margin-bottom: 1rem;
+        margin-top: 10rem;
+        margin-left: 2rem;
+      }
+
+      .text a {
+        display: inline-block;
+        margin-top: 10rem;
+        text-decoration: none;
+        margin-left: 2rem;
+        font-family: "Nimbus Sans D OT Bold";
+      }
+
+      .fed {
+        font-family: "Nimbus Sans D OT Bold";
+      }
+
+      .image {
+        grid-column: span 1;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        min-height: 350px;
+      }
+      .com-form {
+        position: absolute;
+        top: 35rem;
+        left: 30rem;
+      }
+    }
+  </style>
 </Layout>
-<Footer />
+<!-- 
+  1. IntersectionObserver (JS):
+
+  - IntersectionObserver API'en bruges her til at observere elementer med klassen "section-fade".
+  - Formålet er at lave en "fade-in" effekt, når sektionerne kommer ind i synsfeltet (viewport).
+  - Når mindst 15% af et element er synligt (threshold: 0.15), tilføjes klassen "visible".
+  - Klassen "visible" ændrer CSS-egenskaber som opacity og transform, så elementet glider og fader ind.
+  - Fordelen er, at vi undgår scroll-event-listeners, som kan være ineffektive og langsomme.
+
+  2. CSS Transitioner og Animation:
+
+  - CSS-klassen ".section-fade" starter med opacity: 0 og er forskudt 40px nedad (translateY(40px)).
+  - Ved tilføjelse af klassen ".visible" ændres opacity til 1 og transform til translateY(0).
+  - Transitionen kører over 0.8s med en cubic-bezier timing-funktion for et blødt og naturligt udseende.
+  - Det giver en behagelig og moderne fade- og slide-effekt ved scrolling.
+
+  3. Responsive Design med Media Queries:
+
+  - Layoutet er opdelt i to hovedsektioner: ".mobil" (vises på skærme <1000px) og ".desktop" (vises på skærme >=1000px).
+  - Dette gør det muligt at have helt forskellige HTML-strukturer og styling til mobil og desktop, hvilket giver optimal brugeroplevelse.
+  - F.eks. vises billeder i større størrelse og tekst side om side på desktop, mens mobil viser alt i én kolonne.
+
+  4. Scroll-behavior:
+
+  - CSS-reglen "scroll-behavior: smooth;" sikrer, at alle interne links og scroll til sektioner glider blødt i stedet for at hoppe.
+  - Det forbedrer brugeroplevelsen ved navigation på siden.
+
+  5. Dynamisk Visning/Skjul af Kontaktformular:
+
+  - Funktionen window.closeContactForm() skjuler både mobil- og desktop-udgaverne af kontaktformularen ved at sætte display: none.
+  - Denne funktion kan fx kaldes, når brugeren sender formularen eller klikker på en luk-knap (ikke vist her).
+
+  6. Specifikke CSS-stilvalg:
+
+  - F.eks. bruges "object-fit: cover" og "object-position" på billeder for at sikre, at de fylder deres container uden at blive forvrænget.
+  - "display: flex" og "display: grid" bruges strategisk til layout af sektioner, hvor grid muliggør komplekse kolonneopdelinger og flex håndterer vertikal/horisontal placering.
+
+  7. Brugen af "vw" og margin-kalkulation:
+
+  - I ".se-mere-container" bruges en kompleks margin-left: calc(-1 * (100vw - 100%) / 2); for at udvide containeren fuldt ud i bredden og centrere indholdet.
+  - Det sikrer, at den horisontale linje ("se-mere-linje") og linkene strækker sig over hele viewport-bredden, selv når siden har en max-bredde.
+ -->

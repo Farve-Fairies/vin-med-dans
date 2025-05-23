@@ -1,0 +1,158 @@
+---
+const { onClose } = Astro.props;
+---
+
+<form id="contact-form" class="contact-form">
+  <button
+    type="button"
+    class="close-btn"
+    onclick="window.closeContactForm()"
+    aria-label="Luk kontaktformular"
+  >
+    &times;
+  </button>
+  <h2>
+    Har du spørgsmål, sjove historier eller andet? <br />
+    Kontakt os her – og vi vender tilbage.
+  </h2>
+
+  <div class="input-group">
+    <input type="text" name="name" placeholder="Skriv dit navn" required />
+    <div class="under-label">Navn</div>
+  </div>
+
+  <div class="input-group">
+    <input type="email" name="email" placeholder="Skriv din email" required />
+    <div class="under-label">Email</div>
+  </div>
+
+  <div class="input-group">
+    <input type="text" name="message" placeholder="Hvad kan vi hjælpe med?" />
+    <div class="under-label">Besked</div>
+  </div>
+
+  <button type="submit" class="send-button">SEND</button>
+
+  <p class="response-text">Vi gør os umage med at svare!</p>
+  <p class="thanks">TAK</p>
+
+  <img
+    src="/illustrationer/stikkel.svg"
+    alt="stikkel illustration"
+    class="contact-illustration"
+  />
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #fafaf2;
+    padding: 3rem;
+    border: 1px solid #32473a;
+    position: relative;
+    max-width: 455px;
+    font-family: "Nimbus Sans D OT Light";
+    color: #32473a;
+    z-index: 1000;
+  }
+
+  .contact-form h2 {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 1.4rem;
+    color: #32473a;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    border: none;
+    border-bottom: 1px solid #32473a;
+    background: transparent;
+    font-size: 1rem;
+    padding: 0.3rem 0;
+    font-family: "Nimbus Sans D OT Light";
+  }
+
+  .under-label {
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    color: #32473a;
+    font-family: "Nimbus Sans D OT Bold";
+  }
+
+  .send-button {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-family: "Nimbus Sans D OT Light";
+    font-size: 1rem;
+    color: #32473a;
+    cursor: pointer;
+    transition: font-family 0.2s ease;
+  }
+
+  .send-button:hover,
+  .send-button.clicked {
+    font-family: "Nimbus Sans D OT Bold";
+  }
+
+  .response-text {
+    font-size: 0.9rem;
+    color: #32473a;
+    margin: 0;
+  }
+
+  .thanks {
+    font-family: "Nimbus Sans D OT Bold";
+    font-size: 1rem;
+    color: #32473a;
+    margin: 0;
+  }
+
+  .contact-illustration {
+    position: absolute;
+    bottom: -0.5rem;
+    right: 1rem;
+    width: 117px;
+  }
+
+  @media (max-width: 700px) {
+    .contact-form {
+      max-width: 100%;
+      padding: 2rem;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #32473a;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+  }
+</style>
+
+<script>
+  // @ts-nocheck
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+    const button = form.querySelector(".send-button");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      button.classList.add("clicked");
+    });
+  });
+</script>
