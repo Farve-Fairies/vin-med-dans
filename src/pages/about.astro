@@ -7,7 +7,7 @@ import BackToFront from "../components/BackToFront.astro";
 <BackToFront />
 <Layout>
   <section class="mobil">
-    <section class="om grid-tre">
+    <section class="om grid-tre section-fade">
       <div class="padding"></div>
 
       <div class="om-tekst">
@@ -37,7 +37,7 @@ import BackToFront from "../components/BackToFront.astro";
       </div>
     </section>
 
-    <section class="om grid-tre">
+    <section class="om grid-tre section-fade">
       <div class="om-tekst">
         <h2>Bryggeri og høst</h2>
         <p>
@@ -68,7 +68,7 @@ import BackToFront from "../components/BackToFront.astro";
       </div>
     </section>
 
-    <section class="om grid-tre">
+    <section class="om grid-tre section-fade">
       <div class="om-tekst">
         <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
         <p>
@@ -102,7 +102,7 @@ import BackToFront from "../components/BackToFront.astro";
   </section>
 
   <section class="desktop">
-    <section class="story-section">
+    <section class="story-section section-fade">
       <div class="grid">
         <div class="text">
           <h2>Vores historie</h2>
@@ -132,7 +132,7 @@ import BackToFront from "../components/BackToFront.astro";
       <ContactForm />
     </div>
 
-    <section class="story-section">
+    <section class="story-section section-fade">
       <div class="grid">
         <div class="text">
           <h2>Bryggeri og høst</h2>
@@ -159,7 +159,7 @@ import BackToFront from "../components/BackToFront.astro";
       </div>
     </section>
 
-    <section class="story-section">
+    <section class="story-section section-fade">
       <div class="grid">
         <div class="text">
           <h2>Fødevare godkendt og ude på Københavns vinbarer</h2>
@@ -200,6 +200,23 @@ import BackToFront from "../components/BackToFront.astro";
         .querySelectorAll(".com-form, .kontakt-mobil")
         .forEach((el) => (el.style.display = "none"));
     };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document.querySelectorAll(".section-fade").forEach((section) => {
+        observer.observe(section);
+      });
+    });
   </script>
 
   <style>
@@ -285,6 +302,18 @@ import BackToFront from "../components/BackToFront.astro";
       flex-direction: column;
     }
 
+    .section-fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .section-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (min-width: 1000px) {
       .mobil {
         display: none;
@@ -356,3 +385,45 @@ import BackToFront from "../components/BackToFront.astro";
     }
   </style>
 </Layout>
+<!-- 
+  1. IntersectionObserver (JS):
+
+  - IntersectionObserver API'en bruges her til at observere elementer med klassen "section-fade".
+  - Formålet er at lave en "fade-in" effekt, når sektionerne kommer ind i synsfeltet (viewport).
+  - Når mindst 15% af et element er synligt (threshold: 0.15), tilføjes klassen "visible".
+  - Klassen "visible" ændrer CSS-egenskaber som opacity og transform, så elementet glider og fader ind.
+  - Fordelen er, at vi undgår scroll-event-listeners, som kan være ineffektive og langsomme.
+
+  2. CSS Transitioner og Animation:
+
+  - CSS-klassen ".section-fade" starter med opacity: 0 og er forskudt 40px nedad (translateY(40px)).
+  - Ved tilføjelse af klassen ".visible" ændres opacity til 1 og transform til translateY(0).
+  - Transitionen kører over 0.8s med en cubic-bezier timing-funktion for et blødt og naturligt udseende.
+  - Det giver en behagelig og moderne fade- og slide-effekt ved scrolling.
+
+  3. Responsive Design med Media Queries:
+
+  - Layoutet er opdelt i to hovedsektioner: ".mobil" (vises på skærme <1000px) og ".desktop" (vises på skærme >=1000px).
+  - Dette gør det muligt at have helt forskellige HTML-strukturer og styling til mobil og desktop, hvilket giver optimal brugeroplevelse.
+  - F.eks. vises billeder i større størrelse og tekst side om side på desktop, mens mobil viser alt i én kolonne.
+
+  4. Scroll-behavior:
+
+  - CSS-reglen "scroll-behavior: smooth;" sikrer, at alle interne links og scroll til sektioner glider blødt i stedet for at hoppe.
+  - Det forbedrer brugeroplevelsen ved navigation på siden.
+
+  5. Dynamisk Visning/Skjul af Kontaktformular:
+
+  - Funktionen window.closeContactForm() skjuler både mobil- og desktop-udgaverne af kontaktformularen ved at sætte display: none.
+  - Denne funktion kan fx kaldes, når brugeren sender formularen eller klikker på en luk-knap (ikke vist her).
+
+  6. Specifikke CSS-stilvalg:
+
+  - F.eks. bruges "object-fit: cover" og "object-position" på billeder for at sikre, at de fylder deres container uden at blive forvrænget.
+  - "display: flex" og "display: grid" bruges strategisk til layout af sektioner, hvor grid muliggør komplekse kolonneopdelinger og flex håndterer vertikal/horisontal placering.
+
+  7. Brugen af "vw" og margin-kalkulation:
+
+  - I ".se-mere-container" bruges en kompleks margin-left: calc(-1 * (100vw - 100%) / 2); for at udvide containeren fuldt ud i bredden og centrere indholdet.
+  - Det sikrer, at den horisontale linje ("se-mere-linje") og linkene strækker sig over hele viewport-bredden, selv når siden har en max-bredde.
+ -->

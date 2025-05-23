@@ -211,3 +211,29 @@
     }
   }
 </style>
+
+<!--
+NOTER TIL MIG SELV:
+
+HTML & STRUKTUR:
+- Jeg har lavet en 'hero'-sektion, der fylder hele skærmen (100vh).
+- Der er et baggrundsbillede, mit pink logo, en +18 badge og en scroll-indikator ("SCROLL NED →").
+- Logoet har klassen .hero-logo og ligger ovenpå billedet.
+- Scroll-linket har klassen .scroll-text og står lodret på venstre side.
+
+CSS:
+- Jeg bruger object-fit: cover på billedet, så det altid dækker hele skærmen uden at forvrænges.
+- Logoet har position absolute og er centreret via transform: translate(-50%, -50%).
+- Jeg har tilføjet transition: transform 0.8s ease-out, så logoets bevægelser bliver glatte og ikke hakker.
+- Logoets placering og størrelse justeres afhængig af skærmbredden (se media query).
+- Pil-ikonet i scroll-teksten animeres med @keyframes bounceArrow for at få en lille, konstant "hoppe-effekt".
+- Der er også en fade-animation (@keyframes fadeInOut), som jeg evt. kan bruge til at få elementer til at komme og gå i opacitet.
+
+JAVASCRIPT:
+- Jeg bruger JavaScript til at animere logoet, når man scroller.
+- Ved scroll lytter jeg efter window.scrollY og laver en progress-værdi mellem 0 og 1.
+- Ud fra den værdi regner jeg, hvor meget logoet skal flyttes op (top) og hvor meget det skal skalere (scale).
+- Det hele pakkes i en requestAnimationFrame, så animationen er mere smooth og optimeret.
+- Ticking-variablen sikrer, at jeg kun opdaterer én gang per animation frame, så den ikke lagger.
+
+-->
