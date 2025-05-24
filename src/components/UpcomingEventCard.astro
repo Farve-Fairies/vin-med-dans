@@ -10,7 +10,12 @@ const { date, month, title, description, imageUrl } = Astro.props;
     <p class="month">{month}</p>
     <a class="calendar-link" href="#">
       Put i kalenderen
-      <img src="/icons/calendar.svg" alt="Kalenderikon" class="calendar-icon" />
+      <img
+        src="/icons/calendar.svg"
+        alt="Kalenderikon"
+        class="calendar-icon"
+        loading="lazy"
+      />
     </a>
   </div>
 
@@ -18,7 +23,7 @@ const { date, month, title, description, imageUrl } = Astro.props;
     <h3>{title}</h3>
     <p>{description}</p>
     <div class="event-image">
-      <img src={imageUrl} alt={title} />
+      <img src={imageUrl} alt={title} loading="lazy" />
     </div>
   </div>
 </div>
@@ -41,7 +46,7 @@ const { date, month, title, description, imageUrl } = Astro.props;
   </div>
 
   <div class="event-image">
-    <img src={imageUrl} alt={title} />
+    <img src={imageUrl} alt={title} loading="lazy" />
   </div>
 </div>
 
