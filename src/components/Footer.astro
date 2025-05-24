@@ -4,19 +4,19 @@
       <div class="intro">
         <h2>VIN MED DANS</h2>
         <p>
-          vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
+          Vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
         </p>
       </div>
       <div class="footer-age">
         <img
           class="age-default"
-          src="/public/icons/plus-18.svg"
+          src="/icons/plus-18.svg"
           alt="alderstegn"
           loading="lazy"
         />
         <img
           class="age-hover"
-          src="/public/icons/plus-18-pink.svg"
+          src="/icons/plus-18-pink.svg"
           alt="alderstegn hover"
           loading="lazy"
         />
@@ -54,7 +54,7 @@
       </div>
       <img
         class="footer-illustration"
-        src="/public/logo/logo-flasker.png"
+        src="/logo/logo-flasker.png"
         alt="danskeflasker"
         loading="lazy"
       />
@@ -63,13 +63,13 @@
     <div class="footer-column-icons">
     <div class="instagram">
       <a href="https://www.instagram.com/vinmeddans.dk/" target="_blank" rel="noopener">
-        <img src="/public/icons/instagram.svg" alt="instagram ikon" loading="lazy"/>
+        <img src="/icons/instagram.svg" alt="instagram ikon" loading="lazy"/>
         <span>@vinmeddans</span>
       </a>
     </div>
     <div class="mail">
       <a href="mailto:vinmeddans@gmail.com">
-        <img src="/public/icons/mail.svg" alt="mail ikon" loading="lazy"/>
+        <img src="/icons/mail.svg" alt="mail ikon" loading="lazy"/>
         <span>vinmeddans@gmail.com</span>
       </a>
     </div>
@@ -80,7 +80,7 @@
 <div class="marquee">
   <p>
     Hvis du får muligheden for at drikke frugtvin, så smag vores. Hvis du får
-    muligheden for at drikke frugtvin, så smag vores.Hvis du får muligheden for
+    muligheden for at drikke frugtvin, så smag vores. Hvis du får muligheden for
     at drikke frugtvin, så smag vores. Hvis du får muligheden for at drikke
     frugtvin, så smag vores.
   </p>
@@ -293,6 +293,7 @@
         margin: 0 auto;
         background-color: #f9fcf7;
         z-index: 1000;
+        
       
     }
 
@@ -325,16 +326,22 @@
       column-gap: 2px;
       row-gap: 2px;
       border-left: 1px solid #32473a;
+      
 s    }
 
     .footer-column-icons {
+      position: absolute;
       grid-column: 2;
       grid-row: 1;
       justify-self: center;
+      align-items: center;
+      place-self: center;
+      text-decoration: none;
     }
 
     .footer-column-icons span {
       display: flex;
+
     }
 
     .footer-shop {
@@ -360,10 +367,15 @@ s    }
       height: auto;
     }
     .instagram, .mail {
+      position: relative;
         display: flex;
          justify-content: center;
          align-items: center;
-
     }
-  }
+    .mail {
+place-self: center;
+margin-left: 60px;
+    }
+    }
+  
 </style>
