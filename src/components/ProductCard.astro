@@ -23,13 +23,15 @@ console.log(data);
         class="img1"
         id="img1"
         src={`../billeder/produktbilleder/${wine.img2}`}
-        alt=" "
+        alt="Vin"
+        loading="lazy"
       />
       <img
         width="600px"
         class="img2"
         src={`../billeder/produktbilleder/${wine.img3}`}
-        alt=" "
+        alt="Vin"
+        loading="lazy"
       />
     </div>
   </a>
@@ -170,7 +172,9 @@ console.log(data);
   .section-fade {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    transition:
+      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .section-fade.visible {
     opacity: 1;

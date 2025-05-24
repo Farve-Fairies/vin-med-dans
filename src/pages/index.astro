@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import AgePopup from "../components/AgePopup.astro";
 import FrontProductCard from "../components/FrontProductCard.astro";
-import HeroAnimation from "../components/HeroAnimation.astro";
 
 const wine1 = {
   title: "Hønefuld",
@@ -31,8 +30,9 @@ const wine3 = {
     </h4>
     <img
       src="../billeder/produktbilleder/hoenefuld-1.webp"
-      alt=""
+      alt="Hønefuld vinflaske"
       class="vin-hero"
+      loading="lazy"
     />
     <div class="linje"></div>
     <h4 class="hoejre">GOD VIN PÅ GODE OG DÅRLIGE DAGE</h4>
@@ -50,14 +50,19 @@ const wine3 = {
     <h4 class="venstre-nede">100% bæredygtigt.</h4>
     <img
       src="../billeder/produktbilleder/hoenefuld-1.webp"
-      alt=""
+      alt="Hønefuld vinflaske"
       class="product-image"
+      loading="lazy"
     />
     <h4 class="hoejre-nede">Frugt & bær er plukket rundt omkring i Danmark.</h4>
   </section>
   <section class="grid_1-1 section-fade">
     <div class="row-1">
-      <img src="../billeder/forside/skaal.webp" alt="" />
+      <img
+        src="../billeder/forside/skaal.webp"
+        alt="Skål med vin"
+        loading="lazy"
+      />
       <div class="text-1">
         <h4 class="img-text-1">
           Frugtvin er vin med minimal indgriben – levende, ufiltreret og fuld af
@@ -72,14 +77,18 @@ const wine3 = {
           dans.
         </h4>
       </div>
-      <img src="../billeder/forside/drenge.webp" alt="" />
+      <img src="../billeder/forside/drenge.webp" alt="Tre venner med vin" />
     </div>
   </section>
 
   <section class="to section-fade">
     <div class="billede-tekst">
       <div class="billede-wrapper">
-        <img src="../billeder/forside/skaal.webp" alt="" />
+        <img
+          src="../billeder/forside/skaal.webp"
+          alt="Skål med vin"
+          loading="lazy"
+        />
         <h4 class="billede-titel1">
           Frugtvin er vin med minimal indgriben – levende, ufiltreret og fuld af
           karakter.
@@ -88,7 +97,11 @@ const wine3 = {
     </div>
     <div class="billede-tekst">
       <div class="billede-wrapper">
-        <img src="../billeder/forside/drenge.webp" alt="" />
+        <img
+          src="../billeder/forside/drenge.webp"
+          alt="Tre venner med vin"
+          loading="lazy"
+        />
         <h4 class="billede-titel2">
           Vi blander frugtvin, nysgerrighed og nærvær – og serverer det med
           dans.
@@ -105,7 +118,12 @@ const wine3 = {
   <div class="billede-wrapper">
     <h4 class="billede-titel3">Forfriskende lokal frugtvin.</h4>
   </div>
-  <img src="../illustrationer/aebler.svg" alt="æbler" class="aebler" />
+  <img
+    src="../illustrationer/aebler.svg"
+    alt="Æbler illustration"
+    class="aebler"
+    loading="lazy"
+  />
 
   <div class="billede-wrapper">
     <h4 class="billede-titel4">Respekt for miljøet og minimalt aftryk.</h4>
@@ -179,7 +197,7 @@ const wine3 = {
   .scroll-text {
     writing-mode: vertical-rl;
     font-size: 1rem;
-    color: #425245;
+    color: #32473a;
     background: none;
     border-radius: 0;
     text-align: center;
@@ -416,7 +434,7 @@ const wine3 = {
     align-items: center;
     text-decoration: none;
     height: 70px;
-    color: #425245;
+    color: #32473a;
     font-family: "Nimbus Sans D OT light";
     transition: 0.2s;
     padding-left: 2rem;
@@ -453,7 +471,7 @@ const wine3 = {
   .kasse-linje {
     height: 1px;
     width: 100%;
-    background: #425245;
+    background: #32473a;
   }
   .grid_1-1 {
     display: none;
@@ -475,7 +493,7 @@ const wine3 = {
       position: absolute;
       left: 10px;
       font-size: 1.5rem;
-      color: #303932;
+      color: #32473a;
       padding: 0.2rem 0.1rem;
       z-index: 2;
       text-align: center;
@@ -615,7 +633,7 @@ const wine3 = {
       align-items: center;
       text-decoration: none;
       height: 70px;
-      color: #425245;
+      color: #32473a;
       font-family: "Nimbus Sans D OT light";
       transition: 0.2s;
       padding-left: 15rem;
@@ -698,7 +716,7 @@ const wine3 = {
       grid-row: 1 / span 2;
       width: 1px;
       height: 80%;
-      background-color: #2e463d;
+      background-color: #32473a;
       justify-self: center;
       border: none;
       z-index: 333;

@@ -14,7 +14,7 @@ const { date, month, title, description, imageUrl } = Astro.props;
     <h3>{title}</h3>
     <p>{description}</p>
     <div class="event-image">
-      <img src={imageUrl} alt={title} />
+      <img src={imageUrl} alt={title} loading="lazy" />
     </div>
   </div>
 </div>
@@ -32,7 +32,7 @@ const { date, month, title, description, imageUrl } = Astro.props;
   </div>
 
   <div class="event-image">
-    <img src={imageUrl} alt={title} />
+    <img src={imageUrl} alt={title} loading="lazy" />
   </div>
 </div>
 

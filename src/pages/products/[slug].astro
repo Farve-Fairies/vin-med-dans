@@ -55,6 +55,7 @@ const { wine } = Astro.props;
             class="banner-wine display"
             src={`../../billeder/produktbilleder/${wine.img1}`}
             alt="wine"
+            loading="lazy"
           />
           <h3>10.5% ALC.</h3>
         </div>
@@ -187,7 +188,7 @@ const { wine } = Astro.props;
     transform: translateY(-50%);
     writing-mode: vertical-rl;
     font-size: 1rem;
-    color: #252a26;
+    color: #32473a;
     padding: 0.2rem 0.1rem;
     z-index: 2;
     text-align: center;

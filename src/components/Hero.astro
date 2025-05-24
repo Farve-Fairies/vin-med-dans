@@ -29,11 +29,11 @@
       const logo = document.querySelector(".hero-logo");
       if (!logo) return;
 
-      let latestScrollY = 0;
+      let latestScrollY = window.scrollY;
       let ticking = false;
 
       function updateLogo() {
-        const maxScroll = 300;
+        const maxScroll = 100; // så sker det hurtigere
         const progress = Math.min(latestScrollY / maxScroll, 1);
 
         const isDesktop = window.innerWidth >= 1000;
@@ -41,8 +41,9 @@
         const endTop = 0;
         const currentTop = startTop - (startTop - endTop) * progress;
 
-        const minScale = 0.5;
-        const scale = 0.5 - progress * (1 - minScale);
+        // Skaler mindre på desktop
+        const minScale = isDesktop ? 0.01 : 0.2; // 0.08 = meget lille på desktop
+        const scale = 1 - progress * (1 - minScale);
 
         logo.style.top = `${currentTop}%`;
         logo.style.transform = `translate(-50%, -50%) scale(${scale})`;
@@ -59,6 +60,7 @@
       }
 
       window.addEventListener("scroll", onScroll);
+      updateLogo();
     });
   </script>
 </body>
@@ -76,11 +78,11 @@
   .hero-logo {
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(1);
     transform-origin: center center;
     transition: transform 0.8s ease-out;
-    width: 600px;
+    width: 450px;
     pointer-events: none;
     z-index: 2;
   }
@@ -177,11 +179,11 @@
     .hero-logo {
       position: absolute;
       top: 80%;
-      left: 60%;
+      left: 50%; /* <-- centrér også på desktop */
       transform: translate(-50%, -50%) scale(1);
       transform-origin: center center;
       transition: transform 0.5s ease-out;
-      width: 1400px;
+      width: 1200px;
       pointer-events: none;
       z-index: 2;
     }
