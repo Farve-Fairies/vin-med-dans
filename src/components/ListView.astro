@@ -3,17 +3,21 @@
 ---
 
 <section>
-  <slot class="section-fade" />
-  <div class="wrapper section-fade">
+  <slot />
+  <div class="wrapper">
     <img
+      width="148"
+      height="117"
       class="illustration"
       src="../illustrationer/brombaer.svg"
       alt="Brombær"
       loading="lazy"
     />
   </div>
-  <div class="wrapper section-fade">
+  <div class="wrapper">
     <img
+      width="171"
+      height="154"
       class="illustration"
       src="../illustrationer/aeble.svg"
       alt="Æble"
@@ -63,34 +67,4 @@
       height: 33.33vw;
     }
   }
-
-  /* .section-fade {
-      opacity: 0;
-      transform: translateY(40px);
-      transition:
-        opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .section-fade.visible {
-      opacity: 1;
-      transform: translateY(0);
-    } */
 </style>
-<script>
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("visible");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.15 },
-  //   );
-
-  //   document.querySelectorAll(".section-fade").forEach((section) => {
-  //     observer.observe(section);
-  //   });
-  // });
-</script>

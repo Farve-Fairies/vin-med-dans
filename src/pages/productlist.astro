@@ -1,9 +1,10 @@
 ---
 //@ts-nocheck
-import Layout from "../layouts/Layout.astro";
+import SingleLayout from "../layouts/SingleLayout.astro";
 import ListView from "../components/ListView.astro";
 import ProductCard from "../components/ProductCard.astro";
 import BackToFront from "../components/BackToFront.astro";
+import Footer from "../components/Footer.astro";
 const { wine } = Astro.props;
 const url =
   "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,wine_slug";
@@ -18,7 +19,7 @@ console.log(data);
 
 <BackToFront />
 
-<Layout title="Vine">
+<SingleLayout title="Vine">
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <div class="teaser">
@@ -33,22 +34,23 @@ console.log(data);
 
       <img
         loading="lazy"
-        width="1208"
-        height="1520"
+        width="1208 px"
+        height="1520 px"
         class="himmelvin"
         src="../billeder/produktbilleder/flaskehimmel.webp"
         alt="Himmelvin"
       />
+      <Footer />
     </div>
   </div>
-</Layout>
+</SingleLayout>
 
 <script>
-  // import { gsap } from "gsap";
+  import { gsap } from "gsap";
 
-  // import { ScrollTrigger } from "gsap/ScrollTrigger";
-  // // ScrollSmoother requires ScrollTrigger
-  // import { ScrollSmoother } from "gsap/ScrollSmoother";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  import { ScrollSmoother } from "gsap/ScrollSmoother";
 
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   // create the scrollSmoother before your scrollTriggers
@@ -67,23 +69,6 @@ console.log(data);
     wrapper: "#smooth-container",
     content: "#smooth-content",
   });
-
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("visible");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.15 },
-  //   );
-
-  //   document.querySelectorAll(".section-fade").forEach((section) => {
-  //     observer.observe(section);
-  //   });
-  // });
 </script>
 <style>
   html {
@@ -117,16 +102,4 @@ console.log(data);
       padding: 4rem 13rem 5rem 13rem;
     }
   }
-
-  /* .section-fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition:
-      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .section-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-  } */
 </style>

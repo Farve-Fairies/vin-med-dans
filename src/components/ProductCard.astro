@@ -1,6 +1,7 @@
 ---
 //@ts-nocheck
 const { wine } = Astro.props;
+
 const url =
   "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,img2width,img2height,img3width,img3height";
 const key =
@@ -12,7 +13,7 @@ const data = await fetch(url, options).then((res) => res.json());
 console.log(data);
 ---
 
-<div class="wrapper section-fade" id="wrapper">
+<div class="wrapper" id="wrapper">
   <div class="heading">
     <h3>{wine.title}</h3>
     <h3>10,5% alc.</h3>
@@ -28,7 +29,7 @@ console.log(data);
         alt="Vin"
       />
       <img
-        width="600px"
+        width="600"
         height={wine.img3height}
         class="img2"
         src={`../billeder/produktbilleder/${wine.img3}`}
@@ -169,18 +170,6 @@ console.log(data);
   .visible {
     visibility: visible;
   }
-
-  /* .section-fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition:
-      opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .section-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-  } */
 </style>
 
 <script>
