@@ -31,9 +31,6 @@ const { wine } = Astro.props;
     <div id="smooth-content">
       <Back />
       <section class="banner-section">
-        <!-- <a href="#et1" class="scroll-text" id="scrollToEt1">
-          SCROLL NED <span class="arrow">→</span>
-        </a> -->
         <img
           loading="lazy"
           width={wine.img1width}
@@ -187,32 +184,6 @@ const { wine } = Astro.props;
     -webkit-text-stroke: 3px;
   }
 
-  .scroll-text {
-    position: absolute;
-    top: 75%;
-    left: 0;
-    transform: translateY(-50%);
-    writing-mode: vertical-rl;
-    font-size: 1rem;
-    color: #32473a;
-    padding: 0.2rem 0.1rem;
-    z-index: 2;
-    text-align: center;
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 0.1em;
-    background: none;
-    border-radius: 0;
-  }
-
-  .scroll-text .arrow {
-    display: inline-block;
-    font-size: 1.1em;
-    animation: bounceArrow 2.5s infinite;
-    transition: color 0.2s;
-  }
-
   */
 
     /* Fade animation for hele indikatoren */
@@ -250,11 +221,6 @@ const { wine } = Astro.props;
     }
   }
   @media (max-width: 1000px) {
-    .scroll-text {
-      left: 10px;
-      text-decoration: none;
-      font-size: 1.5rem;
-    }
     .product-display {
       display: none;
     }
@@ -289,10 +255,6 @@ const { wine } = Astro.props;
     .banner-wine {
       width: 200px;
     }
-  }
-
-  .scroll-text:hover {
-    color: #ffcdd8;
   }
 </style>
 
@@ -350,28 +312,4 @@ const { wine } = Astro.props;
     }
     wasAbove = nowAbove;
   });
-
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const scrollBtn = document.getElementById("scrollToEt1");
-  //   const target = document.querySelector("#et1");
-  //   const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
-
-  //   if (scrollBtn && target && smoother) {
-  //     scrollBtn.addEventListener("click", (e) => {
-  //       e.preventDefault();
-  //       smoother.scrollTo(target, true, "top top");
-  //     });
-  //   }
-  // });
-
-  // if (scrollBtn && target) {
-  //   scrollBtn.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     if (smoother) {
-  //       smoother.scrollTo(target, true, "top top");
-  //     } else {
-  //       target.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   });
-  // }
 </script>
