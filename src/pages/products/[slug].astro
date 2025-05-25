@@ -7,7 +7,8 @@ import Back from "../../components/Back.astro";
 import DropDown from "../../components/DropDown.astro";
 import Footer from "../../components/Footer.astro";
 export async function getStaticPaths() {
-  const url = "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=*";
+  const url =
+    "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description2,price,img1,wine_slug,img1width,img1height";
   const key =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
   const options = {
@@ -34,6 +35,9 @@ const { wine } = Astro.props;
           SCROLL NED <span class="arrow">→</span>
         </a> -->
         <img
+          loading="lazy"
+          width={wine.img1width}
+          height={wine.img1height}
           class="banner-wine"
           src={`../../billeder/produktbilleder/${wine.img1}`}
           alt="wine"
@@ -52,6 +56,9 @@ const { wine } = Astro.props;
       <section id="et1" class="product-section">
         <div class="product-display border-right">
           <img
+            loading="lazy"
+            width={wine.img1width}
+            height={wine.img1height}
             class="banner-wine display"
             src={`../../billeder/produktbilleder/${wine.img1}`}
             alt="wine"
