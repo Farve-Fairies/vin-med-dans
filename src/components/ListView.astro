@@ -20,51 +20,51 @@
       loading="lazy"
     />
   </div>
+</section>
+<style>
+  .wrapper {
+    border-right: solid 1px #32473a;
+    border-bottom: solid 1px #32473a;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vw;
+  }
 
-  <style>
-    .wrapper {
-      border-right: solid 1px #32473a;
-      border-bottom: solid 1px #32473a;
-      display: flex;
-      justify-content: center;
-      width: 100vw;
-      height: 100vw;
-    }
+  .illustration {
+    width: 10rem;
+  }
 
-    .illustration {
-      width: 10rem;
-    }
-
+  section {
+    width: 100vw;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid #32473a;
+  }
+  @media (min-width: 700px) {
     section {
-      width: 100vw;
-      justify-content: center;
-      grid-template-columns: 1fr 1fr;
-      border-top: 1px solid #32473a;
-    }
-    @media (min-width: 700px) {
-      section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .wrapper {
-        width: 50vw;
-        height: 50vw;
-      }
-    }
-    @media (min-width: 1079px) {
-      section {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .wrapper {
-        width: 33.33vw;
-        height: 33.33vw;
-      }
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .section-fade {
+    .wrapper {
+      width: 50vw;
+      height: 50vw;
+    }
+  }
+  @media (min-width: 1079px) {
+    section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wrapper {
+      width: 33.33vw;
+      height: 33.33vw;
+    }
+  }
+
+  /* .section-fade {
       opacity: 0;
       transform: translateY(40px);
       transition:
@@ -74,24 +74,23 @@
     .section-fade.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.15 },
-      );
+    } */
+</style>
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("visible");
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.15 },
+  //   );
 
-      document.querySelectorAll(".section-fade").forEach((section) => {
-        observer.observe(section);
-      });
-    });
-  </script>
-</section>
+  //   document.querySelectorAll(".section-fade").forEach((section) => {
+  //     observer.observe(section);
+  //   });
+  // });
+</script>

@@ -55,7 +55,6 @@ const { wine } = Astro.props;
             class="banner-wine display"
             src={`../../billeder/produktbilleder/${wine.img1}`}
             alt="wine"
-            loading="lazy"
           />
           <h3>10.5% ALC.</h3>
         </div>
@@ -100,7 +99,7 @@ const { wine } = Astro.props;
   }
 
   .product-section img {
-    width: 40%;
+    width: 20rem;
     padding: 4rem 0rem 2rem 0rem;
   }
 
@@ -281,7 +280,7 @@ const { wine } = Astro.props;
     }
 
     .banner-wine {
-      width: 45%;
+      width: 200px;
     }
   }
 
@@ -312,7 +311,7 @@ const { wine } = Astro.props;
       trigger: ".banner-section",
       start: "top top",
       endTrigger: ".product-section",
-      end: "bottom top",
+      end: "top top",
       scrub: true,
     },
     opacity: 0,
@@ -320,27 +319,52 @@ const { wine } = Astro.props;
     ease: "power1.out",
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const scrollBtn = document.getElementById("scrollToEt1");
-    const target = document.querySelector("#et1");
-    const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
+  let wasAbove = window.innerWidth > 1000;
 
-    if (scrollBtn && target && smoother) {
-      scrollBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        smoother.scrollTo(target, true, "top top");
-      });
+  window.addEventListener("resize", () => {
+    const nowAbove = window.innerWidth > 1000;
+    if (wasAbove && !nowAbove) {
+      setTimeout(() => {
+        const bannerSection = document.querySelector(".banner-section");
+        const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
+        // Force ScrollTrigger and Smoother to recalculate positions
+        if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
+        if (smoother) smoother.refresh();
+        setTimeout(() => {
+          if (bannerSection) {
+            if (smoother) {
+              smoother.scrollTo(bannerSection, true, "top top");
+            } else {
+              bannerSection.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }, 100); // Second delay to ensure layout is updated
+      }, 200); // First delay to allow CSS/layout to update
     }
+    wasAbove = nowAbove;
   });
 
-  if (scrollBtn && target) {
-    scrollBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (smoother) {
-        smoother.scrollTo(target, true, "top top");
-      } else {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  }
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const scrollBtn = document.getElementById("scrollToEt1");
+  //   const target = document.querySelector("#et1");
+  //   const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
+
+  //   if (scrollBtn && target && smoother) {
+  //     scrollBtn.addEventListener("click", (e) => {
+  //       e.preventDefault();
+  //       smoother.scrollTo(target, true, "top top");
+  //     });
+  //   }
+  // });
+
+  // if (scrollBtn && target) {
+  //   scrollBtn.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     if (smoother) {
+  //       smoother.scrollTo(target, true, "top top");
+  //     } else {
+  //       target.scrollIntoView({ behavior: "smooth" });
+  //     }
+  //   });
+  // }
 </script>
