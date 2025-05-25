@@ -34,7 +34,6 @@ console.log(data);
         class="himmelvin"
         src="../billeder/produktbilleder/flaskehimmel.webp"
         alt="Himmelvin"
-        loading="lazy"
       />
     </div>
   </div>
@@ -65,26 +64,27 @@ console.log(data);
     content: "#smooth-content",
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15 },
-    );
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("visible");
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.15 },
+  //   );
 
-    document.querySelectorAll(".section-fade").forEach((section) => {
-      observer.observe(section);
-    });
-  });
+  //   document.querySelectorAll(".section-fade").forEach((section) => {
+  //     observer.observe(section);
+  //   });
+  // });
 </script>
 <style>
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   .himmelvin {
     width: 100vw;
@@ -114,7 +114,7 @@ console.log(data);
     }
   }
 
-  .section-fade {
+  /* .section-fade {
     opacity: 0;
     transform: translateY(40px);
     transition:
@@ -124,5 +124,5 @@ console.log(data);
   .section-fade.visible {
     opacity: 1;
     transform: translateY(0);
-  }
+  } */
 </style>

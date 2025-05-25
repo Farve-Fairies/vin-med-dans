@@ -61,18 +61,22 @@
     </div>
 
     <div class="footer-column-icons">
-    <div class="instagram">
-      <a href="https://www.instagram.com/vinmeddans.dk/" target="_blank" rel="noopener">
-        <img src="/icons/instagram.svg" alt="instagram ikon" loading="lazy"/>
-        <span>@vinmeddans</span>
-      </a>
-    </div>
-    <div class="mail">
-      <a href="mailto:vinmeddans@gmail.com">
-        <img src="/icons/mail.svg" alt="mail ikon" loading="lazy"/>
-        <span>vinmeddans@gmail.com</span>
-      </a>
-    </div>
+      <div class="instagram">
+        <a
+          href="https://www.instagram.com/vinmeddans.dk/"
+          target="_blank"
+          rel="noopener"
+        >
+          <img src="/icons/instagram.svg" alt="instagram ikon" loading="lazy" />
+          <span>@vinmeddans</span>
+        </a>
+      </div>
+      <div class="mail">
+        <a href="mailto:vinmeddans@gmail.com">
+          <img src="/icons/mail.svg" alt="mail ikon" loading="lazy" />
+          <span>vinmeddans@gmail.com</span>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
@@ -223,7 +227,6 @@
   .footer-column-icons {
     grid-column: 2;
     grid-row: 2;
-    display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
@@ -237,10 +240,10 @@
   }
 
   .footer-column-icons img {
-    width: 80px;
+    width: 60px;
     height: auto;
-    padding-right: 20px;
     box-sizing: border-box;
+    margin-top: 1rem;
   }
   /* PLACERING AF LOG-ILLUSTRATION*/
   .footer-illustration {
@@ -287,20 +290,17 @@
 
   @media (min-width: 768px) {
     footer {
-        height: 200px;
-        padding-top: 0;
-        width: 100vw;
-        margin: 0 auto;
-        background-color: #f9fcf7;
-        z-index: 1000;
-        
-      
+      height: 200px;
+      padding-top: 0;
+      width: 100vw;
+      margin: 0 auto;
+      background-color: #f9fcf7;
+      z-index: 1000;
     }
 
     .footer_content {
       grid-template-columns: 1fr 1fr 1fr;
       height: auto;
-    
     }
 
     .footer-intro-age {
@@ -308,16 +308,15 @@
       grid-template-columns: 1fr auto;
       height: 200px;
       border-right: 1px solid #32473a;
-
     }
-  
+
     .intro,
     .footer-age {
       border-bottom: 0;
     }
 
     .footer-age img {
-     padding-top: 100px;
+      padding-top: 100px;
     }
     .footer-menu {
       grid-column: 3;
@@ -326,8 +325,7 @@
       column-gap: 2px;
       row-gap: 2px;
       border-left: 1px solid #32473a;
-      
-s    }
+    }
 
     .footer-column-icons {
       position: absolute;
@@ -341,7 +339,6 @@ s    }
 
     .footer-column-icons span {
       display: flex;
-
     }
 
     .footer-shop {
@@ -360,22 +357,47 @@ s    }
 
     .footer-illustration {
       grid-column: 4;
-        grid-row: 1;
-        padding-top: 60px;
-        width: 90px;
-        margin: 0;
+      grid-row: 1;
+      padding-top: 60px;
+      width: 90px;
+      margin: 0;
       height: auto;
     }
-    .instagram, .mail {
-      position: relative;
-        display: flex;
-         justify-content: center;
-         align-items: center;
-    }
+    .instagram,
     .mail {
-place-self: center;
-margin-left: 60px;
+      /* position: relative; */
+      display: flex;
+      align-items: baseline;
+
+      padding: 0px;
+      margin: 0px;
     }
+
+    .instagram img {
+      width: 40px;
+      display: flex;
+      padding: 0px;
+      margin: 0px;
     }
-  
+
+    .mail img {
+      width: 40px;
+      display: flex;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .instagram a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .mail a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+  }
 </style>
