@@ -97,6 +97,12 @@ a {
   text-underline-offset: 0.4rem;
 }
 
+a:link,
+a:active,
+a:visited {
+  color: #32473a;
+}
+
 a:hover {
   color: #ffcdd8;
 }

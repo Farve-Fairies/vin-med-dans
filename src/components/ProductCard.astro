@@ -3,7 +3,7 @@
 const { wine } = Astro.props;
 
 const url =
-  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,img2width,img2height,img3width,img3height";
+  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,img2width,img2height,img3width,img3height,height1,height2,height3";
 const key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
 const options = {
@@ -21,8 +21,8 @@ console.log(data);
   <a href={`/products/${wine.wine_slug}`}>
     <div class="img-container">
       <img
-        width={wine.img2width}
-        height={wine.img2height}
+        width={`${wine.width2}`}
+        height={`${wine.height2}`}
         class="img1"
         id="img1"
         src={`../billeder/produktbilleder/${wine.img2}`}
@@ -30,7 +30,7 @@ console.log(data);
       />
       <img
         width="600"
-        height={wine.img3height}
+        height={`${wine.height3}`}
         class="img2"
         src={`../billeder/produktbilleder/${wine.img3}`}
         alt="Vin"
