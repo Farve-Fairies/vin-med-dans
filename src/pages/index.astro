@@ -22,7 +22,6 @@ const wine3 = {
   <div id="hero">
     <Hero />
   </div>
-
   <AgePopup />
   <section class="et section-fade" id="et">
     <h4 class="venstre">
@@ -37,6 +36,8 @@ const wine3 = {
     <div class="linje"></div>
     <h4 class="hoejre">GOD VIN PÅ GODE OG DÅRLIGE DAGE</h4>
     <div class="linje"></div>
+  </section>
+  <section>
     <div class="kolonne-wrapper">
       <h4 class="venstre-nede">100% bæredygtigt.</h4>
       <div class="linje-midt"></div>
@@ -131,7 +132,7 @@ const wine3 = {
 
   <section class="link-kasser">
     <div class="kasse-linje"></div>
-    <p class="titel5">Drik vin med dans. Dans med vinen.</p>
+    <p class="titel5">Drik Vin med Dans. Dans med vinen.</p>
     <div class="kasse-linje"></div>
     <p class="p">KØB ONLINE</p>
     <a href="/productlist" class="kasse-link" target="_blank" rel="noopener"
@@ -295,7 +296,7 @@ const wine3 = {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
   }
   .hoejre {
     font-size: 1.5rem;
@@ -313,6 +314,7 @@ const wine3 = {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    border-bottom: 1px solid #32473a;
   }
   .linje-midt {
     border-left: 1px solid #425245;
@@ -662,10 +664,11 @@ const wine3 = {
     .desktre-tekst {
       display: block;
       font-size: 3rem;
-      padding-top: 1rem;
-      padding-left: 1rem;
+      padding-top: 6rem;
+      margin: 0 auto;
       text-align: start;
-      font-family: "Nimbus Sans D OT Bold";
+      font-family: "Nimbus Sans D OT Light";
+      text-align: center;
     }
     .kolonne-wrapper {
       display: none;
@@ -676,36 +679,42 @@ const wine3 = {
       align-items: center;
       gap: 0;
       background-color: #fafcf7;
-      min-height: 500px;
-      padding-bottom: 100vh;
-      min-height: 100vh;
-      height: 100vh;
+      /* min-height: 500px; */
+      /* padding-bottom: 100vh; */
+      /* min-height: 100vh; */
+      /* height: 100%; */
       overflow: hidden;
       position: relative;
+      border-bottom: 1px solid #32473a;
+
+      height: 75vh;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
     }
 
     .venstre {
       position: relative;
       grid-column: 1;
-      max-width: 70%;
+      max-width: 90%;
       padding-right: 2rem;
       font-size: 2.5rem;
-      place-self: center;
-      top: 35%;
+      margin: 0 auto;
+      top: 50%;
     }
 
     .vin-hero {
       position: relative;
       grid-column: 3;
       grid-row: 1;
-      width: 28%;
-      height: 100%;
+      height: 200%;
       border-radius: 12px;
-      margin: 0;
+      margin: 0 auto;
       display: block;
       place-self: center;
-      top: 15%;
-      margin-top: 100px;
+      top: 36%;
+      right: 5%;
+      margin-top: 10rem;
       z-index: 10;
       padding: 10px;
       object-fit: contain;
@@ -729,8 +738,8 @@ const wine3 = {
     .hoejre {
       white-space: nowrap;
       position: relative;
-      right: 20%;
-      bottom: 56%;
+      right: 25%;
+      bottom: 50%;
       grid-column: 3;
       grid-row: 2;
       writing-mode: vertical-rl;
@@ -761,7 +770,7 @@ const wine3 = {
       width: 100vw;
       gap: 2vw;
       background-color: #fafcf7;
-      margin-bottom: 10rem;
+      margin-bottom: 6rem;
       margin-top: 6rem;
     }
 
