@@ -112,9 +112,19 @@
     const inputs = form.querySelectorAll("input[type='text']");
     const illustration = document.getElementById("age-illustration");
 
-    // Vis modal med det samme
-    modal.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
+    const currentYear = new Date().getFullYear();
+    const minYear = currentYear - 18;
+
+    // TJEK localStorage
+    const savedYear = localStorage.getItem("birthYear");
+    if (savedYear && parseInt(savedYear, 10) <= minYear) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+      return;
+    } else {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
 
     // Nulstil inputfelter ved refresh
     inputs.forEach((input) => (input.value = ""));
@@ -123,7 +133,7 @@
     inputs.forEach((input, index) => {
       input.addEventListener("input", () => {
         input.style.borderColor = "#425245";
-        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.src = "/illustrationer/strandstol.svg";
         illustration.alt = "Figur i liggestol";
 
         const nextInput = inputs[index + 1];
@@ -152,18 +162,21 @@
 
       if (year.length < 4 || isNaN(parseInt(year, 10))) {
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
-        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.src = "/illustrationer/strandstol.svg";
         illustration.alt = "Figur i liggestol";
         return;
       }
 
-      if (parseInt(year, 10) > 2007) {
+      if (parseInt(year, 10) > minYear) {
+        // Brugeren er under 18 år
         inputs.forEach((input) => (input.style.borderColor = "#c00"));
-        illustration.src = "../illustrationer/stikkel.svg";
+        illustration.src = "/illustrationer/stikkel.svg";
         illustration.alt = "Stikkel";
       } else {
+        // Brugeren er gammel nok
+        localStorage.setItem("birthYear", year);
         inputs.forEach((input) => (input.style.borderColor = "#425245"));
-        illustration.src = "../illustrationer/strandstol.svg";
+        illustration.src = "/illustrationer/strandstol.svg";
         illustration.alt = "Figur i liggestol";
         modal.classList.add("hidden");
         document.body.style.overflow = "auto";
