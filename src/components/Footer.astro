@@ -31,7 +31,7 @@
         <h4>VIN MED DANS</h4>
         <ul>
           <li><a href="/productlist">Produkt</a></li>
-          <li><a href="#et">Frugtvin</a></li>
+          <li><a href="/productlist">Frugtvin</a></li>
           <li><a href="#">Tilbud</a></li>
           <li><a href="#">Galleri</a></li>
         </ul>
@@ -149,11 +149,8 @@
     margin: 0;
     padding-left: 10px;
   }
-  /* footer alderstegn */
+
   .footer-age img {
-    /* grid-column: 3; */
-    /* display: flex;
-    align-self: flex-end; */
     justify-self: end;
     width: 70px;
     height: auto;
@@ -179,33 +176,41 @@
   }
   /* footer menu links og ikoner */
   .footer-menu {
-    /* grid-column: 1 / 3;
-    grid-row: 2; */
     display: grid;
     grid-template-columns: 1fr 1fr auto;
     grid-template-rows: auto auto;
-    padding: 10px;
     gap: 2px;
+    height: 91.5%;
   }
   /* VIN MED DANS LINKS*/
   .footer-links {
     grid-column: 1;
     grid-row: 1;
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 1rem;
   }
   /* VIN MED DANS SHOP*/
   .footer-shop {
     grid-column: 1;
     grid-row: 2;
+    padding-left: 2rem;
+    padding-top: 1rem;
   }
   /* VIN MED DANS EVENTS*/
   .footer-events {
     grid-column: 2;
     grid-row: 1;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
   }
   /* VIN MED DANS OM OS*/
   .footer-about {
     grid-column: 2;
     grid-row: 2;
+    padding-right: 1rem;
+    padding-top: 1rem;
   }
   /* TEKST STYLING AF LINKS*/
   .footer-links h4,
@@ -267,7 +272,7 @@
   .footer-illustration {
     grid-column: 3;
     grid-row: 2;
-    width: 120px;
+    width: 100px;
     height: auto;
     min-height: 120px;
     align-self: end;
@@ -346,7 +351,6 @@
     }
 
     .footer-column-icons {
-      position: absolute;
       grid-column: 2;
       grid-row: 1;
       justify-self: center;
@@ -371,16 +375,18 @@
     .footer-about {
       grid-column: 4;
       grid-row: 1;
+      z-index: 10;
     }
 
     .footer-illustration {
       grid-column: 4;
       grid-row: 1;
-      padding-top: 60px;
-      width: 90px;
-      margin: 0;
+      margin-top: 90px;
+      width: 70px;
       height: auto;
+      z-index: 0;
     }
+
     .instagram,
     .mail {
       /* position: relative; */
