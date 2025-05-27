@@ -210,10 +210,6 @@
       border-left: #32473a 1px solid;
       height: 50px;
       font-family: "Nimbus Sans D OT Light";
-
-      /* position: absolute;
-    right: 16px;
-    top: 5px; */
     }
 
     .burger-menu:hover {
@@ -351,10 +347,13 @@
     }
 
     .header_logo img {
-      height: 36px; /* Mindre logo */
+      height: 46px;
       width: auto;
       margin: 0;
       padding: 0;
+      position: absolute;
+      left: 100%;
+      top: 5px;
     }
 
     .navbar.open ~ .header_logo .menu-text {
@@ -478,7 +477,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 36px; /* eller hvad dit logo er */
+      min-height: 41px;
       position: relative;
       padding-left: 1rem;
     }
@@ -556,6 +555,11 @@
 
     /* Medie queries for større skærme */
     @media (min-width: 930px) {
+      .header_logo img {
+        height: 46px;
+        left: 50%;
+        top: 0;
+      }
       .navbar {
         display: none;
       }
@@ -565,10 +569,9 @@
         right: 0;
         margin: 0;
         padding: 1px;
-        /* border-left: none;
-      border-right: none; */
+
         box-sizing: border-box;
-        height: 30px;
+        height: 40px;
       }
 
       .navigation_desktop {
