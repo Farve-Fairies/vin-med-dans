@@ -218,6 +218,40 @@ const { wine } = Astro.props;
       opacity: 0.5;
     }
   }
+  /* Fade animation for hele indikatoren */
+  @keyframes fadeInOut {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    10%,
+    90% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Pil-animation: meget lille bevægelse */
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(0.15em);
+    }
+  }
+
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 
   /* Pil-animation: meget lille bevægelse */
 
@@ -316,7 +350,7 @@ const { wine } = Astro.props;
 
   const zoomImage = document.getElementById("zoom-image");
 
-  zoomImage.addEventListener("mousemove", (e) => {
+  zoomImage.addEventListener("click", (e) => {
     const x = e.clientX - zoomImage.offsetLeft;
     const y = e.clientY - zoomImage.offsetTop;
 
