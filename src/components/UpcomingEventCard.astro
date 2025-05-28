@@ -1,6 +1,7 @@
 ---
 // Props
-const { date, month, title, description, imageUrl } = Astro.props;
+const { date, month, title, description, imageUrl, imgWidth, imgHeight } =
+  Astro.props;
 ---
 
 <!-- MOBIL -->
@@ -23,7 +24,13 @@ const { date, month, title, description, imageUrl } = Astro.props;
     <h3>{title}</h3>
     <p>{description}</p>
     <div class="event-image">
-      <img src={imageUrl} alt={title} loading="lazy" />
+      <img
+        width={imgWidth}
+        height={imgHeight}
+        src={imageUrl}
+        alt={title}
+        loading="lazy"
+      />
     </div>
   </div>
 </div>
@@ -36,7 +43,13 @@ const { date, month, title, description, imageUrl } = Astro.props;
 
     <a class="calendar-link" href="../events.ics" download>
       Put i kalenderen
-      <img src="/icons/calendar.svg" alt="Kalenderikon" class="calendar-icon" />
+      <img
+        width="32"
+        height="32"
+        src="/icons/calendar.svg"
+        alt="Kalenderikon"
+        class="calendar-icon"
+      />
     </a>
   </div>
 
@@ -46,7 +59,13 @@ const { date, month, title, description, imageUrl } = Astro.props;
   </div>
 
   <div class="event-image">
-    <img src={imageUrl} alt={title} loading="lazy" />
+    <img
+      width={imgWidth}
+      height={imgHeight}
+      src={imageUrl}
+      alt={title}
+      loading="lazy"
+    />
   </div>
 </div>
 

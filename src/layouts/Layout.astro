@@ -9,15 +9,14 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="da">
   <head>
-    <style>
-      a:link,
-      a:active,
-      a:visited {
-        color: #32473a;
-      }
-    </style>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      href="../logo/logo-text-dark.svg"
+      as="image"
+      fetchpriority="high"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link
@@ -81,5 +80,11 @@ const { title } = Astro.props;
 <style>
   body {
     margin: 0;
+  }
+
+  a:link,
+  a:active,
+  a:visited {
+    color: #32473a;
   }
 </style>
