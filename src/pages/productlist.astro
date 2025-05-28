@@ -1,13 +1,13 @@
 ---
 //@ts-nocheck
-import SingleLayout from "../layouts/SingleLayout.astro";
+import Layout from "../layouts/SingleLayout.astro";
 import ListView from "../components/ListView.astro";
 import ProductCard from "../components/ProductCard.astro";
 import BackToFront from "../components/BackToFront.astro";
 import Footer from "../components/Footer.astro";
 const { wine } = Astro.props;
 const url =
-  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,wine_slug";
+  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,wine_slug,img2width,img2height,img3width,img3height,height1,height2,height3";
 const key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
 const options = {
@@ -19,7 +19,7 @@ console.log(data);
 
 <BackToFront />
 
-<SingleLayout title="Vine">
+<Layout title="Vine">
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <div class="teaser">
@@ -43,33 +43,8 @@ console.log(data);
       <Footer />
     </div>
   </div>
-</SingleLayout>
+</Layout>
 
-<script>
-  import { gsap } from "gsap";
-
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  import { ScrollSmoother } from "gsap/ScrollSmoother";
-
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-  // create the scrollSmoother before your scrollTriggers
-  ScrollSmoother.create({
-    smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
-    effects: true, // looks for data-speed and data-lag attributes on elements
-    smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-  });
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-  // create the smooth scroller FIRST!
-  let smoother = ScrollSmoother.create({
-    smooth: 2,
-    effects: true,
-    normalizeScroll: true,
-    wrapper: "#smooth-container",
-    content: "#smooth-content",
-  });
-</script>
 <style>
   html {
     scroll-behavior: smooth;

@@ -3,7 +3,7 @@
 const { wine } = Astro.props;
 
 const url =
-  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,img2width,img2height,img3width,img3height,height1,height2,height3";
+  "https://qzicyulyspuzkhmcmnay.supabase.co/rest/v1/Wines?select=title,description,price,img2,img3,img2width,img2height,img3width,img3height,height1,height2,height3,width1,width2,width3";
 const key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6aWN5dWx5c3B1emtobWNtbmF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NTE3OTUsImV4cCI6MjA2MzIyNzc5NX0.tjA9s7JYKXVUuiThidnFet8gLAZLq3qKwr9tZvAAyBY";
 const options = {
@@ -24,7 +24,7 @@ console.log(data);
         width={`${wine.width2}`}
         height={`${wine.height2}`}
         class="img1"
-        id="img1"
+        id={`${wine.wine_slug}`}
         src={`../billeder/produktbilleder/${wine.img2}`}
         alt="Vin"
       />
@@ -32,6 +32,7 @@ console.log(data);
         width="600"
         height={`${wine.height3}`}
         class="img2"
+        id={`${wine.wine_slug}2`}
         src={`../billeder/produktbilleder/${wine.img3}`}
         alt="Vin"
       />
@@ -49,6 +50,10 @@ console.log(data);
 </div>
 
 <style>
+  #havtorben1 {
+    width: 370px;
+    height: 757px;
+  }
   .img-container {
     position: absolute;
     top: 0;

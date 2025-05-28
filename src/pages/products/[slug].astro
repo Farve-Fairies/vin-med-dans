@@ -36,6 +36,7 @@ const { wine } = Astro.props;
           width={wine.img1width}
           height={wine.img1height}
           class="banner-wine"
+          id={wine.wine_slug}
           src={`../../billeder/produktbilleder/${wine.img1}`}
           alt="wine"
         />
@@ -267,7 +268,7 @@ const { wine } = Astro.props;
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
   ScrollSmoother.create({
-    smooth: 2,
+    smooth: 0.8,
     effects: true,
     normalizeScroll: true,
     wrapper: "#smooth-wrapper",
