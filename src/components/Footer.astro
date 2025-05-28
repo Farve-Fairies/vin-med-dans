@@ -2,7 +2,7 @@
   <div class="footer_content">
     <div class="footer-intro-age">
       <div class="intro">
-        <h2>VIN MED DANS</h2>
+        <h3>VIN MED DANS</h3>
         <p>
           Vinmageri med fokus på kvalitet, lækre råvarer og en rasende god smag.
         </p>
@@ -28,7 +28,7 @@
     </div>
     <div class="footer-menu">
       <div class="footer-links">
-        <h4>VIN MED DANS</h4>
+        <h3>VIN MED DANS</h3>
         <ul>
           <li><a href="/productlist">Produkt</a></li>
           <li><a href="/productlist">Frugtvin</a></li>
@@ -37,20 +37,20 @@
         </ul>
       </div>
       <div class="footer-shop">
-        <h4>VINE</h4>
+        <h3>VINE</h3>
         <ul>
           <li><a href="/productlist">Shop</a></li>
         </ul>
       </div>
       <div class="footer-events">
-        <h4>EVENTS</h4>
+        <h3>EVENTS</h3>
         <ul>
           <li><a href="/events">Kommende events</a></li>
           <li><a href="/events">Tidligere events</a></li>
         </ul>
       </div>
       <div class="footer-about">
-        <h4>OM OS</h4>
+        <h3>OM OS</h3>
         <ul>
           <li><a href="/about">Vores historie</a></li>
           <li><a href="/about">Kontakt os</a></li>
@@ -114,7 +114,7 @@
   /* selve footeren */
   footer {
     background-color: transparent;
-    height: 100%;
+    height: 400px;
     width: 100vw;
     margin: 0 auto;
     display: flex;
@@ -137,15 +137,14 @@
     display: contents;
   }
 
-  .intro h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+  .intro h3 {
+    font-size: 15px;
     color: #32473a;
     margin: 5px 10px 5px 0;
     padding-left: 10px;
   }
   .intro p {
-    font-size: 1rem;
+    font-size: 15px;
     margin: 0;
     padding-left: 10px;
   }
@@ -180,46 +179,42 @@
     grid-template-columns: 1fr 1fr auto;
     grid-template-rows: auto auto;
     gap: 2px;
-    height: 91.5%;
+    height: 199px;
+    padding: 1rem 0rem;
   }
   /* VIN MED DANS LINKS*/
   .footer-links {
     grid-column: 1;
     grid-row: 1;
+    padding: 0rem 1rem;
     width: 100%;
-    padding-top: 1rem;
-    padding-left: 1rem;
   }
   /* VIN MED DANS SHOP*/
   .footer-shop {
     grid-column: 1;
     grid-row: 2;
-    padding-left: 2rem;
-    padding-top: 1rem;
+    padding: 0rem 1rem;
   }
   /* VIN MED DANS EVENTS*/
   .footer-events {
     grid-column: 2;
     grid-row: 1;
     padding-right: 3rem;
-    padding-top: 1rem;
-    padding-left: 1rem;
+    padding: 0rem 1rem;
   }
   /* VIN MED DANS OM OS*/
   .footer-about {
     grid-column: 2;
     grid-row: 2;
-    padding-right: 1rem;
-    padding-top: 1rem;
+    padding: 0rem 1rem;
   }
   /* TEKST STYLING AF LINKS*/
-  .footer-links h4,
-  .footer-shop h4,
-  .footer-events h4,
-  .footer-about h4 {
+  .footer-links h3,
+  .footer-shop h3,
+  .footer-events h3,
+  .footer-about h3 {
     margin: 0 0 10px 0;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 15px;
   }
 
   .footer-links ul,
@@ -270,6 +265,7 @@
   }
   /* PLACERING AF LOG-ILLUSTRATION*/
   .footer-illustration {
+    display: none;
     grid-column: 3;
     grid-row: 2;
     width: 100px;
@@ -313,8 +309,8 @@
 
   @media (min-width: 768px) {
     footer {
-      height: 200px;
       padding-top: 0;
+      height: 100%;
       width: 100vw;
       margin: 0 auto;
       background-color: #f9fcf7;
@@ -329,7 +325,7 @@
     .footer-intro-age {
       display: grid;
       grid-template-columns: 1fr auto;
-      height: 200px;
+      height: 199px;
       border-right: 1px solid #32473a;
     }
 
@@ -339,7 +335,7 @@
     }
 
     .footer-age img {
-      padding-top: 100px;
+      padding-top: 120px;
     }
     .footer-menu {
       grid-column: 3;
@@ -379,9 +375,10 @@
     }
 
     .footer-illustration {
-      grid-column: 4;
+      display: flex;
+      grid-column: 2;
       grid-row: 1;
-      margin-top: 90px;
+      margin-bottom: -0px;
       width: 70px;
       height: auto;
       z-index: 0;
@@ -398,14 +395,14 @@
     }
 
     .instagram img {
-      width: 40px;
+      width: 30px;
       display: flex;
       padding: 0px;
       margin: 0px;
     }
 
     .mail img {
-      width: 40px;
+      width: 30px;
       display: flex;
       padding: 0px;
       margin: 0px;
