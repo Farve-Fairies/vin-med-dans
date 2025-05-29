@@ -309,7 +309,6 @@ const { wine } = Astro.props;
     content: "#smooth-content",
   });
 
-  // Smooth transition for banner-section
   gsap.to(".banner-section", {
     scrollTrigger: {
       trigger: ".banner-section",
@@ -321,31 +320,6 @@ const { wine } = Astro.props;
     opacity: 0,
     y: -100,
     ease: "power1.out",
-  });
-
-  let wasAbove = window.innerWidth > 1000;
-
-  window.addEventListener("resize", () => {
-    const nowAbove = window.innerWidth > 1000;
-    if (wasAbove && !nowAbove) {
-      setTimeout(() => {
-        const bannerSection = document.querySelector(".banner-section");
-        const smoother = window.ScrollSmoother && window.ScrollSmoother.get();
-        // Force ScrollTrigger and Smoother to recalculate positions
-        if (window.ScrollTrigger) window.ScrollTrigger.refresh(true);
-        if (smoother) smoother.refresh();
-        setTimeout(() => {
-          if (bannerSection) {
-            if (smoother) {
-              smoother.scrollTo(bannerSection, true, "top top");
-            } else {
-              bannerSection.scrollIntoView({ behavior: "smooth" });
-            }
-          }
-        }, 100); // Second delay to ensure layout is updated
-      }, 200); // First delay to allow CSS/layout to update
-    }
-    wasAbove = nowAbove;
   });
 
   const zoomImage = document.getElementById("zoom-image");
