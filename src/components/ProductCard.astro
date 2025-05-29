@@ -187,7 +187,7 @@ console.log(data);
         const img2 = wrapper.querySelector(".img2");
         if (!img2) return;
 
-        // Remove previous listeners to avoid duplicates
+        
         wrapper.onmouseover = null;
         wrapper.onmouseout = null;
 
@@ -206,10 +206,10 @@ console.log(data);
       });
     }
 
-    // Initial setup
+
     setAnimation(mq.matches);
 
-    // Listen for changes in screen size
+    
     mq.addEventListener("change", (e) => {
       setAnimation(e.matches);
     });
