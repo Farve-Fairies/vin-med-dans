@@ -354,7 +354,7 @@ const { wine } = Astro.props;
     const x = e.clientX - zoomImage.offsetLeft;
     const y = e.clientY - zoomImage.offsetTop;
 
-    zoomImage.style.transform = `scale(2) translate(-${0}px, -${x}px)`;
+    zoomImage.style.transform = `scale(2) translate(-${0}px, -${x - 50}px)`;
   });
 
   zoomImage.addEventListener("mouseleave", () => {
