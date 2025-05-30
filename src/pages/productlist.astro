@@ -20,35 +20,35 @@ console.log(data);
 <BackToFront />
 
 <Layout title="Vine">
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
-      <div class="teaser">
-        <h3>Køb vin med dans</h3>
-        <p>
-          Vin med Dans’ frugtvin er for dig som holder af smagene fra den danske
-          sommers natur og vin med bobler.
-        </p>
-      </div>
-
-      <ListView>{data.map((wine) => <ProductCard {wine} />)}</ListView>
-
-      <img
-        loading="lazy"
-        width="1208 px"
-        height="1520 px"
-        class="himmelvin"
-        src="../billeder/produktbilleder/flaskehimmel.webp"
-        alt="Himmelvin"
-      />
-      <Footer />
-    </div>
+  <div class="teaser">
+    <h3>Køb vin med dans</h3>
+    <p>
+      Vin med Dans’ frugtvin er for dig som holder af smagene fra den danske
+      sommers natur og vin med bobler.
+    </p>
   </div>
+
+  <ListView>{data.map((wine) => <ProductCard {wine} />)}</ListView>
+
+  <img
+    loading="lazy"
+    width="1208 px"
+    height="1520 px"
+    class="himmelvin"
+    src="../billeder/produktbilleder/flaskehimmel.webp"
+    alt="Himmelvin"
+  />
+  <Footer />
 </Layout>
 
 <style>
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
     overflow-x: hidden;
+    min-width: 430px;
   }
   .himmelvin {
     width: 100vw;
@@ -56,7 +56,7 @@ console.log(data);
 
   .teaser {
     padding: 2rem 4rem 3rem 4rem;
-    width: 30rem;
+    width: 27rem;
   }
 
   .teaser h3 {
